@@ -1,0 +1,272 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Dec, 2020, 9:26:01 PM
+    Author     : KSURA
+*/
+
+
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    border: 2px solid black;
+}
+
+
+.container{
+	
+	display:grid;
+	grid-template-rows: 100px 30px auto auto;
+        grid-template-columns:250px auto 250px;
+	grid-gap: 5px;
+        width: 75%;
+        margin: 10px auto;
+        border: 2px solid black;
+       
+}
+
+
+
+header{
+    grid-column:1/-1;
+    border: 2px solid black;
+    background: linear-gradient(to right, skyblue, purple);
+}
+
+header nav{
+    display: flex;
+    flex-grow: 1;
+}
+
+header nav div.navStart{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+
+
+header nav div.navEnd{
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    
+
+    align-items: center;
+}
+
+
+
+header nav div.navEnd a{
+    color: white;
+    opacity:0.6;
+    font:bold;
+    font-size: 20px;
+        margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+    
+}
+
+header nav div.navEnd a:hover{
+    opacity: 1;
+    transition: 0.5;
+}
+
+
+#button{
+    background-color: #C0C0C0;
+        padding: 2px;
+    border-radius: 5px;
+    color:black;
+}
+
+#button:hover{
+    color:white;
+
+    background-color: #d4af37;
+    transition: 0.6;
+}
+
+
+
+
+
+
+.warning{
+    grid-column: 1/-1;
+    border: 2px solid black;
+    text-align: center;
+    color:red;
+}
+
+
+
+.menu{
+    grid-column: 1/2;
+    border: 2px solid black;
+    
+}
+
+.menu h5{
+    text-align: center;
+    font-size: 15px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+
+.menu ul li{
+    width: 80%;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    list-style: none;
+    margin-left: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.menu ul li a{
+    text-decoration: none;
+    color: black;
+}
+
+.menu ul li:hover{
+    background-color: purple;
+    color: white;
+    transition: 0.7s;
+}
+
+.menu ul li:hover a{
+    color: white;
+}
+
+
+
+
+
+
+
+.content {
+    grid-column: 2/3;
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 3px 10px;
+text-align: justify;
+  text-justify: inter-word;
+    
+}
+
+.welcome_note{
+    box-sizing:border-box;
+    padding : 20px;
+    
+}
+
+
+
+.adds {
+    grid-column: 3/4;
+    border: 2px solid black;
+}
+
+
+
+footer {
+    grid-column: 1/-1;
+
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.social-icon a{
+    text-decoration: none;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 50%;
+}
+
+.social-icon a i{
+    font-size: 1em;
+    color: black;
+    opacity: 0.9;
+}
+
+/*hover effect on media icon*/
+
+.social-icon a:hover{
+    background-color: purple;
+    transition: 0.6s;
+}
+
+.social-icon a:hover i{
+    color: white;
+    transition: 0.6s;
+}
+
+
+.footerNav{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    
+}
+
+.footerNav ul li a{
+    color: white;
+    margin: 30px;
+    text-decoration: none;
+    opacity: 0.7;
+    font-size: 1.3em;
+    transition: 0.5;
+}
+
+
+.footerNav ul li a:hover{
+    opacity:1;
+}
+
+
+.footerBottom {
+	/*border: 2px solid black;*/
+
+        flex-direction: column;
+	justify-content: center;
+        color: purple;
+        text-align: center;
+        background-color: black;
+        flex-grow: 1;
+        height: 30px;
+        align-items: center;
+	
+}
