@@ -65,48 +65,47 @@ and open the template in the editor.
         <section class="welcome_note">
 
            
-            <h1> Java Collection Framework </h1></br>
-           
+            <h1>ArrayList in Java</h1>
+    <p>
+        In Java, ArrayList is a dynamic array implementation of the List interface provided by the Java Collections Framework. It offers resizable arrays, <br>
+        allowing for the creation of lists that can dynamically grow or shrink as needed.<br> ArrayList provides indexed access to its elements, enabling fast random access and iteration over its contents. Elements can be added, removed, or accessed by their index position. Below is a basic example demonstrating the usage of ArrayList in Java:
+    </p>
+    <pre>
+        <code>
+            import java.util.ArrayList;
 
-            <article>
-                <p>The java Collection framework is part of java.util package. The <b>java.util</b> package contains interface and classes that is the most powerfull tool for
-                    handling different data types.</p></br></br> The below table will provide a larger picture of the classes available in the java.util package.</br></br>
-                
-                
-                <table>
-                    
-                    <tr>
-                    <td>AbstractCollection</td>
-                    <td>FormatableFlags</td>
-                    <td>Properties</td>
-                    </tr>
-                    <tr>
-                    <td>AbstractList</td>
-                    <td>Formatter</td>
-                    <td>PropertyPermission</td>
-                    </tr>
-                    <tr>
-                    <td>AbstractMap</td>
-                    <td>HashMap</td>
-                    <td>Random</td>
-                    </tr>
-                    <tr>
-                    <td>AbstractSequentialList</td>
-                    <td>HashSet</td>
-                    <td>ResourceBundle</td>
-                    </tr>
-                    <tr>
-                    <td>AbstractSet</td>
-                    <td>Hashtable</td>
-                    </tr>
-                    
-                    
-                </table>
-                
-                
+            public class ArrayListExample {
+                public static void main(String[] args) {
+                    // Create an ArrayList to store strings
+                    ArrayList&lt;String&gt; list = new ArrayList<>();
 
-                
-            </article>
+                    // Add elements to the ArrayList
+                    list.add("Apple");
+                    list.add("Banana");
+                    list.add("Orange");
+
+                    // Access elements by index
+                    System.out.println("First element: " + list.get(0));
+                    System.out.println("Second element: " + list.get(1));
+
+                    // Iterate over the elements
+                    System.out.println("Elements:");
+                    for (String fruit : list) {
+                        System.out.println(fruit);
+                    }
+
+                    // Remove an element
+                    list.remove("Banana");
+
+                    // Check if an element exists
+                    System.out.println("Contains Orange: " + list.contains("Orange"));
+
+                    // Get the size of the ArrayList
+                    System.out.println("Size of the ArrayList: " + list.size());
+                }
+            }
+        </code>
+    </pre>
 
 
         </section>
