@@ -111,7 +111,7 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.edu 2024</h4>
+        <h4>&copy; Learnit-Guide.edu 2024 is a free source.</h4>
         </div>
     </footer>
             
