@@ -13,6 +13,7 @@ and open the template in the editor.
     margin:0;
     padding: 0;
     box-sizing: border-box;
+                border-radius: 10px;
 }
 
 body{
@@ -21,23 +22,20 @@ body{
 }
 
 
-.container{
-	
-	display:grid;
+.container {
+	display: grid;
 	grid-template-rows: 100px 30px auto auto;
-        grid-template-columns:250px auto 250px;
+	grid-template-columns: 250px auto 250px;
 	grid-gap: 5px;
-        width: 75%;
-        margin: 10px auto;
-    /*border: 2px solid black;*/
-       
+	width: 75%;
+	margin: 10px auto;
+	/*border: 2px solid black;*/
 }
-
-
 
 header{
     grid-column:1/-1;
     /*border: 2px solid black;*/
+
     background: linear-gradient(to right, skyblue, purple);
 }
 
@@ -105,7 +103,7 @@ header nav div.navEnd a:hover{
 
 .warning{
     grid-column: 1/-1;
-    /*border: 2px solid black;*/
+    border: 2px solid black;
     text-align: center;
     color:red;
 }
