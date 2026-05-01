@@ -13,6 +13,7 @@ and open the template in the editor.
     margin:0;
     padding: 0;
     box-sizing: border-box;
+                    border-radius: 10px;
 }
 
 body{
@@ -81,6 +82,12 @@ header nav div.navEnd a{
 header nav div.navEnd a:hover{
     opacity: 1;
     transition: 0.5;
+}
+
+.navStart h1 {
+    font-size: 30px;
+    font-family: 'Borel', cursive;
+
 }
 
 

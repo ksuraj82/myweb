@@ -21,7 +21,7 @@
     <header>
         <nav>
             <div class="navStart">
-            <a href="<c:url value='/'/>"><img src="img/home_icon_google.png" alt="no image"/></a>
+            <a href="<c:url value='/Home'/>"><img src="<c:url value='/img/home_icon_google.png'/>" alt="no image"/></a>
             <h1>LearnIt-Guide</h1>
             </div>
             
@@ -29,18 +29,19 @@
             <a href="software.html">Software</a>
             <a href="#">Tools</a>
             <c:choose>
-						<c:when test="${not empty sessionScope.username}">
-							<a id="button" href="<c:url value='/Logout'/>">Logout (${sessionScope.username})</a>
-						</c:when>
-						<c:otherwise>
-							<a id="button" href="<c:url value='/Login'/>">Log in</a>
-						</c:otherwise>
-					</c:choose>
+    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
+    <c:when test="${not empty username}">
+        <a id="button" href="<c:url value='/logout'/>">Logout (${username})</a>
+    </c:when>
+    <c:otherwise>
+        <a id="button" href="<c:url value='/login'/>">Log in</a>
+    </c:otherwise>
+</c:choose>
             </div>
         </nav>
     </header>
     
-    <div class="warning"><marquee><h5>warning messages will be displayed here</h5> </marquee></div>
+    <div class="warning"><marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee></div>
 	
     
     <div class="menu">
@@ -80,7 +81,7 @@
         
         <div class="footerNav">
             <ul>
-                <li><a href="<c:url value='/'/>">Home</a></li>
+                <li><a href="<c:url value='/Home'/>">Home</a></li>
                 <li><a href="">News</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact Us</a></li>                

@@ -1,16 +1,17 @@
 package com.learnitguide.controller;
 
 import java.io.IOException;
-import java.util.Calendar;
+//import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.RequestDispatcher;
-import com.learnitguide.service.UserAuthentication;
+//import javax.servlet.http.HttpSession;
+//import javax.servlet.RequestDispatcher;
+//import com.learnitguide.service.UserAuthentication;
+//import com.learnitguide.util.JwtUtil;
 /**
  * Servlet implementation class Login
  */
@@ -26,24 +27,16 @@ public class Linux extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		
-		
-		HttpSession session = request.getSession(false);
-        String uname = (session != null) ? (String) session.getAttribute("username") : null;
+        
+        String section = request.getAttribute("webpage").toString().split("/")[1];
+        String page = request.getAttribute("webpage").toString().split("/")[2];
 
-        if (uname == null) {
-            // Save original target so login can redirect back
-            request.getSession().setAttribute("targetPage", "/Linux");
-//            RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login_signup.jsp");
-//            rd.forward(request, response);
-            response.sendRedirect(request.getContextPath() + "/Login");
-            return;
-        }
-        
-        
-        // User is logged in → show kids page
-        RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/linux.jsp");
-        rd.forward(request, response);
+        System.out.println("value of linux is : " + section + " page is " + page);
+
+        String initialPagePath = "/WEB-INF/views/linux/"+section+"_content_"+page+".html";
+        request.setAttribute("contentPage", initialPagePath);
+        request.getRequestDispatcher("/WEB-INF/views/linux.jsp").forward(request, response);
+
 		
 	}
 

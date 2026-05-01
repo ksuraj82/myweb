@@ -30,6 +30,7 @@ body{
 	width: 75%;
 	margin: 10px auto;
 	/*border: 2px solid black;*/
+
 }
 
 header{
@@ -164,6 +165,9 @@ header nav div.navEnd a:hover{
     margin: 3px 10px;
 text-align: justify;
   text-justify: inter-word;
+  	background-color: black;
+	color:#42f700;
+	font-size: 25px;
     
 }
 

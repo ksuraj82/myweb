@@ -18,10 +18,12 @@ and open the template in the editor.
 
 body{
 /*    background :url(https://cdn.wallpapersafari.com/93/18/z6QKit.jpg);*/
-    background :url(https://cdn5.vectorstock.com/i/1000x1000/54/64/blackboard-with-wooden-frame-vector-22605464.jpg);
+    /* background :url(https://cdn5.vectorstock.com/i/1000x1000/54/64/blackboard-with-wooden-frame-vector-22605464.jpg); */
     background-size: cover;
     background-repeat: no-repeat;
     box-sizing: border-box;
+    background-color: white;
+    
     
     
 }
@@ -76,7 +78,7 @@ body{
     
     border-radius: 20px;
     width: 400px;
-    height: 400px;
+    height: 500px;
     left: 37.5%;
     position: absolute;
     top: 220px;
@@ -85,6 +87,8 @@ body{
     overflow: hidden;
     transition: 0.7s;
     /*box-shadow: 0px 10px 10px white;*/
+    
+    background-color: purple;
 
 
 
@@ -240,7 +244,7 @@ body{
 #signup{
     position: absolute;
     left:-400px;
-        transition: 0.7s;
+    transition: 0.7s;
 
 }
 
@@ -305,7 +309,7 @@ hover effect on media icon
 
 .footerNav{
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .footerNav ul{
@@ -317,7 +321,7 @@ hover effect on media icon
 
 .footerNav ul li a{
     color: white;
-    margin: 30px;
+    margin: 50px;
     text-decoration: none;
     opacity: 0.7;
     font-size: 1.5em;

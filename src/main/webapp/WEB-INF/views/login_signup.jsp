@@ -34,7 +34,7 @@
 
 
 		<div class="login_signup">
-			<form method="post" id="login">
+			<form action="Login" method="post" id="login">
 				<h1>Login</h1>
 				<input type="text" name="username" placeholder="Enter your username"
 					required /> <input type="password" name="password"
@@ -44,35 +44,30 @@
 					Don't have an account?
 					<button type="button" class="swap-login" onclick="login()">Signup</button>
 				</h4>
-				<h3 class="errormessage">${errorMessage}</h3>
+				<h3 class="errormessage">${message}</h3>
+				
+				
 			</form>
 
-			<form method="post" id="signup">
+			<form action="Signup" method="post" id="signup">
 				<h1>Signup</h1>
 
-				<input type="text" id="username" name="username"
-					placeholder="Create a username" required /> <input type="email"
-					id="email" name="email" placeholder="Enter your emailid" required />
-
-				<input type="password" id="pass1" name="pass1"
-					placeholder="Create your password" required /> <input
-					type="password" id="pass2" name="pass2"
-					placeholder="Confirm Password" required />
+				<input type="text" id="username" name="username" placeholder="Create a username" required /> 
+				<input type="text" id="webname" name="webname" placeholder="Create a nickname" required />
+				<input type="email"	id="email" name="email" placeholder="Enter your emailid" required />
+				<input type="password" id="password" name="password" placeholder="Create your password" required /> 
+				<input type="text" id="pass2" name="pass2" placeholder="Confirm Password" required />
 
 				<button class="submitButton" type="submit">Sign Up</button>
+
 				<h4>
 					Already have an account?
 					<button type="button" class="swap-login" onclick="signup()">Login</button>
 				</h4>
-				<h3 class="errormessage">${errorMessage}</h3>
+				<h3 class="errormessage">${message}</h3>
 
 			</form>
-
-
 		</div>
-
-
-
 		<footer>
 
 

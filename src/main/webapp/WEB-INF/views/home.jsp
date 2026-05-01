@@ -22,26 +22,27 @@
     <header>
         <nav>
             <div class="navStart">
-            <a href="<c:url value='/Home'/>"><img src="img/home_icon_google.png" alt="no image"/></a>
+            <a href="<c:url value='/Home'/>"><img src="<c:url value='/img/home_icon_google.png'/>" alt="no image"/></a>
             <h1>LearnIt-Guide</h1>
             </div>
             
             <div class="navEnd">
             <a href="software.html">Software</a>
             <a href="#">Tools</a>
-            <c:choose>
-						<c:when test="${not empty sessionScope.username}">
-							<a id="button" href="<c:url value='/Logout'/>">Logout (${sessionScope.username})</a>
-						</c:when>
-						<c:otherwise>
-							<a id="button" href="<c:url value='/Login'/>">Log in</a>
-						</c:otherwise>
-					</c:choose>
+           <c:choose>
+    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
+    <c:when test="${not empty username}">
+        <a id="button" href="<c:url value='/logout'/>">Logout (${username})</a>
+    </c:when>
+    <c:otherwise>
+        <a id="button" href="<c:url value='/login'/>">Log in</a>
+    </c:otherwise>
+</c:choose>
             </div>
         </nav>
     </header>
     
-    <div class="warning"><marquee><h5>warning messages will be displayed here</h5> </marquee></div>
+    <div class="warning"><marquee><h5>warning messages will be displayed here. this is home.jsp page</h5> </marquee></div>
 	
     
     <div class="menu">
@@ -57,7 +58,7 @@
             <li>Sample web architecture</li>
             <li>Jobs available</li>
             <li>Kids Section</li>
-            <li>Linux Section</li>
+            <li><a href="<c:url value='/Linux/linuxbasic/intro'/>">Linux Section</a></li>
             <li>SQL Section</li>
             </ul>
             </div>
