@@ -225,7 +225,7 @@ header nav div.navEnd a:hover{
     display: grid;
     grid-template-rows: auto;
     gap: 10px;
-        background-color: var(--clr-surface);
+    background-color: var(--clr-surface);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius);
     padding: 1rem;
@@ -253,6 +253,11 @@ header nav div.navEnd a:hover{
 .menu-list *{
 	    color: var(--clr-nav-menu);
 	        grid-template-rows: auto;
+
+}
+
+.menu-list-title{
+	margin-left: 5px;
 }
 
 
@@ -590,17 +595,36 @@ footer {
 @media (max-width: 900px) {
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: 1fr;
     }
     
-    .ads {
-        display: none;
-    }
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
 }
 
 
 /* 2. MOBILE VIEW (Apply these only when the screen is wide) */
 @media (max-width: 300px) {
+	
+	
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
 /*          grid-template-columns: auto auto  1fr;  */
@@ -613,12 +637,16 @@ footer {
     gap: 1.5rem;
     }
     
-    Fix the overlapping Advertisement and Footer
+    
+/*     Fix the overlapping Advertisement and Footer */
 .menu, .content, .adds {
 	/*Everyone gets their own row on mobile*/
     grid-column: 1 / -1; 
     /*Disables 'sticky' on mobile to prevent overlapping */
-      position: static;     
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
 }
 
 footer {

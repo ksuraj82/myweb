@@ -59,7 +59,7 @@
 				</ul> --%>
 				<c:forEach var="item" items="${sideBarMenu}">
 					<ul>
-					<li><a href="<c:url value='${item.page}'/>"><i class="fa-solid fa-box"></i>${item.title}</a></li>
+					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
 				</ul>
 				</c:forEach>
 				
@@ -70,6 +70,7 @@
 
     <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
     <main>
+
 		<jsp:include page="${contentPage}"/>	
 		    <div class="page-nav">
     <button class="page-prev"> < Previous Page</button>

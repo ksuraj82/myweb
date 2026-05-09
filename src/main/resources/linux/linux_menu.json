@@ -1,47 +1,47 @@
 [
   {
     "title": "Linux Introduction",
-    "icon": "home_icon.png",
+    "icon": "fa-solid fa-house",
     "page": "/Linux/linuxbasic/intro"
   },
   {
     "title": "VMware setup",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-box",
     "page": "/Linux/linuxbasic/1"
   }
   ,
   {
     "title": "Ubuntu setup",
-    "icon": "vbox_icon.png",
+    "icon": "fa-brands fa-ubuntu",
     "page": "/Linux/linuxbasic/2"
   }
   ,
   {
     "title": "Linux Navigation",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-terminal",
     "page": "/Linux/linuxbasic/3"
   }
   ,
   {
     "title": "File management",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-terminal",
     "page": "/Linux/linuxbasic/4"
   }
   ,
   {
     "title": "Content inspection",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-terminal",
     "page": "/Linux/linuxbasic/5"
   }
   ,
     {
     "title": "Security and Permission",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-terminal",
     "page": "/Linux/linuxbasic/6"
   },
   {
     "title": "Search and Filter",
-    "icon": "vbox_icon.png",
+    "icon": "fa-solid fa-terminal",
     "page": "/Linux/linuxbasic/7"
   }
 ]
