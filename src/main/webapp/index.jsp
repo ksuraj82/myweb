@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ page session="false" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css"
-	href="<c:url value='/static/css/linux.css'/>">
+	href="<c:url value='/static/css/index.css'/>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -29,22 +30,16 @@
 		<header>
 			<nav>
 				<div class="navStart">
-					<a href="<c:url value='/'/>"><img
-						src="<c:url value='/img/home_icon_google.png'/>" alt="no image" /></a>
 					<h1>LearnIt-Guide</h1>
+					<div class="bulb-container">
+    					<div class="bulb"><a href="<c:url value='/'/>"><i class="fa-solid fa-lightbulb" style="color: #FFD43B; font-size: 40px;"></i></a></div>
 				</div>
+				</div>
+				
 				<div class="navEnd">
-					<a href="software.html">Software</a> <a href="#">Tools</a>
-					<c:choose>
-						<%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-						<c:when test="${not empty username}">
-							<a id="button" href="<c:url value='/Logout'/>">Logout
-								(${username})</a>
-						</c:when>
-						<c:otherwise>
-							<a id="button" href="<c:url value='/Login'/>">Log in</a>
-						</c:otherwise>
-					</c:choose>
+					<a href="software.html">Software</a> 
+<!-- 					<a href="#">Tools</a> -->
+					<a id="login-button" href="<c:url value='/Login'/>">Login</a>
 				</div>
 			</nav>
 		</header>
@@ -56,25 +51,25 @@
 			</marquee>
 		</div>
 
-
+	    <%-- Changed: renamed class from no class to "body-grid" — 3-column layout wrapper --%>
+    <div class="body-grid">
 		<div class="menu">
 			<h5>Menu</h5>
 
 			<div class="menu-list1">
 				<ul>
-					<li>Article</li>
+					<li>New Technology news</li>
 					<li><a
-						href="<c:url value='/Linux/linuxbasic/intro'/>">Linux
-							Section</a></li>
+						href="<c:url value='/Linux/linuxbasic/intro'/>">Linux Basic</a></li>
+					<li>SQL Basic</li>
+					<li><a href="pages/AboutJava.html">Java Basic</a></li>
+					<li><a href="https://learnjava82.blogspot.com/" target="_blank">Blog : Experiment area</a></li>
 					<li>Kids Section</li>
-					<li>SQL Section</li>
-					<li><a href="https://learnjava82.blogspot.com/"
-						target="_blank">Java Blog</a></li>
-					<li><a href="pages/AboutJava.html">About Java</a></li>
 				</ul>
 			</div>
 		</div>
-
+    <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
+    <main>
 		<div class="content">
 			<section class="welcome_note">
 				<h1>Hi All,</h1>
@@ -120,12 +115,17 @@
 			</section>
 
 		</div>
-
+				    <div class="page-nav">
+    <button class="page-prev"> < Previous Page</button>
+    <button class="page-next">Next page></button>
+    </div>
+    
+</main>
 
 		<!--to place adds in the website for monitization -->
 		<div class="adds">Advertisement</div>
 
-
+</div>
 
 		<footer>
 

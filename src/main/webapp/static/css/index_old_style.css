@@ -24,10 +24,6 @@ and open the template in the editor.
     --clr-btn-bg:     #238636;
     --clr-btn-hover:  #2ea043;
     --clr-nav-bg:     #010409;
-    --clr-nav-menu: #c9d6ca;
-    --clr-nav-menu-list: #3267e3;
-    --clr-main-content: #ecffe8;
-    --clr-main-content-higlight: #2fff00;
 
     /* Typography */
     --font-title: 'Orbitron', monospace;     /* site name          */
@@ -41,8 +37,6 @@ and open the template in the editor.
     --sidebar-w: 220px;
     --ads-w:     200px;
 }
-
-
 
 *,*::before, *::after{
     margin:0;
@@ -75,8 +69,7 @@ body{
     
     /* 2. Simplified Rows */
     grid-template-rows: 100px 20px 1fr auto; 
-    grid-template-columns: 1fr;
-    
+    grid-template-columns: auto 1fr auto;
     grid-gap: 20px;
 
     /* 3. The "Responsive Magic" line */
@@ -98,13 +91,6 @@ header{
 	background-color: var(--clr-nav-bg);
 	border-bottom: 1px solid var(--clr-border);
 align-content: center;
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  position: sticky;
-  top: 0px;
-  
 
 }
 
@@ -137,7 +123,6 @@ header nav div.navEnd{
     grid-template-columns: repeat(2, auto);
     gap: 20px;
     justify-content: end;
-    align-items: center;
 }
 
 
@@ -173,7 +158,6 @@ header nav div.navEnd a:hover{
     border-radius: 5px;
         transition: 1s;
         cursor:pointer;
-        align-self:center;
 }
 
 #login-button:hover{
@@ -196,27 +180,6 @@ header nav div.navEnd a:hover{
 }
 
 
-
-/*================this is the start of body-grid section ======================================*/
-
-.body-grid {
-    grid-column: 1/-1;
-    padding: 20px;
-    display:grid;
-	grid-template-rows:1fr;
-	grid-template-columns: auto 1fr auto;
-	gap: 20px;
-	word-wrap: break-word;
-    overflow-wrap: break-word;
-    align-self: start;
-    min-width: 90%; 
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  line-height: 1.5em;
-}
-
 /* ===================this is the left side menu item */
 
 .menu{
@@ -230,30 +193,15 @@ header nav div.navEnd a:hover{
     border-radius: var(--radius);
     padding: 1rem;
     position: sticky;
-    top: 100px;                /* sticks below the header when scrolling */
+    top: 70px;                /* sticks below the header when scrolling */
 /*     width: 100%;  */
 /*     max-width: 100%; */
     align-self: start; 
     color: white;
-    min-width: 150px;
-    font-size:0.8em;
-
-  /* Modern browsers */
-/*   overflow-wrap: break-word; */
-  /* Legacy support for older browsers */
-/*   word-wrap: break-word; */
-  /* Required for table cells and some layouts */
-  word-break: break-word; 
 /*     min-height: min-content; */
 /*     min-width: 0; */
     
 }
-
-
-.menu-list *{
-	    color: var(--clr-nav-menu);
-}
-
 
 .menu h5{
     text-align: center;
@@ -269,20 +217,22 @@ header nav div.navEnd a:hover{
     margin-left: 5px;
     padding: 5px;
     border-radius: 10px;
-
 }
 
 .menu ul li a{
     text-decoration: none;
+    color: black;
 }
 
-.menu ul li a:hover{
-/*     background-color: purple; */
-/*     color: white; */
-    color: var(--clr-nav-menu-list);
+.menu ul li:hover{
+    background-color: purple;
+    color: white;
     transition: 0.7s;
 }
 
+.menu ul li:hover a{
+    color: white;
+}
 
 
 
@@ -290,15 +240,16 @@ header nav div.navEnd a:hover{
 
 
 
-/* ===================this is the Main content============================ */
+.content {
 
+    padding: 20px;
 
-
-.body-grid {
-/* 	  	background-color: black; */
-	  	padding: 10px;
-	  		color: var(--clr-main-content);	
-	  		    list-style-position: inside;
+  	background-color: black;
+	color:#42f700;		
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: start;
+    
 }
 
 .welcome_note{
@@ -307,55 +258,7 @@ header nav div.navEnd a:hover{
     
 }
 
-.linuxbasic {
-    /* 1. Limit width: Long lines are hard to read */
-    max-width: 800px; 
-    margin: 0 auto;    /* Centers the content block */
-    
-    /* 2. Spacing between lines */
-    line-height: 1.7; 
-    
-    /* 3. Text color & font */
-    color: #e0e0e0; 
-    font-family: sans-serif;
-}
 
-/* Add space between every paragraph and list item */
-.linuxbasic p, 
-.linuxbasic ol li {
-    margin-bottom: 20px; 
-}
-
-/* Make headers stand out */
-.linuxbasic h1 {
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-/* Space out the list items specifically */
-.linuxbasic ol li {
-    padding-left: 10px;
-}
-
-.linuxbasic a {
-    color: #66b3ff; /* Lighter blue */
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.linuxbasic a:hover {
-    color: #99ccff;
-}
-
-
-
-.highlight  {
-	color : var(--clr-main-content-higlight);
-}
-
-
-
-/* ===================this is the ads content============================ */
 
 .adds {    
     background-color: var(--clr-surface);
@@ -364,74 +267,17 @@ header nav div.navEnd a:hover{
     padding: 1rem;
     color: white;
     position: sticky;
-    top: 100px;                /* sticks below the header when scrolling */
+    top: 70px;                /* sticks below the header when scrolling */
     align-self: start; 
 
 }
 
 
 
-
-
-/*==========this is for next and previous button ========================*/
-
-/* ===================This is for next and previous page button===================*/
-
-.page-nav {
-	display: grid;
-	grid-template-columns: auto auto;
-  gap: 5px;
-  
-  
-	
-}
-
-.page-prev,.page-next{
-	background-color: grey;
-	color: white;
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  padding : 20px;
-  border-radius: 30px;
-  margin: 10px;
-/*   height: 100%; */
-min-width: 50px;
-transition:1s;
-
-}
-
-.page-prev{
-	justify-self: start;
-}
-
-.page-next{
-	justify-self: end;
-}
-
-.page-prev:hover{
-	background-color: red;
-	box-shadow: 15px 0px 20px red;
-	transform: translateX(10px) rotate(360deg) scale(1.1);
-transition: 2s ease;
-}
-
-
-.page-next:hover{
-	background-color: navy;
-		box-shadow: 15px 0px 20px navy;
-		transform: translateX(10px) rotate(360deg) scale(1.1);
-transition: 2s ease;
-}
-
-
-/*================this is the start of footer section ======================================*/
-
 footer {
     grid-column: 1/-1;
     background-color: var(--clr-nav-bg);
-/*     color: white; */
+    color: white;
     justify-content: center;
     font-family: sans-serif;
 /*     position: sticky; */
@@ -441,7 +287,6 @@ footer {
     gap:40px;
     place-items: center;
     padding : 20px;
-    
     
     
 /*     bottom: 0px; */
@@ -470,7 +315,6 @@ footer {
 
 .footerNav ul li a:hover{
     opacity:1;
-    color: var(--clr-nav-menu-list);
 }
 
 

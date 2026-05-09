@@ -46,7 +46,7 @@ public class JwtFilter implements Filter {
 //		}
 		
 		// 1. ALLOW PUBLIC ACCESS: Don't check for token for these paths
-        boolean isStaticAsset = path.startsWith("/static");
+        boolean isStaticAsset = path.startsWith("/static") || path.startsWith("/img");
         boolean isLoginPage = path.equals("/Login") || path.equals("/Signup");
         boolean isRoot = path.equals("/") || path.equals("/index.jsp");
 

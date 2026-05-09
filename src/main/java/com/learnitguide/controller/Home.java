@@ -33,11 +33,26 @@ public class Home extends HttpServlet {
 //			rd.forward(request, response);
 ////			response.sendRedirect(request.getContextPath()+"/");
 //		}
-		
-		request.setAttribute("contentPage", "/WEB-INF/views/home/free_content_home.html");
+		try {
+		if(request.getPathInfo() == null || request.getAttribute("webpage").toString() == null) {
+		request.setAttribute("contentPage", "/WEB-INF/views/home/news_content_home.html");
 		 RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/home.jsp");
 	        rd.forward(request, response);
+	        return;
+		}
 		
+		String section = request.getAttribute("webpage").toString().split("/")[1];
+        String page = request.getAttribute("webpage").toString().split("/")[2];
+
+        System.out.println("value of linux is : " + section + " page is " + page);
+
+        String initialPagePath = "/WEB-INF/views/home/"+section+"_content_"+page+".html";
+        request.setAttribute("contentPage", initialPagePath);
+        request.getRequestDispatcher("/WEB-INF/views/linux.jsp").forward(request, response);
+		}
+		catch(Exception e ) {
+			System.out.println(e);
+		}
 	}
 
 }

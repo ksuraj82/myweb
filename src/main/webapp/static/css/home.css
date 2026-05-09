@@ -1,0 +1,659 @@
+/* ============================================================
+   home.css  —  LearnIt-Guide  (Grid Layout Version)
+   Structure:
+   1. CSS Variables (design tokens)
+   2. Reset / Base
+   3. Container
+   4. Header / Nav          <- Grid: [logo | gap | nav-links]
+   5. Warning Bar
+   6. Body Grid             <- Grid: [sidebar | main | ads]
+   7. Sidebar Menu (col 1)
+   8. Main Content  (col 2)
+   9. Skill Cards           <- Grid: auto-fill
+  10. Ads Column   (col 3)
+  11. Footer               <- Grid: [links | social | copyright]
+  12. Responsive Breakpoints
+============================================================ */
+
+
+/* ── 1. CSS VARIABLES ────────────────────────────────────── */
+:root {
+    --clr-bg:          #0d1117;
+    --clr-surface:     #161b22;
+    --clr-border:      #30363d;
+    --clr-accent:      #58a6ff;
+    --clr-accent2:     #3fb950;
+    --clr-text:        #c9d1d9;
+    --clr-text-muted:  #8b949e;
+    --clr-heading:     #f0f6fc;
+    --clr-warning-bg:  #2d1b00;
+    --clr-warning-txt: #f0883e;
+    --clr-btn-bg:      #238636;
+    --clr-btn-hover:   #2ea043;
+    --clr-nav-bg:      #010409;
+
+    --font-title: 'Orbitron', monospace;
+    --font-body:  'Noto Sans Mono', monospace;
+
+    --gap:    1.5rem;
+    --radius: 8px;
+
+    --sidebar-w: 220px;
+    --ads-w:     200px;
+}
+
+
+/* ── 2. RESET / BASE ─────────────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--clr-bg);
+    color: var(--clr-text);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    min-height: 100vh;
+}
+
+a {
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+    color: #79c0ff;
+}
+
+ul { list-style: none; }
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* ── 3. CONTAINER ────────────────────────────────────────── */
+/*
+   GRID CONCEPT: Page-level grid with 4 rows.
+   auto  = row shrinks to its content height
+   1fr   = row stretches to fill all remaining vertical space
+
+   grid-template-rows: auto auto 1fr auto
+                       ↑    ↑    ↑   ↑
+                       |    |    |   footer
+                       |    |    body-grid (stretches to fill page)
+                       |    warning bar
+                       header
+
+   This is called the "sticky footer" pattern using Grid.
+   Without 1fr on body-grid, a short page leaves a gap above the footer.
+*/
+.container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    min-height: 100vh;
+}
+
+
+/* ── 4. HEADER / NAV ─────────────────────────────────────── */
+header {
+    background-color: var(--clr-nav-bg);
+    border-bottom: 1px solid var(--clr-border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+}
+
+/*
+   GRID CONCEPT: 3-column nav grid.
+
+   grid-template-columns: auto  1fr  auto
+                          ↑     ↑    ↑
+                          |     |    navEnd (right side — auto width)
+                          |     empty middle column (eats free space)
+                          navStart (left side — auto width)
+
+   auto = column is exactly as wide as its child content
+   1fr  = column takes ALL remaining free space
+
+   Result: navStart sits hard-left, navEnd sits hard-right.
+   No float, no position:absolute, no margin tricks needed.
+   The 1fr middle column invisibly pushes them apart.
+*/
+nav {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 0.6rem var(--gap);
+    gap: 0.5rem;
+}
+
+/*
+   navStart is also a grid: 2 columns [icon | site-title]
+   Both sit side by side, vertically centred.
+*/
+.navStart {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.nav-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.site-title {
+    font-family: var(--font-title);
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--clr-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/*
+   navEnd is a grid: one auto column per child element.
+   repeat(3, auto) means exactly 3 columns, each sized to its content.
+   [Software] [Tools] [Logout button]
+
+   WHY NOT auto-fit here:
+   auto-fit stretches columns to fill the full grid area.
+   Since navEnd sits in a 1fr-wide middle column of the nav,
+   auto-fit would spread the 3 links across that entire width —
+   exactly the "equally spaced" bug you saw in the screenshot.
+
+   repeat(3, auto) keeps each column as narrow as its content,
+   so all 3 links cluster together on the right side.
+
+   If you add or remove nav links, update the number (e.g. repeat(4, auto)).
+*/
+.navEnd {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    align-items: center;
+    gap: 1.2rem;
+    justify-content: end;   /* pushes the whole group to the right edge */
+}
+
+.navEnd a {
+    color: var(--clr-text);
+    font-size: 0.9rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+.navEnd a:hover {
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.navEnd a#button {
+    background-color: var(--clr-btn-bg);
+    color: #fff;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+.navEnd a#button:hover {
+    background-color: var(--clr-btn-hover);
+    text-decoration: none;
+}
+
+/* Hamburger — hidden on desktop, shown on mobile */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: 1px solid var(--clr-border);
+    color: var(--clr-text);
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+
+/* ── 5. WARNING BAR ──────────────────────────────────────── */
+.warning {
+    background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 0.8rem;
+    border-bottom: 1px solid #5c3300;
+    text-align: center;
+}
+
+
+/* ── 6. BODY GRID — 3 COLUMNS ────────────────────────────── */
+/*
+   GRID CONCEPT: The main page layout — 3 columns.
+
+   grid-template-columns: 220px  1fr   200px
+                          ↑       ↑     ↑
+                          sidebar main  ads
+
+   220px — sidebar is always exactly 220px
+   1fr   — main content takes ALL remaining space
+   200px — ads column is always exactly 200px
+
+   If the page is 1000px wide:
+   sidebar = 220px, ads = 200px, main = 1000 - 220 - 200 - gaps = ~540px
+
+   align-items: start — columns start at the top.
+   Without this, Grid stretches all columns to equal height,
+   which makes the sidebar as tall as the main content.
+*/
+.body-grid {
+    display: grid;
+    grid-template-columns: var(--sidebar-w) 1fr var(--ads-w);
+    gap: var(--gap);
+    padding: var(--gap);
+    align-items: start;
+}
+
+
+/* ── 7. SIDEBAR MENU ─────────────────────────────────────── */
+/*
+   GRID CONCEPT: The sidebar itself is a 2-row grid:
+   Row 1 (auto) — the "Learning Sections" heading
+   Row 2 (1fr)  — the menu list
+
+   position:sticky with top:70px means the sidebar
+   sticks in view as the user scrolls, always 70px below
+   the sticky header (so they don't overlap).
+*/
+.menu {
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    position: sticky;
+    top: 70px;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.menu h5 {
+    color: var(--clr-text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--clr-border);
+}
+
+/*
+   GRID CONCEPT: Each menu link is a 2-column grid:
+   [icon (16px fixed)] [link text (1fr)]
+
+   Fixing the icon column to 16px means ALL icons are
+   perfectly aligned in a vertical column, and ALL link
+   texts start at the same horizontal position.
+   This is much cleaner than padding hacks.
+*/
+.menu-list1 li {
+    margin: 0.1rem 0;
+}
+
+.menu-list1 a {
+    display: grid;
+    grid-template-columns: 16px 1fr;
+    align-items: center;
+    gap: 0.6rem;
+    color: var(--clr-text);
+    font-size: 0.88rem;
+    padding: 0.45rem 0.6rem;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+}
+.menu-list1 a:hover {
+    background-color: rgba(88, 166, 255, 0.1);
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+.menu-list1 i {
+    text-align: center;
+    color: var(--clr-accent2);
+    font-size: 0.9rem;
+}
+
+
+/* ── 8. MAIN CONTENT ─────────────────────────────────────── */
+/*
+   GRID CONCEPT: Main content is a single-column grid.
+   Sections stack vertically with a gap between them.
+   align-content: start prevents sections from stretching
+   to fill the full column height.
+*/
+.main-content {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    gap: var(--gap);
+    align-content: start;
+}
+
+.welcome_note {
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-left: 4px solid var(--clr-accent);
+    border-radius: var(--radius);
+    padding: 1rem 1.2rem;
+    font-size: 0.95rem;
+    color: var(--clr-text-muted);
+}
+
+.welcome_note strong {
+    color: var(--clr-accent2);
+}
+
+.intro-block {
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+}
+
+.intro-block h2 {
+    font-family: var(--font-title);
+    color: var(--clr-heading);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.intro-block p {
+    font-size: 0.92rem;
+    color: var(--clr-text);
+    margin-bottom: 0.75rem;
+}
+
+.intro-block em {
+    color: var(--clr-accent2);
+    font-style: normal;
+    font-weight: bold;
+}
+
+
+/* ── 9. SKILL CARDS ──────────────────────────────────────── */
+/*
+   GRID CONCEPT: The most powerful grid trick — auto-fill + minmax.
+
+   repeat(auto-fill, minmax(90px, 1fr))
+          ↑           ↑
+          |           each column: minimum 90px, maximum equal share (1fr)
+          create as many columns as fit in the available width
+
+   Example: if main content is 600px wide:
+   600 / 90 = 6.6  -> fits 6 columns
+   Each column = 600/6 = 100px (1fr distributes remaining space equally)
+
+   On a 300px screen:
+   300 / 90 = 3.3  -> fits 3 columns
+   Cards wrap to a new row automatically.
+
+   You write ZERO media queries for this. Grid does all the math.
+*/
+.skill-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+/*
+   Each card is a 2-row grid: [icon] [label]
+   justify-items: center centres both the icon and the text
+   horizontally inside the card.
+*/
+.card {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 0.5rem;
+    background-color: var(--clr-bg);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    font-size: 0.78rem;
+    color: var(--clr-text-muted);
+    cursor: default;
+    transition: border-color 0.2s, color 0.2s, transform 0.15s;
+}
+.card:hover {
+    border-color: var(--clr-accent);
+    color: var(--clr-accent);
+    transform: translateY(-2px);
+}
+.card i {
+    font-size: 1.4rem;
+    color: var(--clr-accent);
+}
+.card:hover i {
+    color: var(--clr-accent2);
+}
+
+
+/* ── 10. ADS COLUMN ──────────────────────────────────────── */
+/*
+   GRID CONCEPT: Ads column is a single-column grid stacking
+   the heading and ad placeholders vertically.
+   align-content: start stops the rows from stretching.
+*/
+.ads {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 1rem;
+    align-content: start;
+}
+
+.ads h5 {
+    color: var(--clr-text-muted);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+/*
+   place-items: center is a Grid shorthand for:
+   align-items: center + justify-items: center
+   It centres the "Advertisement" text both vertically
+   and horizontally inside the placeholder box.
+*/
+.ad-placeholder {
+    background-color: var(--clr-surface);
+    border: 1px dashed var(--clr-border);
+    border-radius: var(--radius);
+    width: 100%;
+    min-height: 200px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    color: var(--clr-text-muted);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+/* ── 11. FOOTER ──────────────────────────────────────────── */
+/*
+   GRID CONCEPT: Footer is a 3-row grid stacking vertically.
+   justify-items: center centres every row horizontally.
+
+   grid-template-rows: auto auto auto
+                       ↑    ↑    ↑
+                       |    |    copyright
+                       |    social icons
+                       nav links
+*/
+footer {
+    background-color: var(--clr-nav-bg);
+    border-top: 1px solid var(--clr-border);
+    padding: 1.5rem var(--gap);
+    display: grid;
+    grid-template-rows: auto auto auto;
+    justify-items: center;
+    gap: 1rem;
+}
+
+/*
+   Footer nav links: fixed auto columns — one per link.
+   repeat(5, auto) keeps all 5 links in a single horizontal row.
+
+   WHY NOT auto-fit here:
+   auto-fit decides how many columns fit based on the minmax minimum.
+   With minmax(80px, auto) in a centred footer that is ~600px wide,
+   Grid calculates 600/80 = 7 columns fit — but with only 5 items
+   auto-fill/fit can still wrap items if the container is narrower
+   than expected, causing the "stacked" look you saw.
+
+   repeat(5, auto) is explicit: always 5 columns, always one row.
+   Each column is exactly as wide as its link text — no stretching.
+   Links only wrap at the mobile breakpoint where we override this.
+*/
+.footerNav ul {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: center;   /* centres the whole row horizontally */
+    gap: 0.5rem 1.5rem;
+}
+
+.footerNav a {
+    color: var(--clr-text-muted);
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+.footerNav a:hover {
+    color: var(--clr-accent);
+    text-decoration: none;
+}
+
+/*
+   Social icons: 5 equal auto-sized columns, one per icon.
+   repeat(5, auto) is more explicit than auto-fit here because
+   we know exactly how many icons there are.
+*/
+.social-icon {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 1rem;
+    align-items: center;
+}
+
+.social-icon a {
+    color: var(--clr-text-muted);
+    font-size: 1.2rem;
+    transition: color 0.2s, transform 0.15s;
+}
+.social-icon a:hover {
+    color: var(--clr-accent);
+    transform: scale(1.15);
+    text-decoration: none;
+}
+
+.footerBottom h4 {
+    color: var(--clr-text-muted);
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+
+/* ── 12. RESPONSIVE BREAKPOINTS ──────────────────────────── */
+
+/*
+   TABLET (<=900px)
+   Change body-grid from 3 columns to 2 columns.
+   Grid makes this a one-line change — just redefine
+   grid-template-columns and the layout reflows automatically.
+   Hide the ads column entirely with display:none.
+*/
+@media (max-width: 900px) {
+    .body-grid {
+        grid-template-columns: var(--sidebar-w) 1fr;
+        /* sidebar | main  (ads column removed) */
+    }
+
+    .ads {
+        display: none;
+    }
+}
+
+/*
+   MOBILE (<=650px)
+   Collapse everything to 1 column.
+   Nav collapses from 3-column [logo | gap | links]
+   to 2-column [logo | hamburger].
+*/
+@media (max-width: 650px) {
+
+    /* Body: single column — sidebar stacks above main */
+    .body-grid {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+    }
+
+    /* Sidebar: hidden by default, shown when .open class added by JS */
+    .menu {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 75vw;
+        max-width: 280px;
+        z-index: 200;
+        border-radius: 0;
+        overflow-y: auto;
+        padding-top: 3rem;
+    }
+
+    .menu.open {
+        display: grid;
+    }
+
+    /*
+       Nav collapses to 2 columns:
+       [navStart fills space (1fr)] [hamburger button (auto)]
+       navEnd links are hidden — hamburger replaces them.
+    */
+    nav {
+        grid-template-columns: 1fr auto;
+    }
+
+    .navEnd {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: block;
+    }
+
+    .site-title {
+        font-size: 1rem;
+    }
+
+    .footerNav ul {
+        grid-template-columns: repeat(auto-fit, minmax(70px, auto));
+    }
+
+    .social-icon {
+        grid-template-columns: repeat(auto-fit, minmax(28px, auto));
+    }
+}
