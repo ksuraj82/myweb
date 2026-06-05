@@ -1,0 +1,47 @@
+[
+  {
+    "title": "Linux Introduction",
+    "icon": "fa-solid fa-house",
+    "page": "/Linux/linuxbasic/intro"
+  },
+  {
+    "title": "VMware setup",
+    "icon": "fa-solid fa-box",
+    "page": "/Linux/linuxbasic/1"
+  }
+  ,
+  {
+    "title": "Ubuntu setup",
+    "icon": "fa-brands fa-ubuntu",
+    "page": "/Linux/linuxbasic/2"
+  }
+  ,
+  {
+    "title": "Linux Navigation",
+    "icon": "fa-solid fa-terminal",
+    "page": "/Linux/linuxbasic/3"
+  }
+  ,
+  {
+    "title": "File management",
+    "icon": "fa-solid fa-terminal",
+    "page": "/Linux/linuxbasic/4"
+  }
+  ,
+  {
+    "title": "Content inspection",
+    "icon": "fa-solid fa-terminal",
+    "page": "/Linux/linuxbasic/5"
+  }
+  ,
+    {
+    "title": "Security and Permission",
+    "icon": "fa-solid fa-terminal",
+    "page": "/Linux/linuxbasic/6"
+  },
+  {
+    "title": "Search and Filter",
+    "icon": "fa-solid fa-terminal",
+    "page": "/Linux/linuxbasic/7"
+  }
+]

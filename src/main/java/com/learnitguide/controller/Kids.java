@@ -8,11 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-//import javax.servlet.http.HttpSession;
-//import javax.servlet.RequestDispatcher;
-//import com.learnitguide.service.UserAuthentication;
-//import com.learnitguide.util.JwtUtil;
-
 import java.io.InputStream;
 import java.util.List;
 
@@ -27,8 +22,8 @@ import com.learnitguide.model.MenuItem; // this is our model class for menuitem
  * Servlet implementation class Login
  */
 
-@WebServlet("/linux")
-public class Linux extends HttpServlet {
+@WebServlet("/kids")
+public class Kids extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
@@ -40,7 +35,7 @@ public class Linux extends HttpServlet {
 		
 		
 		/*This is to create the json file for menuItem to show under the linux page*/
-		InputStream is = getClass().getClassLoader().getResourceAsStream("/linux/linux_menu.json");
+		InputStream is = getClass().getClassLoader().getResourceAsStream("/sql/sql_menu.json");
 		System.out.println("the inputstream contains"+ is.toString());
 		if(is != null) {
 			ObjectMapper mapper = new ObjectMapper();
@@ -57,28 +52,28 @@ public class Linux extends HttpServlet {
 		try {
 			
 			String webpage = (request.getAttribute("webpage") != null) ? request.getAttribute("webpage").toString(): request.getServletPath();
-			System.out.println("this is webpage value on the Linux controller: " + webpage);
+			System.out.println("this is webpage value on the Kids controller: " + webpage);
 			String[] urlpart = webpage.split("/");
 			
 			if(urlpart.length == 3) {
 				String section = webpage.split("/")[1];
 		        String page = webpage.split("/")[2];
 			
-		        System.out.println("value of linux is : " + section + " page is " + page);
+		        System.out.println("Page path created for SQL is : " + section + " page is " + page);
 
-		        String initialPagePath = "/WEB-INF/views/linux/"+section+"_content_"+page+".html";
+		        String initialPagePath = "/WEB-INF/views/kids/"+section+"_content_"+page+".html";
 		        request.setAttribute("contentPage", initialPagePath);
 			}    
 				
 			
 		}catch(Exception e) {
-			String initialPagePath = "/WEB-INF/views/linux/linuxbasic_content_intro.html";
+			String initialPagePath = "/WEB-INF/views/kids/sqlbasic_content_intro.html";
 			request.setAttribute("contentPage", initialPagePath);
 	        
 		}
 		
 		
-        request.getRequestDispatcher("/WEB-INF/views/linux.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/views/kids.jsp").forward(request, response);
 
 		
 	}

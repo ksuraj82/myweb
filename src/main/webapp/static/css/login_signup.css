@@ -8,140 +8,241 @@ and open the template in the editor.
     Author     : KSURA
 */
 
-*{
-    margin:0px;
+
+:root {
+	
+	--clr-nav-bg : rgba(0,0,0,1);
+	--clr-nav-footer : rgba(200,200,200,0.2);
+	--clr-login-bg   : rgba(40, 118, 235,0.6);
+	--clr-login-bg2   : rgba(0,255,200,0.2);
+	
+}
+
+
+*, *::before, *::after{
+	margin:0px;
     padding: 0px;
     box-sizing: border-box;   
-    
+    border-radius: 15px;
     
 }
 
 body{
 /*    background :url(https://cdn.wallpapersafari.com/93/18/z6QKit.jpg);*/
-    background :url(https://cdn5.vectorstock.com/i/1000x1000/54/64/blackboard-with-wooden-frame-vector-22605464.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    box-sizing: border-box;
+    /* background :url(https://cdn5.vectorstock.com/i/1000x1000/54/64/blackboard-with-wooden-frame-vector-22605464.jpg); */
+/*     background-size: cover; */
+/*     background-repeat: no-repeat; */
+/*     box-sizing: border-box; */
+    background-color: var(--clr-nav-bg);
+   
+
+    
     
     
 }
+
+
+/* This is container, */
+/* the grid column is defined as 1fr so that the container have a single column  */
+/* and centered for desktop application. */
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr; /* Simplify to one main column */
+    grid-template-rows: auto 1fr auto;
+    width: 95%;
+    max-width: 1200px; /* Limits the width so it's not "whole page" */
+    margin: 10px auto; 
+    gap: 1.5rem;
+    min-height: 100vh;
+	
+}
+
+
+
+/* This is header section */
+/* the display is grid with three column to keep the heading in the center. */
+
+header {
+	display: grid;
+	grid-template-columns:1fr auto 1fr;
+	grid-template-rows: auto;
+	border-bottom : 2px solid navy;
+    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
+	  box-shadow: 10px 10px 15px navy;
+align-items: center;
+	        
+
+
+}
+
 
 .material-symbols-outlined {
-    position: relative;
+    grid-column: 1;
     top: 20px;
     left: 20px;
-    color: black;
+    color: white;
+    align-self:center;
+    justify-self: center;
+    font-size: 2.5rem;
     
     
 }
 
 
+.website-title{
+	    text-align: center;
+	    grid-column: 2;
+	    align-items: center;
+}
 
-.header h1{
-    color:black;
-    text-align: center;
-    font-size: 40px;
+header h1{
+    color:white;
+    font-size: 3.5rem;
     font-family: 'Borel', cursive;
-
     
 }
-.header h4{
-    color:black;
-    text-align: center;
-    font-size: 20px;
+
+header h4{
+    color:white;
+    font-size: 1.5rem;
     font-family: 'Borel', cursive;
     
 }
 
 
 
-/*.login_signup{
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    border-radius: 20px;
-    width: 400px;
-    height: 400px;
-    position: relative;
-    top: 80px;
-    background: linear-gradient(to right, lightblue, purple);
-    border: 2px solid black;
 
-   
-}*/
+
+
+/* This is login */
+/* and it is also have the grid column divided equally  */
+
 
 
 .login_signup{
-
-    
-    border-radius: 20px;
-    width: 400px;
-    height: 400px;
-    left: 37.5%;
-    position: absolute;
-    top: 220px;
-/*    background: linear-gradient(to right, lightblue, purple);*/
-    /*border: 2px solid black;*/
+	display:grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
     overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+/*     border: 2px solid black; */
     transition: 0.7s;
-    /*box-shadow: 0px 10px 10px white;*/
-
-
-
-
+    width: 90%;
+    max-width: 420px;
+    align-self: start;
+    justify-self:center;
+    	border-bottom : 2px solid navy;
+    	    box-shadow: 10px 10px 15px navy;
+/*     box-shadow : 20px; */
+/*     align-content:left; */
    
 }
 
 
+/*this is Child element of login_signup element and need to define the display grid again
+this will help to apply the grid to the immediate child element of the login_signup*/
+
+#login, #signup {
+    display: grid;  
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;         /* Make the form a grid container */
+/*     grid-template-columns: 1fr; One single column for everything */
+    justify-items: center;   /* This centers the inputs and buttons! */
+    gap: 10px;               /* Adds equal space between every input/button */
+    padding: 30px;
+    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
+    transition: all 0.8s ease-in-out;
+    height:100%;
+    width:100%;
+
+    }
 
 
+/*Login header element*/
 #login h1{
     text-align: center;
-    position: relative;
-    top: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 5px;
     font-size: 50px;
     color: white;
     font-family: 'Bricolage Grotesque', sans-serif;
     
 }
 
+
+/*Login input field*/
 #login input{
-    padding: 10px;
-    margin: 10px auto;
+    padding: 5px;
+    margin: 5px auto;
     border-radius: 5px;
-    display: block;
-    align-content: center;
-    flex-direction: column;
 }
 
 
-
-#login button.submitButton{
+/*Login submit button*/
+#login button.submitButton,#signup button.submitButton{
     
     justify-content: center;
-    position: relative;
-    left: 30%;
     font-size: 20px;
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px;
     width: 100px;
-
-
-/*    left: 35%;*/
+        cursor: pointer;
     
 }
 
 
 
+/*This is immediate child of #login and for swaping the login and signup form*/
 
-
-#login h4{
+#login h4, #signup h4{
     text-align: center;
     color: white;
     margin: 20px auto;
     font-family: 'Bricolage Grotesque', sans-serif;    
 } 
+
+
+
+#login h4 button, #signup h4 button{
+    background: transparent;
+    color: blue;
+        border: 0;
+        margin-left: 3px;
+    font-family: 'Bricolage Grotesque', sans-serif;    
+    cursor: pointer;
+} 
+
+
+#signup h1{
+    text-align: center;
+/*     position: relative; */
+/*     top: 20px; */
+/*     margin-bottom: 50px; */
+    font-size: 50px;
+    color: white;
+    font-family: 'Bricolage Grotesque', sans-serif;
+    
+}
+
+
+
+
+#signup input{
+    padding: 5px;
+    margin: 5px auto;
+    border-radius: 5px;
+/*     display: block; */
+/*     align-content: center; */
+/*     flex-direction: column; */
+
+}
+
+
+
+/* This is to display the authentication failure and successfully account created  */
+/* confirmation message */
 
 .errormessage {
 	color:red;
@@ -153,73 +254,23 @@ body{
 }
 
 
-/*#login h4 button{
-    background: transparent;
-    color: blue;
-        border: 0;
-        margin-left: 3px;
-    font-family: 'Bricolage Grotesque', sans-serif;    
-}*/
-
-
-#signup h1{
-    text-align: center;
-    position: relative;
-    top: 20px;
-    margin-bottom: 50px;
-    font-size: 50px;
-    color: white;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    
+/* Initially hide the signup form */
+#signup {
+    opacity: 0;
+    pointer-events: none; /* Prevents clicking on hidden elements */
+    transform: translateX(100%); /* Pushes it off to the right */
 }
 
-
-
-
-#signup input{
-    padding: 10px;
-    margin: 10px auto;
-    border-radius: 5px;
-    display: block;
-    align-content: center;
-    flex-direction: column;
-
+/* When the "swap" happens (we can use a class to trigger this) */
+.show-signup #login {
+    opacity: 0;
+    transform: translateX(-100%); /* Slide login out to the left */
 }
 
-
-
-#signup button.submitButton{
-    
-    justify-content: center;
-    position: relative;
-    left: 30%;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 10px;
-    width: 100px;
-
-
-/*    left: 35%;*/
-    
-}
-
-
-
-#signup h4{
-    text-align: center;
-    color: white;
-    margin: 20px auto;
-    font-family: 'Bricolage Grotesque', sans-serif;    
-} 
-
-
-.swap-login{
-    background: transparent;
-    color: blue;
-    cursor: pointer;
-    margin-left: 3px;
-    font-family: 'Bricolage Grotesque', sans-serif;
-    border: 0;
+.show-signup #signup {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0); /* Slide signup into the center */
 }
 
 
@@ -228,119 +279,140 @@ body{
 
 
 
-#login{
-    position: absolute;
-    left: 100px;
-    transition: 0.7s;
 
-  
-}
-
-
-#signup{
-    position: absolute;
-    left:-400px;
-        transition: 0.7s;
-
-}
-
-
-
-
-
-
-
+/*website footer defination
+footer is a grid and contain two child element
+first: div
+second: h4 (trademark details)
+*/
 
 
 
 footer {
     grid-column: 1/-1;
-    position: absolute;
-
+/*     position: static; */
+    display: grid; /* 1. Activate Grid */
+    grid-template-columns: 1fr;
+    padding: 20px;
+    /* 2. Center the grid tracks themselves */
+    justify-content: center; 
+    
+    /* 3. Center the content inside those tracks */
+    justify-items: center; 
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
     font-family: sans-serif;
-    bottom:0%;
-    flex-grow: 1;
+    bottom:0px;
     width: 100%;
+/*     border: 2px solid black; */
+    gap: 1.5rem;
+    box-shadow: 10px 10px 15px navy;
 }
 
 
-/*
-.social-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
-}
-
-.social-icon a{
-    text-decoration: none;
-    background-color: white;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 50%;
-}
-
-.social-icon a i{
-    font-size: 1em;
-    color: black;
-    opacity: 0.9;
-}
-
-hover effect on media icon
-
-.social-icon a:hover{
-    background-color: purple;
-    transition: 0.6s;
-}
-
-.social-icon a:hover i{
-    color: white;
-    transition: 0.6s;
-}*/
-
-
-.footerNav{
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
+/* .footerNav{ */
+/* 	display: grid; */
+/*     margin-bottom: 10px; */
+/*     margin-top: 20px; */
+/*     grid-template-rows: 1fr; */
+/*     gap :10px; */
+/* } */
 
 .footerNav ul{
-    display: flex;
-    justify-content: center;
     list-style: none;
-    
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(4,auto);
+    justify-content: center;
+    justify-items: center;
 }
 
 .footerNav ul li a{
     color: white;
-    margin: 30px;
     text-decoration: none;
     opacity: 0.7;
     font-size: 1.5em;
-    transition: 0.5;
+    transition: 0.5s;
+
 }
 
 
 .footerNav ul li a:hover{
     opacity:1;
+    transition: 1s;
+    color: blue;
+
 }
 
 
-.footerBottom {
-	/*border: 2px solid black;*/
+/* .footerBottom { */
+/* 	/*border: 2px solid black;*/ 
+/*         flex-direction: column; */
+/* 		justify-content: center; */
+/*         color:white; */
+/*         text-align: center; */
+/*         background-color: black; */
+/*         flex-grow: 1; */
+/*         height: 30px; */
+/*         align-items: center;	 */
+/* } */
 
-        flex-direction: column;
-		justify-content: center;
-        color:white;
-        text-align: center;
-        /*background-color: black;*/
-        flex-grow: 1;
-        height: 30px;
-        align-items: center;
 
-	
+
+
+/* additional animation */
+
+.bulb-container {
+ 	grid-column: 1 / -1; /* Ensures it spans the full width */ 
+	height: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
 }
+
+.bulb {
+    width: 40px;
+    height: 40px;
+    background: #FFD43B; /* Yellow bulb color */
+    border-radius: 50%;   /* Makes it a circle */
+    position: relative;
+    box-shadow: 0 0 20px #FFD43B; /* Gives it a "glow" effect */
+}
+
+/* The metal base of the bulb */
+.bulb::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    width: 20px;
+    height: 12px;
+    background: #888; /* Grey metal base */
+    border-radius: 2px;
+}
+
+/* The small black tip at the very bottom */
+.bulb::before {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 14px;
+    width: 12px;
+    height: 4px;
+    background: #333;
+}
+
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #FFD43B; }
+    50% { box-shadow: 0 0 25px #FFD43B; }
+    100% { box-shadow: 0 0 5px #FFD43B; }
+}
+
+.bulb {
+    animation: glow 2s infinite;
+}
+
+
+
+

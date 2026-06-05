@@ -1,0 +1,266 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Dec, 2020, 9:26:01 PM
+    Author     : KSURA
+*/
+
+/* 
+    Updated Premium Styles for Learnit-Guide
+    Theme: Modern Tech / Dark Mode
+*/
+
+@import url('https://googleapis.com');
+
+:root {
+    --primary-blue: #2575fc;
+    --primary-purple: #6a11cb;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --card-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Premium tech background with subtle overlay */
+    background: linear-gradient(rgba(10, 10, 20, 0.85), rgba(10, 10, 20, 0.85)), 
+                url('https://unsplash.com');
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+}
+
+/* --- Container --- */
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    min-height: 100vh;
+    gap: 0; /* Let background handle spacing */
+}
+
+/* --- Header Section --- */
+header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    padding: 40px 20px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px); /* Glass effect */
+    border-bottom: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.website-title {
+    grid-column: 2;
+    display: grid;
+    justify-items: center;
+}
+
+header h1 {
+    font-family: 'Borel', cursive;
+    font-size: 3.5rem;
+    background: linear-gradient(to right, #fff, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 10px;
+}
+
+header h4 {
+    font-family: 'Borel', cursive;
+    font-size: 1.4rem;
+    opacity: 0.8;
+}
+
+/* --- Login / Signup Card --- */
+.login_signup {
+    display: grid;
+    place-self: center;
+    width: 90%;
+    max-width: 420px;
+    margin: 40px auto;
+    border-radius: 28px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--glass-border);
+}
+
+#login, #signup {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    display: grid;
+    justify-items: center;
+    gap: 20px;
+    padding: 50px 40px;
+    background: linear-gradient(135deg, rgba(106, 17, 203, 0.95), rgba(37, 117, 252, 0.95));
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#login h1, #signup h1 {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+
+/* --- Form Fields --- */
+input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: #a5b4fc;
+}
+
+/* This targets the placeholder text specifically */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* Soft white */
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+button.submitButton {
+    width: 130px;
+    padding: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-blue);
+    background: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button.submitButton:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* --- Toggle Button --- */
+.swap-btn {
+    background: transparent;
+    border: none;
+    color: #a5b4fc;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- Footer --- */
+footer {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    padding: 40px 20px;
+    display: grid;
+    justify-items: center;
+    gap: 25px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footerNav ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 40px;
+}
+
+.footerNav a {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.footerNav a:hover {
+    color: white;
+    text-shadow: 0 0 8px rgba(255,255,255,0.5);
+}
+
+
+
+
+
+
+
+
+
+
+/* --- Bulb Animation --- */
+.bulb-container {
+    margin-bottom: 20px; /* Space above header text */
+}
+
+.bulb {
+    width: 35px;
+    height: 35px;
+    background: #FFD43B;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 20px #FFD43B;
+    animation: glow 2s infinite ease-in-out;
+}
+
+.bulb::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 8.5px;
+    width: 18px;
+    height: 10px;
+    background: #888;
+    border-radius: 2px;
+}
+
+@keyframes glow {
+    0%, 100% { box-shadow: 0 0 10px #FFD43B; opacity: 0.8; }
+    50% { box-shadow: 0 0 35px #FFD43B; opacity: 1; }
+}
+
+/* --- Animation States --- */
+#signup {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+
+.show-signup #login {
+    opacity: 0;
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.show-signup #signup {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(0);
+}

@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="java.sql.*" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,85 +10,74 @@
     <title>LearnIt-Guide</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/linux.css'/>">
-    <script src="<c:url value='/static/javascript/linux.js'/>" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/home.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&family=Noto+Sans+Mono:wght@500&family=Roboto:wght@900&display=swap" rel="stylesheet">
-    <!--  The below stylesheet gives the icon to the footer social media icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
 <div class= "container">
-    <%-- ===== HEADER ===== --%>
     <header>
         <nav>
             <div class="navStart">
-            <%-- Changed: wrapped site name in a span for font styling --%>
-                <!-- <h1><span class="site-title"></span></h1> -->
-                <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
+            <a href="<c:url value='/Home'/>"><img src="<c:url value='/img/home_icon_google.png'/>" alt="no image"/></a>
+            <h1>LearnIt-Guide</h1>
             </div>
             
             <div class="navEnd">
             <a href="software.html">Software</a>
-            <c:choose>
+            <a href="#">Tools</a>
+           <c:choose>
     <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
     <c:when test="${not empty username}">
-        <a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
+        <a id="button" href="<c:url value='/logout'/>">Logout (${username})</a>
     </c:when>
     <c:otherwise>
-        <a id="login-button" href="<c:url value='/login'/>">Log in</a>
+        <a id="button" href="<c:url value='/login'/>">Log in</a>
     </c:otherwise>
 </c:choose>
             </div>
         </nav>
     </header>
     
-    <div class="warning">
-    	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
+    <div class="warning"><marquee><h5>warning messages will be displayed here. this is home.jsp page</h5> </marquee></div>
+	
+    
+    <div class="menu">
+        <h5>Menu</h5>
+    
+        <div class="menu-list1">     
+            <ul>
+            <li>Article</li>
+            <li><a href="https://learnjava82.blogspot.com/">Java Blog</a></li>
+            <li><a href="pages/AboutJava.html">About Java</a></li>
+            <li>Java books</li>
+            <li>Learning path</li>
+            <li>Sample web architecture</li>
+            <li>Jobs available</li>
+            <li>Kids Section</li>
+            <li><a href="<c:url value='/Linux/linuxbasic/intro'/>">Linux Section</a></li>
+            <li>SQL Section</li>
+            </ul>
+            </div>
+    
+    
     </div>
 	
-	    <%-- Changed: renamed class from no class to "body-grid" â 3-column layout wrapper --%>
-    <div class="body-grid">
-    
-    <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
-    <div class="menu">
-        <h5>Linux basic</h5><hr>
-			<div class="menu-list">
-				<%-- <ul>
-					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
-				</ul> --%>
-				<c:forEach var="item" items="${sideBarMenu}">
-					<ul>
-					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</ul>
-				</c:forEach>
-				
-			</div>
-
-
-		</div>
-
-    <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
-    <main>
-
-		<jsp:include page="${contentPage}"/>	
-		    <div class="page-nav">
-    <button id="pageprev" class="page-prev"> < Previous Page</button>
-    <button class="page-next">Next page ></button>
-    </div>
+	<main>
+	<section class="welcome_note">
+		<p>Welcome to LearnIt-Guide! ${username} <p>
+		<jsp:include page="${contentPage}"/>
+		</section>	
 	</main>
-
 	
     
     <!--to place adds in the website for monitization -->
     <div class="adds">Advertisement</div>
-    
-
         
-       </div><%-- end body-grid --%>         
+            
             
     <footer>
         
@@ -110,11 +101,17 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.xyz ${Year}</h4>
+        <jsp:useBean id="now" class="java.util.Date" />
+        <h4>&copy;Learnit-Guide.edu <fmt:formatDate value="${now}" pattern="yyyy"/></h4>
         </div>
     </footer>
             
+            
+            
+            
+        
+
 </div>
-       
+    
 </body>
 </html>

@@ -6,16 +6,17 @@
 
 
 
-var x = document.getElementById("login").addEventListener("onclick", login);
-var y = document.getElementById("signup").addEventListener("onclick",signup);
 
-function login(){
-    x.style.left= "-500px";
-    y.style.left = "100px";
+
+
+function signup() {
+    document.querySelector('.login_signup').classList.remove('show-signup');
 }
 
-function signup(){
-    x.style.left = "100px";
-    y.style.left = "-500px";
+function login() {
+    document.querySelector('.login_signup').classList.add('show-signup');
 }
+
+
+
 

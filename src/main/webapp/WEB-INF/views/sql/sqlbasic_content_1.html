@@ -1,0 +1,36 @@
+<div class="content">
+    <section class="linuxbasic">
+        <h1>Step 2: Building the Blueprint (DDL)</h1>
+        <p>
+            Before you can store data, you must build the "structure" or the blueprint of where it will sit. In the professional world, <strong>DDL (Data Definition Language)</strong> is used to create the tables that hold a company's valuable information.
+        </p>
+        
+        <p>
+            <em>Note: DDL is like building a house. Once the walls (tables) are built, they stay there until you decide to change the architecture of the building.</em>
+        </p>
+
+        <h3>Key Features of DDL</h3>
+        <ul>
+            <li><strong>CREATE:</strong> This command builds a brand new table from scratch.</li>
+            <li><strong>ALTER:</strong> This allows you to modify an existing table, like adding a new column for "Email Addresses."</li>
+            <li><strong>DROP:</strong> This is the "Destroy" button. It removes the table and all its data permanently.</li>
+        </ul>
+
+        <h3><strong>Pro Workflow:</h3>
+        <ul>
+            <li>Always plan your columns before using <code>CREATE</code>.</li>
+            <li>Use <code>TRUNCATE</code> if you want to wipe the data but keep the table structure.</li>
+        </ul>
+
+        <h3>Common Commands</h3>
+        <p>Follow these examples to build your first data structure:</p>
+        <ol>
+            <li><strong>CREATE TABLE:</strong> <code>CREATE TABLE students (id INT, name TEXT);</code></li>
+            <li><strong>ALTER TABLE:</strong> <code>ALTER TABLE students ADD email TEXT;</code></li>
+            <li><strong>DROP TABLE:</strong> <code>DROP TABLE students;</code></li>
+        </ol>
+            
+        <p><strong>Ready to move forward?</strong><br>
+        Let's learn how to put data into your new tables: <a href="2">DML Statements</a>.</p>
+    </section>
+</div>

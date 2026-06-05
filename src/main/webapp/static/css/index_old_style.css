@@ -24,10 +24,6 @@ and open the template in the editor.
     --clr-btn-bg:     #238636;
     --clr-btn-hover:  #2ea043;
     --clr-nav-bg:     #010409;
-    --clr-nav-menu: #c9d6ca;
-    --clr-nav-menu-list: #3267e3;
-    --clr-main-content: #ecffe8;
-    --clr-main-content-higlight: #2fff00;
 
     /* Typography */
     --font-title: 'Orbitron', monospace;     /* site name          */
@@ -41,8 +37,6 @@ and open the template in the editor.
     --sidebar-w: 220px;
     --ads-w:     200px;
 }
-
-
 
 *,*::before, *::after{
     margin:0;
@@ -69,16 +63,14 @@ body{
     display: grid;
     /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
     width: 95%;
-    max-width: 75%; 
+    max-width: 1200px; 
     min-height: 100vh;
-/*     margin: 0px auto; */
-    justify-self:center;
+    margin: 10px auto;
     
     /* 2. Simplified Rows */
-    grid-template-rows: 100px 30px 1fr auto; 
-    grid-template-columns: 1fr;
-    
-/*     grid-gap: 20px; */
+    grid-template-rows: 100px 20px 1fr auto; 
+    grid-template-columns: auto 1fr auto;
+    grid-gap: 20px;
 
     /* 3. The "Responsive Magic" line */
     /* This creates as many columns as fit (min 280px). 
@@ -96,17 +88,9 @@ header{
     grid-template-columns: 1fr;
     /*border: 2px solid black;*/
 	/*background: linear-gradient(to right, skyblue, purple); */
- 	background-color: var(--clr-nav-bg); 
+	background-color: var(--clr-nav-bg);
 	border-bottom: 1px solid var(--clr-border);
 align-content: center;
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  position: sticky;
-  top: 0px;
-  border-radius: 0px;
-  
 
 }
 
@@ -139,7 +123,6 @@ header nav div.navEnd{
     grid-template-columns: repeat(2, auto);
     gap: 20px;
     justify-content: end;
-    align-items: center;
 }
 
 
@@ -166,8 +149,6 @@ header nav div.navEnd a:hover{
     color: var(--clr-accent);
     letter-spacing: 2px;
     text-transform: uppercase;
-    max-width:450px;
-    height: auto;
 }
 
 
@@ -177,11 +158,10 @@ header nav div.navEnd a:hover{
     border-radius: 5px;
         transition: 1s;
         cursor:pointer;
-        align-self:center;
 }
 
 #login-button:hover{
-    color:navy;
+    color:white;
     background-color: #42f700;
     transition: 1s;
 }
@@ -189,48 +169,16 @@ header nav div.navEnd a:hover{
 
 
 
-/* .warning{ */
-/*     grid-column: 1/-1; */
-/*     border: 2px solid black; */
-/*     text-align: center; */
-/*     color:red; */
-/*     font-size:20px; */
-/* } */
+
 
 .warning{
-	    background-color: var(--clr-warning-bg);
-    color: var(--clr-warning-txt);
-    padding: 0.5rem var(--gap);
-    font-size: 1rem;
-    border-bottom: 1px solid #5c3300;
-    text-align: center;
-    position:sticky;
-    border-radius:0px;
-    top:100px;
-    
-}
-
-
-
-/*================this is the start of body-grid section ======================================*/
-
-.body-grid {
     grid-column: 1/-1;
-    padding: 20px;
-    display:grid;
-	grid-template-rows:1fr;
-	grid-template-columns: auto 1fr auto;
-	gap: 20px;
-	word-wrap: break-word;
-    overflow-wrap: break-word;
-    align-self: start;
-    min-width: 90%; 
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  line-height: 1.5em;
+    border: 2px solid black;
+    text-align: center;
+    color:red;
+    font-size:20px;
 }
+
 
 /* ===================this is the left side menu item */
 
@@ -240,46 +188,24 @@ header nav div.navEnd a:hover{
     display: grid;
     grid-template-rows: auto;
     gap: 10px;
-    background-color: var(--clr-surface);
+        background-color: var(--clr-surface);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius);
     padding: 1rem;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 70px;                /* sticks below the header when scrolling */
 /*     width: 100%;  */
 /*     max-width: 100%; */
     align-self: start; 
     color: white;
-    min-width: 150px;
-    font-size:1em;
-
-  /* Modern browsers */
-/*   overflow-wrap: break-word; */
-  /* Legacy support for older browsers */
-/*   word-wrap: break-word; */
-  /* Required for table cells and some layouts */
-  word-break: break-word; 
 /*     min-height: min-content; */
 /*     min-width: 0; */
     
 }
 
-
-.menu-list *{
-	    color: var(--clr-nav-menu);
-	        grid-template-rows: auto;
-
-}
-
-.menu-list-title{
-	margin: 10px 5px;
-	font-size:1em;
-}
-
-
 .menu h5{
     text-align: center;
-    font-size: 1.2em;
+    font-size: 15px;
     margin-top: 2px;
     margin-bottom: 2px;
     color : var (--clr-text-muted);
@@ -289,109 +215,50 @@ header nav div.navEnd a:hover{
 .menu ul li{
     list-style: none;
     margin-left: 5px;
-    padding-bottom: 5px;
+    padding: 5px;
     border-radius: 10px;
-
 }
 
 .menu ul li a{
     text-decoration: none;
-    padding-right: 5px;
+    color: black;
 }
 
-.menu ul li a:hover{
-/*     background-color: purple; */
-/*     color: white; */
-    color: var(--clr-nav-menu-list);
+.menu ul li:hover{
+    background-color: purple;
+    color: white;
     transition: 0.7s;
 }
 
-
-
-
-
-
-
-
-/* ===================this is the Main content============================ */
-
-
-
-.body-grid main {
-/* 	  	background-color: black; */
-	  	padding: 10px;
-	  	color: var(--clr-main-content);	
-	  	list-style-position: inside;	        
-	    background-color: var(--clr-surface);
-    	border: 1px solid var(--clr-border);
-    	border-left: 4px solid var(--clr-accent);
+.menu ul li:hover a{
+    color: white;
 }
 
-/* .welcome_note{ */
-/*     box-sizing:border-box; */
-/*     padding : 20px; */
+
+
+
+
+
+
+.content {
+
+    padding: 20px;
+
+  	background-color: black;
+	color:#42f700;		
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: start;
     
-/* } */
+}
 
-/* .welcome_note ul { */
-/* 	    list-style-position: outside; */
-/*     padding-left: 20px; Gives room for the bullet */
-/* } */
-
-.linuxbasic {
-    /* 1. Limit width: Long lines are hard to read */
-    max-width: 800px; 
-    margin: 0 auto;    /* Centers the content block */
+.welcome_note{
+    box-sizing:border-box;
+    padding : 20px;
     
-    /* 2. Spacing between lines */
-    line-height: 1.7; 
-    
-    /* 3. Text color & font */
-    color: #e0e0e0; 
-    font-family: sans-serif;
-}
-
-.linuxbasic ol{
-	    list-style-position: outside;
-    padding-left: 20px; /* Gives room for the bullet */
-}
-
-/* Add space between every paragraph and list item */
-.linuxbasic p, 
-.linuxbasic ol li {
-    margin-bottom: 20px; 
-}
-
-/* Make headers stand out */
-.linuxbasic h1 {
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-/* Space out the list items specifically */
-.linuxbasic ol li {
-    padding-left: 10px;
-}
-
-.linuxbasic a {
-    color: #66b3ff; /* Lighter blue */
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.linuxbasic a:hover {
-    color: #99ccff;
 }
 
 
-
-.highlight  {
-	color : var(--clr-main-content-higlight);
-}
-
-
-
-/* ===================this is the ads content============================ */
 
 .adds {    
     background-color: var(--clr-surface);
@@ -400,79 +267,17 @@ header nav div.navEnd a:hover{
     padding: 1rem;
     color: white;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 70px;                /* sticks below the header when scrolling */
     align-self: start; 
 
 }
 
 
 
-
-
-
-/* ===================This is for next and previous page button===================*/
-
-.page-nav {
-	display: grid;
-	grid-template-columns: auto auto;
-  gap: 5px;
-  
-  
-	
-}
-
-.page-prev,.page-next{
-	background-color: grey;
-	color: white;
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-  padding : 20px;
-  border-radius: 30px;
-  margin: 10px;
-/*   height: 100%; */
-min-width: 50px;
-transition:1s;
-
-}
-
-.page-prev{
-	justify-self: start;
-}
-
-.page-next{
-	justify-self: end;
-}
-
-.page-prev:hover{
-	background-color: red;
-	box-shadow: 15px 0px 20px red;
-	transform: translateX(10px) scale(1.1);
-transition: 0.5s ease;
-}
-
-
-.page-next:hover{
-	background-color: navy;
-		box-shadow: -15px 0px 20px navy;
-		transform: translateX(10px) scale(1.1);
-transition: 0.5s ease;
-}
-
-
-
-
-
-
-
-
-/*================this is the start of footer section ======================================*/
-
 footer {
     grid-column: 1/-1;
     background-color: var(--clr-nav-bg);
-/*     color: white; */
+    color: white;
     justify-content: center;
     font-family: sans-serif;
 /*     position: sticky; */
@@ -482,7 +287,6 @@ footer {
     gap:40px;
     place-items: center;
     padding : 20px;
-    
     
     
 /*     bottom: 0px; */
@@ -511,7 +315,6 @@ footer {
 
 .footerNav ul li a:hover{
     opacity:1;
-    color: var(--clr-nav-menu-list);
 }
 
 
@@ -556,22 +359,9 @@ footer {
 /*this is for trademark symbol*/
 
 .footerBottom {
-/*         color: purple; */
+        color: purple;
         height: 30px;
-        animation-name: trademark-color;
-        animation-duration: 5s;
-        animation-iteration-count: infinite;
-        
-        
 	
-}
-
-@keyframes trademark-color {
-	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
-	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
-	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
-	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
-	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
 }
 
 
@@ -637,36 +427,17 @@ footer {
 @media (max-width: 900px) {
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
-        grid-template-columns: 1fr;
+        grid-template-columns: 220px 1fr;
     }
     
-.menu, .content, .adds {
-	/*Everyone gets their own row on mobile*/
-    grid-column: 1 / -1; 
-    /*Disables 'sticky' on mobile to prevent overlapping */
-      position: static;    
-      display:grid;
-      grid-template-columns:1fr; 
-      grid-template-rows: auto;
-}
-
-
-footer {
-    grid-column: 1 / -1;
-/*     Prevents footer from floating over content */
-    position: static;     
-    padding: 20px 0;
-    bottom: 0px;
-    display: grid;
-}
-
+    .ads {
+        display: none;
+    }
 }
 
 
 /* 2. MOBILE VIEW (Apply these only when the screen is wide) */
 @media (max-width: 300px) {
-	
-	
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
 /*          grid-template-columns: auto auto  1fr;  */
@@ -679,16 +450,12 @@ footer {
     gap: 1.5rem;
     }
     
-    
-/*     Fix the overlapping Advertisement and Footer */
+    Fix the overlapping Advertisement and Footer
 .menu, .content, .adds {
 	/*Everyone gets their own row on mobile*/
     grid-column: 1 / -1; 
     /*Disables 'sticky' on mobile to prevent overlapping */
-      position: static;    
-      display:grid;
-      grid-template-columns:1fr; 
-      grid-template-rows: auto;
+      position: static;     
 }
 
 footer {

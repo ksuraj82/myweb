@@ -9,59 +9,136 @@ and open the template in the editor.
 */
 
 
-*{
+:root {
+    /* Colours */
+    --clr-bg:         #0d1117;   /* dark page background       */
+    --clr-surface:    #161b22;   /* cards, sidebar background  */
+    --clr-border:     #30363d;   /* subtle borders             */
+    --clr-accent:     #58a6ff;   /* links, highlights          */
+    --clr-accent2:    #3fb950;   /* secondary accent (green)   */
+    --clr-text:       #c9d1d9;   /* body text                  */
+    --clr-text-muted: #8b949e;   /* secondary text             */
+    --clr-heading:    #f0f6fc;   /* headings                   */
+    --clr-warning-bg: #2d1b00;
+    --clr-warning-txt:#f0883e;
+    --clr-btn-bg:     #238636;
+    --clr-btn-hover:  #2ea043;
+    --clr-nav-bg:     #010409;
+    --clr-nav-menu: #c9d6ca;
+    --clr-nav-menu-list: #3267e3;
+    --clr-main-content: #ecffe8;
+    --clr-main-content-higlight: #2fff00;
+
+    /* Typography */
+    --font-title: 'Orbitron', monospace;     /* site name          */
+    --font-body:  'Noto Sans Mono', monospace; /* everything else  */
+
+    /* Spacing */
+    --gap:    1.5rem;
+    --radius: 8px;
+
+    /* Column widths — used in the grid */
+    --sidebar-w: 220px;
+    --ads-w:     200px;
+}
+
+
+
+*,*::before, *::after{
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
+html {
+    font-size: 16px;          /* 1rem = 16px; zoom in/out scales everything */
+    scroll-behavior: smooth;
+}
+
+
 body{
+	    background-color: var(--clr-bg);
     /*border: 2px solid black;*/
+/*         background-color: white; */
     border:none;
 }
 
 
-.container{
-	
-	display:grid;
-	grid-template-rows: 100px 30px auto auto;
-        grid-template-columns:250px auto 250px;
-	grid-gap: 5px;
-        width: 75%;
-        margin: 10px auto;
-    /*border: 2px solid black;*/
-       
+.container {
+    display: grid;
+    /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
+    width: 95%;
+    max-width: 75%; 
+    min-height: 100vh;
+/*     margin: 0px auto; */
+    justify-self:center;
+    
+    /* 2. Simplified Rows */
+    grid-template-rows: 100px 30px 1fr auto; 
+    grid-template-columns: 1fr;
+    
+/*     grid-gap: 20px; */
+
+    /* 3. The "Responsive Magic" line */
+    /* This creates as many columns as fit (min 280px). 
+       On a phone, it will automatically be 1 column. */
+/*     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+
 }
 
 
+/*this is header section*/
 
 header{
     grid-column:1/-1;
+    width: 100%;
+    grid-template-columns: 1fr;
     /*border: 2px solid black;*/
-    background: linear-gradient(to right, skyblue, purple);
+	/*background: linear-gradient(to right, skyblue, purple); */
+	background-color: var(--clr-nav-bg);
+	border-bottom: 1px solid var(--clr-border);
+align-content: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  position: sticky;
+  top: 0px;
+  border-radius: 0px;
+  
+
 }
 
 header nav{
-    display: flex;
-    flex-grow: 1;
+    display: grid;
+    /* Two columns: Branding group on left (1fr), Links on right (auto) */
+    grid-template-columns: 1fr auto; 
+    align-items: center;
+    padding: 0 20px;
 }
 
+
+
+/*Learnit-guide title*/
 header nav div.navStart{
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /* Create two columns: one for text, one for the bulb */
+    grid-template-columns: auto auto; 
+    align-items: center; /* Aligns them vertically */
+    gap: 15px;           /* Precise spacing between text and bulb */
+    justify-content: start; /* Ensures the group stays on the far left */
     color: white;
-    margin-left: 5px;
-    margin-top: 5px;
 }
 
 
+/*THis is for software, tools and login button*/
 
 header nav div.navEnd{
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 1;
-    
-
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    justify-content: end;
     align-items: center;
 }
 
@@ -75,7 +152,6 @@ header nav div.navEnd a{
         margin-left: 5px;
     margin-right: 5px;
     text-decoration: none;
-    
 }
 
 header nav div.navEnd a:hover{
@@ -84,162 +160,342 @@ header nav div.navEnd a:hover{
 }
 
 
-#button{
-    background-color: #C0C0C0;
-        padding: 2px;
+.site-title {
+    font-family: var(--font-title);
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* scales with viewport, never breaks */
+    color: var(--clr-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    max-width:450px;
+    height: auto;
+}
+
+
+#login-button{
+    background-color: green;
+        padding: 5px;
     border-radius: 5px;
-    color:black;
+        transition: 1s;
+        cursor:pointer;
+        align-self:center;
 }
 
-#button:hover{
-    color:white;
-
-    background-color: #d4af37;
-    transition: 0.6;
+#login-button:hover{
+    color:navy;
+    background-color: #42f700;
+    transition: 1s;
 }
 
 
 
 
-
+/* .warning{ */
+/*     grid-column: 1/-1; */
+/*     border: 2px solid black; */
+/*     text-align: center; */
+/*     color:red; */
+/*     font-size:20px; */
+/* } */
 
 .warning{
-    grid-column: 1/-1;
-    /*border: 2px solid black;*/
+	    background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
     text-align: center;
-    color:red;
-}
-
-
-
-.menu{
-    grid-column: 1/2;
-    /*border: 2px solid black;*/
+    position:sticky;
+    border-radius:0px;
+    top:100px;
     
 }
 
+
+
+/*================this is the start of body-grid section ======================================*/
+
+.body-grid {
+    grid-column: 1/-1;
+    padding: 20px;
+    display:grid;
+	grid-template-rows:1fr;
+	grid-template-columns: auto 1fr auto;
+	gap: 20px;
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: start;
+    min-width: 90%; 
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.5em;
+}
+
+/* ===================this is the left side menu item */
+
+.menu{
+/*     grid-column: 1/2; */
+    /*border: 2px solid black;*/
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    position: sticky;
+    top: 140px;                /* sticks below the header when scrolling */
+/*     width: 100%;  */
+/*     max-width: 100%; */
+    align-self: start; 
+    color: white;
+    min-width: 150px;
+    font-size:1em;
+
+  /* Modern browsers */
+/*   overflow-wrap: break-word; */
+  /* Legacy support for older browsers */
+/*   word-wrap: break-word; */
+  /* Required for table cells and some layouts */
+  word-break: break-word; 
+/*     min-height: min-content; */
+/*     min-width: 0; */
+    
+}
+
+
+.menu-list *{
+	    color: var(--clr-nav-menu);
+	        grid-template-rows: auto;
+
+}
+
+.menu-list-title{
+	margin: 10px 5px;
+	font-size:1em;
+}
+
+
 .menu h5{
     text-align: center;
-    font-size: 15px;
+    font-size: 1.2em;
     margin-top: 2px;
     margin-bottom: 2px;
+    color : var (--clr-text-muted);
 }
 
 
 .menu ul li{
-    width: 80%;
-    margin-top: 2px;
-    margin-bottom: 2px;
     list-style: none;
     margin-left: 5px;
-    padding: 5px;
+    padding-bottom: 5px;
     border-radius: 10px;
-    /*border: 2px solid black;*/
+
 }
 
 .menu ul li a{
     text-decoration: none;
-    color: black;
+    padding-right: 5px;
 }
 
-.menu ul li:hover{
-    background-color: purple;
-    color: white;
+.menu ul li a:hover{
+/*     background-color: purple; */
+/*     color: white; */
+    color: var(--clr-nav-menu-list);
     transition: 0.7s;
 }
 
-.menu ul li:hover a{
-    color: white;
+
+
+
+
+
+
+
+/* ===================this is the Main content============================ */
+
+
+
+.body-grid main {
+/* 	  	background-color: black; */
+	  	padding: 10px;
+	  	color: var(--clr-main-content);	
+	  	list-style-position: inside;	        
+	    background-color: var(--clr-surface);
+    	border: 1px solid var(--clr-border);
+    	border-left: 4px solid var(--clr-accent);
 }
 
-
-
-
-
-
-
-.content {
-    grid-column: 2/3;
-    /*border: 2px solid black;*/
-    box-sizing: border-box;
-    padding: 20px;
-    margin: 3px 10px;
-text-align: justify;
-  text-justify: inter-word;
+/* .welcome_note{ */
+/*     box-sizing:border-box; */
+/*     padding : 20px; */
     
-}
+/* } */
 
-.welcome_note{
-    box-sizing:border-box;
-    padding : 20px;
+/* .welcome_note ul { */
+/* 	    list-style-position: outside; */
+/*     padding-left: 20px; Gives room for the bullet */
+/* } */
+
+.linuxbasic {
+    /* 1. Limit width: Long lines are hard to read */
+    max-width: 800px; 
+    margin: 0 auto;    /* Centers the content block */
     
-}
-
-
-
-.adds {
-    grid-column: 3/4;
-    /*border: 2px solid black;*/
-}
-
-
-
-footer {
-    grid-column: 1/-1;
-
-    background-color: black;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* 2. Spacing between lines */
+    line-height: 1.7; 
+    
+    /* 3. Text color & font */
+    color: #e0e0e0; 
     font-family: sans-serif;
 }
 
-
-
-.social-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.linuxbasic ol{
+	    list-style-position: outside;
+    padding-left: 20px; /* Gives room for the bullet */
 }
 
-.social-icon a{
-    text-decoration: none;
-    background-color: white;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 50%;
+/* Add space between every paragraph and list item */
+.linuxbasic p, 
+.linuxbasic ol li {
+    margin-bottom: 20px; 
 }
 
-.social-icon a i{
-    font-size: 1em;
-    color: black;
-    opacity: 0.9;
+/* Make headers stand out */
+.linuxbasic h1 {
+    margin-bottom: 30px;
+    color: #ffffff;
 }
 
-/*hover effect on media icon*/
-
-.social-icon a:hover{
-    background-color: purple;
-    transition: 0.6s;
+/* Space out the list items specifically */
+.linuxbasic ol li {
+    padding-left: 10px;
 }
 
-.social-icon a:hover i{
+.linuxbasic a {
+    color: #66b3ff; /* Lighter blue */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.linuxbasic a:hover {
+    color: #99ccff;
+}
+
+
+
+.highlight  {
+	color : var(--clr-main-content-higlight);
+}
+
+
+
+/* ===================this is the ads content============================ */
+
+.adds {    
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
     color: white;
-    transition: 0.6s;
+    position: sticky;
+    top: 140px;                /* sticks below the header when scrolling */
+    align-self: start; 
+
 }
 
 
-.footerNav{
-    margin-bottom: 10px;
-    margin-top: 10px;
+
+
+
+
+/* ===================This is for next and previous page button===================*/
+
+.page-nav {
+	display: grid;
+	grid-template-columns: auto auto;
+  gap: 5px;
+  
+  
+	
 }
+
+.page-prev,.page-next{
+	background-color: grey;
+	color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  padding : 20px;
+  border-radius: 30px;
+  margin: 10px;
+/*   height: 100%; */
+min-width: 50px;
+transition:1s;
+
+}
+
+.page-prev{
+	justify-self: start;
+}
+
+.page-next{
+	justify-self: end;
+}
+
+.page-prev:hover{
+	background-color: red;
+	box-shadow: 15px 0px 20px red;
+	transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+.page-next:hover{
+	background-color: navy;
+		box-shadow: -15px 0px 20px navy;
+		transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+
+
+
+
+
+
+/*================this is the start of footer section ======================================*/
+
+footer {
+    grid-column: 1/-1;
+    background-color: var(--clr-nav-bg);
+/*     color: white; */
+    justify-content: center;
+    font-family: sans-serif;
+/*     position: sticky; */
+    display: grid;
+    grid-template-rows: repeat(3,auto);
+    width: 100%;
+    gap:40px;
+    place-items: center;
+    padding : 20px;
+    
+    
+    
+/*     bottom: 0px; */
+}
+
 
 .footerNav ul{
-    display: flex;
+    display: grid;
     justify-content: center;
     list-style: none;
+    grid-template-columns: repeat(4,auto);
+    gap: 20px;
+    grid-template-rows: 1fr;
     
 }
 
@@ -255,19 +511,193 @@ footer {
 
 .footerNav ul li a:hover{
     opacity:1;
+    color: var(--clr-nav-menu-list);
 }
 
+
+
+/*Social media icon*/
+
+.social-icon {
+/*     display: flex; */
+    justify-content: center;
+/*     margin-bottom: 20px; */
+/*     margin-top: 20px; */
+    margin: auto;
+}
+
+.social-icon a{
+    text-decoration: none;
+    background-color: white;
+     padding: 10px; 
+     margin: 10px; 
+    border-radius: 50%;
+}
+
+.social-icon a i{
+    font-size: 1em;
+    color: black;
+    opacity: 0.9;
+}
+
+/* hover effect on media icon */
+
+.social-icon a:hover{
+    background-color: purple;
+    transition: 0.6s;
+}
+
+.social-icon a:hover i{
+    color: white;
+    transition: 0.6s;
+}
+
+
+/*this is for trademark symbol*/
 
 .footerBottom {
-	/*border: 2px solid black;*/
-
-        flex-direction: column;
-	justify-content: center;
-        color: purple;
-        text-align: center;
-        background-color: black;
-        flex-grow: 1;
+/*         color: purple; */
         height: 30px;
-        align-items: center;
+        animation-name: trademark-color;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        
+        
 	
 }
+
+@keyframes trademark-color {
+	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
+	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
+	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
+	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
+	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
+}
+
+
+
+/*bulb animation*/
+
+.bulb-container {
+/* 	grid-column: 1 / -1; Ensures it spans the full width */
+	height: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.bulb {
+    width: 40px;
+    height: 40px;
+    background: #FFD43B; /* Yellow bulb color */
+    border-radius: 50%;   /* Makes it a circle */
+    position: relative;
+    box-shadow: 0 0 20px #FFD43B; /* Gives it a "glow" effect */
+}
+
+/* The metal base of the bulb */
+.bulb::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    width: 20px;
+    height: 12px;
+    background: #888; /* Grey metal base */
+    border-radius: 2px;
+}
+
+/* The small black tip at the very bottom */
+.bulb::before {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 14px;
+    width: 12px;
+    height: 4px;
+    background: #333;
+}
+
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #FFD43B; }
+    50% { box-shadow: 0 0 25px #FFD43B; }
+    100% { box-shadow: 0 0 5px #FFD43B; }
+}
+
+.bulb {
+    animation: glow 2s infinite;
+}
+
+
+
+/* This media queries goes from top to bottom.So if the max-width is changed to min-width then the last media tag will execute. */
+
+/* 2. TABLET VIEW (Apply these only when the screen is wide) */
+@media (max-width: 900px) {
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+        grid-template-columns: 1fr;
+    }
+    
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
+}
+
+
+/* 2. MOBILE VIEW (Apply these only when the screen is wide) */
+@media (max-width: 300px) {
+	
+	
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+/*          grid-template-columns: auto auto  1fr;  */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        position: static;
+        display: grid;
+        width: 100%;
+    padding: 10px;
+    gap: 1.5rem;
+    }
+    
+    
+/*     Fix the overlapping Advertisement and Footer */
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+}
+
