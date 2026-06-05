@@ -1,62 +1,59 @@
 <div class="content">
-    <section class="linuxbasic"> <!-- Class name restored to match your CSS -->
-        <h1>Step 2: Setting up the Ubuntu Server</h1>
+    <section class="linuxbasic">
+        <h1>Step 1: Installing Oracle VirtualBox</h1>
         
         <p>
-            To start your journey, you need to install the Ubuntu Operating System (OS) inside your <strong>VirtualBox</strong>. 
-            In the professional world, companies use various versions of Linux like RHEL (Red Hat) or Ubuntu. We choose <strong>Ubuntu</strong> because it is powerful, industry-standard, and completely <strong>free</strong> for everyone to use.
+            Before we can install Linux, we need a "Virtual Machine" player. Think of <strong>VirtualBox</strong> as a computer inside your computer. It allows you to run Linux in a window on your Windows or Mac laptop without deleting your files.
         </p>
         
         <p>
-            <em>Note: While Ubuntu is free, the developers accept donations on their website. If you find success in your career after learning these skills, consider a small <a style="text-decoration: none;" href="https://ubuntu.com/download/desktop/thank-you" target="_blank">"thank you"</a> donation to their team. (Note: I am not sponsored by them; I just support their mission!)</em>
+            <em>Professional Tip: Using VirtualBox is a standard industry practice. Engineers use it to test software in a safe, isolated environment before moving it to real company servers.</em>
         </p>
 
-        <h3>Features of the New Ubuntu 26.04 LTS</h3>
+        <h3>Why use VirtualBox?</h3>
         <ul>
-            <li><strong>Latest Linux 7.0 Kernel:</strong> Better performance for your hardware.</li>
-            <li><strong>Long-Term Support (LTS):</strong> You get 5 years of security updates, making it very stable.</li>
-            <li><strong>Enterprise Ready:</strong> Includes the latest versions of databases like PostgreSQL 18 and MySQL.</li>
+            <li><strong>Safety:</strong> If you make a mistake in Linux, your main computer (Windows/Mac) stays safe.</li>
+            <li><strong>Snapshots:</strong> You can save the "state" of your machine and go back in time if you break something.</li>
+            <li><strong>Cost:</strong> It is high-quality, professional software provided by Oracle for <strong>free</strong>.</li>
         </ul>
 
-        <h3><strong>Minimum System Requirements:</h3>
+        <h3><strong>System Requirements for VirtualBox:</h3>
         <ul>
-            <li>1.5 GB of System Memory (RAM).</li>
-            <li>5 GB of free Hard Drive space.</li>
-            <li>The downloaded "ISO" installer file.</li>
+            <li>At least 4GB of RAM on your main laptop/PC.</li>
+            <li>Enable "Virtualization Technology" (VT-x or AMD-V) in your computer's BIOS settings.</li>
+            <li>About 300MB of space for the application itself.</li>
         </ul>
 
         <h3>Installation Guide</h3>
-        <p>Follow these steps to bring your virtual server to life:</p>
+        <p>Follow these steps to set up your virtual lab:</p>
         
         <ol>
             <li>
-                <strong>Download the Image:</strong> 
-                Download the "Ubuntu Server" file (called an .ISO) from the official site: 
-                <a href="https://ubuntu.com/download/server#manual-install-tab" target="_blank">Download Ubuntu Server</a>.
+                <strong>Download the Software:</strong> 
+                Go to the official site and download the "Windows hosts" or "macOS" version: 
+                <a href="https://virtualbox.org" target="_blank">Download VirtualBox</a>.
             </li>
             <li>
-                <strong>Load the File:</strong> 
-                Open VirtualBox, select your machine, go to the <strong>Storage</strong> settings, and "Insert" the downloaded Ubuntu file into the virtual optical drive.
+                <strong>Install the App:</strong> 
+                Run the downloaded .exe or .dmg file. Keep all the default settings selected and click <strong>Next</strong> until it finishes.
             </li>
             <li>
-                <strong>Run the Setup:</strong> 
-                Start the virtual machine and follow the on-screen prompts. For a detailed guide on each click, refer to the 
-                <a href="https://ubuntu.com/server/docs/tutorial/basic-installation/" target="_blank">Official Installation Walkthrough</a>.
+                <strong>Install the Extension Pack:</strong> 
+                On the same download page, look for the "VirtualBox Extension Pack." Download and open it to give your virtual machines better USB and networking support.
             </li>
             <li>
-                <strong>Pro Networking Tip:</strong> 
-                Once installed, go to your VirtualBox <strong>Network</strong> settings and change "Attached to" to <strong>Bridged Adapter</strong>. 
-                <br><em>Why?</em> This makes your virtual Linux act like a separate, real computer in your house. It allows you to connect to it from your main laptop, which is exactly how developers connect to real database servers in a company.
+                <strong>Launch:</strong> 
+                Open VirtualBox. You should see a clean, empty manager window ready for your first "New" machine.
             </li>
         </ol>
             
         <p>
-            Once your setup is finished, you have created a professional-grade "Learning Platform." You are now ready to step into the world of IT.
+            Congratulations! You have now built the "Foundation" of your learning lab.
         </p>
             
         <p>
             <strong>Ready to move forward?</strong><br>
-            Let's start learning how to talk to your server: <a href="2">Linux Navigation Commands</a>.
+            Now, let's put an Operating System into VirtualBox: <a href="2">Step 2: Installing Ubuntu Server</a>.
         </p>
     </section>
 </div>

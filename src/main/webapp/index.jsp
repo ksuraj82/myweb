@@ -30,10 +30,11 @@
 		<header>
 			<nav>
 				<div class="navStart">
-					<h1>LearnIt-Guide</h1>
+				<%-- 	<h1>LearnIt-Guide</h1>
 					<div class="bulb-container">
     					<div class="bulb"><a href="<c:url value='/'/>"><i class="fa-solid fa-lightbulb" style="color: #FFD43B; font-size: 40px;"></i></a></div>
-				</div>
+				</div> --%>
+				<a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
 				</div>
 				
 				<div class="navEnd">
@@ -54,17 +55,16 @@
 	    <%-- Changed: renamed class from no class to "body-grid" — 3-column layout wrapper --%>
     <div class="body-grid">
 		<div class="menu">
-			<h5>Menu</h5>
+			<h5>Menu</h5><hr>
 
 			<div class="menu-list1">
 				<ul>
 					<li>New Technology news</li>
-					<li><a
-						href="<c:url value='/Linux/linuxbasic/intro'/>">Linux Basic</a></li>
-					<li>SQL Basic</li>
+					<li><a href="<c:url value='/Linux/linuxbasic/intro'/>">Linux Basic</a></li>
+					<li><a href="<c:url value='/sql/sqlbasic/intro'/>">SQL Basic</a></li>
 					<li><a href="pages/AboutJava.html">Java Basic</a></li>
 					<li><a href="https://learnjava82.blogspot.com/" target="_blank">Blog : Experiment area</a></li>
-					<li>Kids Section</li>
+					<li><a href="<c:url value='/sql/sqlbasic/intro'/>">Kids Section</a></li>
 				</ul>
 			</div>
 		</div>

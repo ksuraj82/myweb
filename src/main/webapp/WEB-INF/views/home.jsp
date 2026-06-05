@@ -67,13 +67,14 @@
             <h5>Learning Sections</h5>
             <ul class="menu-list1">
                 <li><a href="<c:url value='/Linux/linuxbasic/intro'/>"><i class="fa-brands fa-linux"></i> Linux</a></li>
-                <li><a href="#"><i class="fa-solid fa-database"></i> SQL</a></li>
+                <li><a href="<c:url value='/sql/sqlbasic/intro'/>"><i class="fa-solid fa-database"></i> SQL</a></li>
                 <li><a href="#"><i class="fa-brands fa-github"></i> GitHub</a></li>
                 <li><a href="#"><i class="fa-solid fa-ticket"></i> Jira Tool</a></li>
                 <li><a href="#"><i class="fa-solid fa-file-code"></i> Notepad++</a></li>
                 <li><a href="#"><i class="fa-brands fa-java"></i> Java</a></li>
                 <li><a href="#"><i class="fa-solid fa-server"></i> VMware</a></li>
                 <li><a href="#"><i class="fa-solid fa-globe"></i> Website Creation</a></li>
+                <li><a href="<c:url value='/kids/kidsbasic/intro'/>"><i class="fa-solid fa-graduation-cap"></i> Kids Section</a></li>
             </ul>
         </aside>
 
@@ -107,6 +108,8 @@
                     <div class="card"><i class="fa-solid fa-server"></i><span>VMware</span></div>
                     <div class="card"><i class="fa-solid fa-globe"></i><span>Web Dev</span></div>
                     <div class="card"><i class="fa-solid fa-file-code"></i><span>Notepad++</span></div>
+                    <div class="card"><i class="fa-solid fa-robot"></i><span>AI agent</span></div>
+                    <div class="card"><i class="fa-solid fa-graduation-cap"></i><span>Kids Education</span></div>
                 </div>
             </section>
         </main>
@@ -131,7 +134,7 @@
             <ul>
                 <li><a href="<c:url value='/Home'/>">Home</a></li>
                 <li><a href="#">Technology News</a></li>
-                <li><a href="#">Kids Section</a></li>
+                <li><a href="<c:url value='/kids/kidsbasic/intro'/>">Kids Section</a></li>
                 <li><a href="#">About / whoami</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>

@@ -9,7 +9,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/linux.css'/>">
-    <script src="<c:url value='/static/javascript/linux.js'/>" type="text/javascript"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
@@ -24,9 +23,7 @@
     <header>
         <nav>
             <div class="navStart">
-            <%-- Changed: wrapped site name in a span for font styling --%>
-                <!-- <h1><span class="site-title"></span></h1> -->
-                <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
+            <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
             </div>
             
             <div class="navEnd">
@@ -53,7 +50,7 @@
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
     <div class="menu">
-        <h5>Linux basic</h5><hr>
+        <h5>SQL basic</h5><hr>
 			<div class="menu-list">
 				<%-- <ul>
 					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
@@ -74,8 +71,8 @@
 
 		<jsp:include page="${contentPage}"/>	
 		    <div class="page-nav">
-    <button id="pageprev" class="page-prev"> < Previous Page</button>
-    <button class="page-next">Next page ></button>
+    <button class="page-prev"> < Previous Page</button>
+    <button class="page-next">Next page></button>
     </div>
 	</main>
 
@@ -114,7 +111,12 @@
         </div>
     </footer>
             
+            
+            
+            
+        
+
 </div>
-       
+    
 </body>
 </html>

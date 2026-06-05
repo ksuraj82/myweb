@@ -29,7 +29,7 @@ public class JwtFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		
-		int year = Calendar.getInstance().get(Calendar.YEAR);
+		String year = Calendar.getInstance().get(Calendar.YEAR)+"";
 		request.setAttribute("Year", year);
 		
 		String path = req.getServletPath();

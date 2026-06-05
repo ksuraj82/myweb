@@ -1,0 +1,67 @@
+[
+  {
+    "title": "SQL Introduction",
+    "icon": "fa-solid fa-house",
+    "page": "/sql/sqlbasic/intro"
+  },
+  {
+    "title": "DDL statement",
+    "icon": "fa-solid fa-box",
+    "page": "/sql/sqlbasic/1"
+  }
+  ,
+  {
+    "title": "DML statement",
+    "icon": "fa-brands fa-ubuntu",
+    "page": "/sql/sqlbasic/2"
+  }
+  ,
+  {
+    "title": "DCL statement",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/3"
+  }
+  ,
+  {
+    "title": "TCL statement",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/4"
+  }
+  ,
+  {
+    "title": "DB User creation",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/5"
+  }
+  ,
+    {
+    "title": "DB User and Role",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/6"
+  },
+  {
+    "title": "DB indexing",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/7"
+  },
+  {
+    "title": "DB trigger",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/8"
+  },
+  {
+    "title": "DB partitioning",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/9"
+  },
+  {
+    "title": "DB autoincrement column",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/10"
+  },
+    {
+    "title": "DB PLpgSQL basic",
+    "icon": "fa-solid fa-terminal",
+    "page": "/sql/sqlbasic/11"
+  }  
+]

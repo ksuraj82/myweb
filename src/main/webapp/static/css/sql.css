@@ -69,7 +69,7 @@ body{
     display: grid;
     /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
     width: 95%;
-    max-width: 75%; 
+    max-width: 1200px; 
     min-height: 100vh;
 /*     margin: 0px auto; */
     justify-self:center;
@@ -96,7 +96,7 @@ header{
     grid-template-columns: 1fr;
     /*border: 2px solid black;*/
 	/*background: linear-gradient(to right, skyblue, purple); */
- 	background-color: var(--clr-nav-bg); 
+	background-color: var(--clr-nav-bg);
 	border-bottom: 1px solid var(--clr-border);
 align-content: center;
   font-family: "Space Grotesk", sans-serif;
@@ -105,7 +105,6 @@ align-content: center;
   font-style: normal;
   position: sticky;
   top: 0px;
-  border-radius: 0px;
   
 
 }
@@ -166,8 +165,6 @@ header nav div.navEnd a:hover{
     color: var(--clr-accent);
     letter-spacing: 2px;
     text-transform: uppercase;
-    max-width:450px;
-    height: auto;
 }
 
 
@@ -204,10 +201,7 @@ header nav div.navEnd a:hover{
     font-size: 1rem;
     border-bottom: 1px solid #5c3300;
     text-align: center;
-    position:sticky;
     border-radius:0px;
-    top:100px;
-    
 }
 
 
@@ -245,13 +239,13 @@ header nav div.navEnd a:hover{
     border-radius: var(--radius);
     padding: 1rem;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 100px;                /* sticks below the header when scrolling */
 /*     width: 100%;  */
 /*     max-width: 100%; */
     align-self: start; 
     color: white;
     min-width: 150px;
-    font-size:1em;
+    font-size:0.8em;
 
   /* Modern browsers */
 /*   overflow-wrap: break-word; */
@@ -272,14 +266,13 @@ header nav div.navEnd a:hover{
 }
 
 .menu-list-title{
-	margin: 10px 5px;
-	font-size:1em;
+	margin-left: 5px;
 }
 
 
 .menu h5{
     text-align: center;
-    font-size: 1.2em;
+    font-size: 15px;
     margin-top: 2px;
     margin-bottom: 2px;
     color : var (--clr-text-muted);
@@ -327,16 +320,11 @@ header nav div.navEnd a:hover{
     	border-left: 4px solid var(--clr-accent);
 }
 
-/* .welcome_note{ */
-/*     box-sizing:border-box; */
-/*     padding : 20px; */
+.welcome_note{
+    box-sizing:border-box;
+    padding : 20px;
     
-/* } */
-
-/* .welcome_note ul { */
-/* 	    list-style-position: outside; */
-/*     padding-left: 20px; Gives room for the bullet */
-/* } */
+}
 
 .linuxbasic {
     /* 1. Limit width: Long lines are hard to read */
@@ -349,11 +337,6 @@ header nav div.navEnd a:hover{
     /* 3. Text color & font */
     color: #e0e0e0; 
     font-family: sans-serif;
-}
-
-.linuxbasic ol{
-	    list-style-position: outside;
-    padding-left: 20px; /* Gives room for the bullet */
 }
 
 /* Add space between every paragraph and list item */
@@ -400,7 +383,7 @@ header nav div.navEnd a:hover{
     padding: 1rem;
     color: white;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 100px;                /* sticks below the header when scrolling */
     align-self: start; 
 
 }
@@ -448,16 +431,16 @@ transition:1s;
 .page-prev:hover{
 	background-color: red;
 	box-shadow: 15px 0px 20px red;
-	transform: translateX(10px) scale(1.1);
-transition: 0.5s ease;
+	transform: translateX(10px) rotate(360deg) scale(1.1);
+transition: 2s ease;
 }
 
 
 .page-next:hover{
 	background-color: navy;
 		box-shadow: -15px 0px 20px navy;
-		transform: translateX(10px) scale(1.1);
-transition: 0.5s ease;
+		transform: translateX(10px) rotate(360deg) scale(1.1);
+transition: 2s ease;
 }
 
 

@@ -46,4 +46,20 @@
   	<servlet-name>Signup</servlet-name>
   	<url-pattern>/Signup</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>sql</servlet-name>
+  	<servlet-class>com.learnitguide.controller.Sql</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>sql</servlet-name>
+  	<url-pattern>/sql/*</url-pattern>
+  </servlet-mapping>
+    <servlet>
+  	<servlet-name>kids</servlet-name>
+  	<servlet-class>com.learnitguide.controller.Kids</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>kids</servlet-name>
+  	<url-pattern>/kids/*</url-pattern>
+  </servlet-mapping>
 </web-app>
