@@ -1,0 +1,854 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Dec, 2020, 9:26:01 PM
+    Author     : KSURA
+*/
+
+
+:root {
+    /* Colours */
+    --clr-bg:         #0d1117;   /* dark page background       */
+    --clr-surface:    #161b22;   /* cards, sidebar background  */
+    --clr-border:     #30363d;   /* subtle borders             */
+    --clr-accent:     #58a6ff;   /* links, highlights          */
+    --clr-accent2:    #3fb950;   /* secondary accent (green)   */
+    --clr-text:       #c9d1d9;   /* body text                  */
+    --clr-text-muted: #8b949e;   /* secondary text             */
+    --clr-heading:    #f0f6fc;   /* headings                   */
+    --clr-warning-bg: #2d1b00;
+    --clr-warning-txt:#f0883e;
+    --clr-btn-bg:     #238636;
+    --clr-btn-hover:  #2ea043;
+    --clr-nav-bg:     #010409;
+    --clr-nav-menu: #c9d6ca;
+    --clr-nav-menu-list: #3267e3;
+    --clr-main-content: #ecffe8;
+    --clr-main-content-higlight: #2fff00;
+
+    /* Typography */
+    --font-title: 'Orbitron', monospace;     /* site name          */
+    --font-body:  'Noto Sans Mono', monospace; /* everything else  */
+
+    /* Spacing */
+    --gap:    1.5rem;
+    --radius: 8px;
+
+    /* Column widths — used in the grid */
+    --sidebar-w: 220px;
+    --ads-w:     200px;
+}
+
+
+
+*,*::before, *::after{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+html {
+    font-size: 16px;          /* 1rem = 16px; zoom in/out scales everything */
+    scroll-behavior: smooth;
+}
+
+
+body{
+	    background-color: var(--clr-bg);
+    /*border: 2px solid black;*/
+/*         background-color: white; */
+    border:none;
+}
+
+
+.container {
+    display: grid;
+    /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
+    width: 95%;
+    max-width: 75%; 
+    min-height: 100vh;
+/*     margin: 0px auto; */
+    justify-self:center;
+    
+    /* 2. Simplified Rows */
+    grid-template-rows: 100px 30px 1fr auto; 
+    grid-template-columns: 1fr;
+    
+/*     grid-gap: 20px; */
+
+    /* 3. The "Responsive Magic" line */
+    /* This creates as many columns as fit (min 280px). 
+       On a phone, it will automatically be 1 column. */
+/*     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+
+}
+
+
+/*this is header section*/
+
+header{
+    grid-column:1/-1;
+    width: 100%;
+    grid-template-columns: 1fr;
+    /*border: 2px solid black;*/
+	/*background: linear-gradient(to right, skyblue, purple); */
+ 	background-color: var(--clr-nav-bg); 
+	border-bottom: 1px solid var(--clr-border);
+align-content: center;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  position: sticky;
+  top: 0px;
+  border-radius: 0px;
+  
+
+}
+
+header nav{
+    display: grid;
+    /* Two columns: Branding group on left (1fr), Links on right (auto) */
+    grid-template-columns: 1fr auto; 
+    align-items: center;
+    padding: 0 20px;
+}
+
+
+
+/*Learnit-guide title*/
+header nav div.navStart{
+    display: grid;
+    /* Create two columns: one for text, one for the bulb */
+    grid-template-columns: auto auto; 
+    align-items: center; /* Aligns them vertically */
+    gap: 15px;           /* Precise spacing between text and bulb */
+    justify-content: start; /* Ensures the group stays on the far left */
+    color: white;
+}
+
+
+/*THis is for software, tools and login button*/
+
+header nav div.navEnd{
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 20px;
+    justify-content: end;
+    align-items: center;
+}
+
+
+
+header nav div.navEnd a{
+    color: white;
+    opacity:0.6;
+    font:bold;
+    font-size: 20px;
+        margin-left: 5px;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+header nav div.navEnd a:hover{
+    opacity: 1;
+    transition: 0.5;
+}
+
+
+.site-title {
+    font-family: var(--font-title);
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* scales with viewport, never breaks */
+    color: var(--clr-accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    max-width:450px;
+    height: auto;
+}
+
+
+#login-button{
+    background-color: green;
+        padding: 5px;
+    border-radius: 5px;
+        transition: 1s;
+        cursor:pointer;
+        align-self:center;
+}
+
+#login-button:hover{
+    color:navy;
+    background-color: #42f700;
+    transition: 1s;
+}
+
+
+
+
+/* .warning{ */
+/*     grid-column: 1/-1; */
+/*     border: 2px solid black; */
+/*     text-align: center; */
+/*     color:red; */
+/*     font-size:20px; */
+/* } */
+
+.warning{
+	    background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
+    text-align: center;
+    position:sticky;
+    border-radius:0px;
+    top:100px;
+    
+}
+
+
+
+/*================this is the start of body-grid section ======================================*/
+
+.body-grid {
+    grid-column: 1/-1;
+    padding: 20px;
+    display:grid;
+	grid-template-rows:1fr;
+	grid-template-columns: auto 1fr auto;
+	gap: 20px;
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: start;
+    min-width: 90%; 
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.5em;
+}
+
+/* ===================this is the left side menu item */
+
+.menu{
+/*     grid-column: 1/2; */
+    /*border: 2px solid black;*/
+    display: grid;
+    grid-template-rows: auto;
+    gap: 10px;
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    position: sticky;
+    top: 140px;                /* sticks below the header when scrolling */
+/*     width: 100%;  */
+/*     max-width: 100%; */
+    align-self: start; 
+    color: white;
+    min-width: 150px;
+    font-size:1em;
+
+  /* Modern browsers */
+/*   overflow-wrap: break-word; */
+  /* Legacy support for older browsers */
+/*   word-wrap: break-word; */
+  /* Required for table cells and some layouts */
+  word-break: break-word; 
+/*     min-height: min-content; */
+/*     min-width: 0; */
+    
+}
+
+
+.menu-list *{
+	    color: var(--clr-nav-menu);
+	        grid-template-rows: auto;
+
+}
+
+.menu-list-title{
+	margin: 10px 5px;
+	font-size:1em;
+}
+
+
+.menu h5{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color : var (--clr-text-muted);
+}
+
+
+.menu ul li{
+    list-style: none;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    border-radius: 10px;
+
+}
+
+.menu ul li a{
+    text-decoration: none;
+    padding-right: 5px;
+}
+
+.menu ul li a:hover{
+/*     background-color: purple; */
+/*     color: white; */
+    color: var(--clr-nav-menu-list);
+    transition: 0.7s;
+}
+
+
+
+
+
+
+
+
+/* ===================this is the Main content============================ */
+
+
+
+.body-grid main {
+/* 	  	background-color: black; */
+	  	padding: 10px;
+	  	color: var(--clr-main-content);	
+	  	list-style-position: inside;	        
+	    background-color: var(--clr-surface);
+    	border: 1px solid var(--clr-border);
+    	border-left: 4px solid var(--clr-accent);
+
+
+    	
+}
+
+/* .welcome_note{ */
+/*     box-sizing:border-box; */
+/*     padding : 20px; */
+    
+/* } */
+
+/* .welcome_note ul { */
+/* 	    list-style-position: outside; */
+/*     padding-left: 20px; Gives room for the bullet */
+/* } */
+
+
+
+.content {
+	    	    line-height: 1.7em;
+}
+
+
+.kidsbasic {
+    /* 1. Limit width: Long lines are hard to read */
+    max-width: 800px; 
+    margin: 0 auto;    /* Centers the content block */
+    
+    /* 2. Spacing between lines */
+    line-height: 1.7; 
+    
+    /* 3. Text color & font */
+    color: #e0e0e0; 
+    font-family: sans-serif;
+    
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    max-width:95%;
+    gap:10px;
+
+}
+
+
+
+/*This is for addition page*/
+
+
+kidsbasic-addition {
+    /* 1. Limit width: Long lines are hard to read */
+    max-width: 800px; 
+    margin: 0 auto;    /* Centers the content block */
+    
+    /* 2. Spacing between lines */
+    line-height: 1.7em; 
+    
+    /* 3. Text color & font */
+    color: #e0e0e0; 
+    font-family: var(--font-body);
+    
+    display:grid;
+    grid-template-rows:auto;
+    max-width:95%;
+
+}
+
+.kidsbasic-addition h1 {
+	margin-bottom:1.5em;
+}
+
+#mathQuiz {
+
+	display:grid;
+	grid-template-columns:repeat(4,auto);
+	font-family:var(--font-body);
+	background-color: white;
+	justify-self:center;
+	    justify-content: center;
+    align-items: center;
+	max-width: 80%;
+	color: white;
+	height:auto;
+	padding:20px;
+	border-radius:var(--radius);
+	font-size:3em;
+	gap:50px;
+	
+	background: linear-gradient(to right, #00b4db, #00ff87); 
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Adds a premium floating depth effect */
+	        margin-top:50px;
+	
+}
+
+
+.mathQuiz-num{
+	font-family:var(--font-body);
+	font-size:1em;
+	justify-self: center;
+	padding:10px;
+	margin-left: 20px;
+}
+
+.mathQuiz-userAnswer{
+	    grid-column: 1 / -1; 
+	font-family:var(--font-body);
+	font-size:0.7em;
+	padding:5px;
+}
+
+
+.mathQuiz-button{
+	    grid-column: 1 / -1; 
+	font-family:var(--font-body);
+	font-size:0.5em;
+	width:200px;
+	height:50px;
+	justify-self: center;
+	padding:5px;
+	background-color:blue;
+	font-weight:bold;
+}
+
+.mathQuiz-feedback{
+	    grid-column: 1 / -1; 
+	font-family:var(--font-body);
+	font-size:0.5em;
+	width:95%;
+	height:auto;
+	justify-self: center;
+	justify-content:center;
+	padding:5px;
+}
+
+
+/*The letter_img is for image page*/
+
+.letter_img {
+	max-width:300px;
+	height:300px;
+	background-color:white;
+}
+
+.letter_img img{
+	max-width:100%;
+	height:100%;
+object-fit:cover;
+}
+
+
+.highlight  {
+	color : var(--clr-main-content-higlight);
+}
+
+
+
+
+/* --- WELCOME NOTE WRAPPER --- */
+.welcome_note {
+    box-sizing: border-box;
+    padding: 20px;
+    line-height: 1.7;
+    color: #e0e0e0; 
+    font-family: sans-serif;
+}
+
+/* Heading & Highlight Text Settings */
+.welcome_note h1 {
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    color: var(--clr-main-content-higlight, #ff9f43);
+}
+
+.welcome_note h3 {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: var(--clr-main-content-higlight, #ff9f43);
+}
+
+.highlight {
+    color: var(--clr-main-content-higlight, #ff9f43);
+    background-color: rgba(255, 159, 67, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+/* --- BULLET POINT LAYOUT --- */
+.welcome_note ul {
+    list-style-type: none; /* Removes plain default circles */
+    padding-left: 0;
+    margin-top: 15px;
+}
+
+.welcome_note li {
+    position: relative;
+    padding-left: 30px; /* Leaves perfect room for custom emojis */
+    margin-bottom: 15px;
+    font-size: 1.05rem;
+}
+
+/* Adds unique layout markers matching each category item */
+.welcome_note li:nth-child(1)::before { content: "🔤"; position: absolute; left: 0; top: 2px; }
+.welcome_note li:nth-child(2)::before { content: "🧩"; position: absolute; left: 0; top: 2px; }
+.welcome_note li:nth-child(3)::before { content: "🧮"; position: absolute; left: 0; top: 2px; }
+.welcome_note li:nth-child(4)::before { content: "📕"; position: absolute; left: 0; top: 2px; }
+.welcome_note li:nth-child(5)::before { content: "📐"; position: absolute; left: 0; top: 2px; }
+
+/* Structural Divider Rule styling */
+.welcome_note hr {
+    border: 0;
+    height: 1px;
+    background: var(--clr-border, #30363d);
+    margin: 25px 0;
+}
+
+
+/* ===================this is the ads content============================ */
+
+.adds {    
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    color: white;
+    position: sticky;
+    top: 140px;                /* sticks below the header when scrolling */
+    align-self: start; 
+
+}
+
+
+
+
+
+
+/* ===================This is for next and previous page button===================*/
+
+.page-nav {
+	display: grid;
+	grid-template-columns: auto auto;
+  gap: 5px;
+  
+  
+	
+}
+
+.page-prev,.page-next{
+	background-color: grey;
+	color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  padding : 20px;
+  border-radius: 30px;
+  margin: 10px;
+/*   height: 100%; */
+min-width: 50px;
+transition:1s;
+
+}
+
+.page-prev{
+	justify-self: start;
+}
+
+.page-next{
+	justify-self: end;
+}
+
+.page-prev:hover{
+	background-color: red;
+	box-shadow: 15px 0px 20px red;
+	transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+.page-next:hover{
+	background-color: navy;
+		box-shadow: -15px 0px 20px navy;
+		transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+
+
+
+
+
+
+/*================this is the start of footer section ======================================*/
+
+footer {
+    grid-column: 1/-1;
+    background-color: var(--clr-nav-bg);
+/*     color: white; */
+    justify-content: center;
+    font-family: sans-serif;
+/*     position: sticky; */
+    display: grid;
+    grid-template-rows: repeat(3,auto);
+    width: 100%;
+    gap:40px;
+    place-items: center;
+    padding : 20px;
+    
+    
+    
+/*     bottom: 0px; */
+}
+
+
+.footerNav ul{
+    display: grid;
+    justify-content: center;
+    list-style: none;
+    grid-template-columns: repeat(4,auto);
+    gap: 20px;
+    grid-template-rows: 1fr;
+    
+}
+
+.footerNav ul li a{
+    color: white;
+    margin: 30px;
+    text-decoration: none;
+    opacity: 0.7;
+    font-size: 1.3em;
+    transition: 0.5;
+}
+
+
+.footerNav ul li a:hover{
+    opacity:1;
+    color: var(--clr-nav-menu-list);
+}
+
+
+
+/*Social media icon*/
+
+.social-icon {
+/*     display: flex; */
+    justify-content: center;
+/*     margin-bottom: 20px; */
+/*     margin-top: 20px; */
+    margin: auto;
+}
+
+.social-icon a{
+    text-decoration: none;
+    background-color: white;
+     padding: 10px; 
+     margin: 10px; 
+    border-radius: 50%;
+}
+
+.social-icon a i{
+    font-size: 1em;
+    color: black;
+    opacity: 0.9;
+}
+
+/* hover effect on media icon */
+
+.social-icon a:hover{
+    background-color: purple;
+    transition: 0.6s;
+}
+
+.social-icon a:hover i{
+    color: white;
+    transition: 0.6s;
+}
+
+
+/*this is for trademark symbol*/
+
+.footerBottom {
+/*         color: purple; */
+        height: 30px;
+        animation-name: trademark-color;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        
+        
+	
+}
+
+@keyframes trademark-color {
+	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
+	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
+	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
+	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
+	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
+}
+
+
+
+/*bulb animation*/
+
+.bulb-container {
+/* 	grid-column: 1 / -1; Ensures it spans the full width */
+	height: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.bulb {
+    width: 40px;
+    height: 40px;
+    background: #FFD43B; /* Yellow bulb color */
+    border-radius: 50%;   /* Makes it a circle */
+    position: relative;
+    box-shadow: 0 0 20px #FFD43B; /* Gives it a "glow" effect */
+}
+
+/* The metal base of the bulb */
+.bulb::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    width: 20px;
+    height: 12px;
+    background: #888; /* Grey metal base */
+    border-radius: 2px;
+}
+
+/* The small black tip at the very bottom */
+.bulb::before {
+    content: '';
+    position: absolute;
+    bottom: -14px;
+    left: 14px;
+    width: 12px;
+    height: 4px;
+    background: #333;
+}
+
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px #FFD43B; }
+    50% { box-shadow: 0 0 25px #FFD43B; }
+    100% { box-shadow: 0 0 5px #FFD43B; }
+}
+
+.bulb {
+    animation: glow 2s infinite;
+}
+
+
+
+/* This media queries goes from top to bottom.So if the max-width is changed to min-width then the last media tag will execute. */
+
+/* 2. TABLET VIEW (Apply these only when the screen is wide) */
+@media (max-width: 900px) {
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+        grid-template-columns: 1fr;
+    }
+    
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
+}
+
+
+/* 2. MOBILE VIEW (Apply these only when the screen is wide) */
+@media (max-width: 300px) {
+	
+	
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+/*          grid-template-columns: auto auto  1fr;  */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        position: static;
+        display: grid;
+        width: 100%;
+    padding: 10px;
+    gap: 1.5rem;
+    }
+    
+    
+/*     Fix the overlapping Advertisement and Footer */
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+}
+

@@ -10,7 +10,7 @@
     <title>LearnIt-Guide</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="static/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/home.css'/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <%-- Changed: Added 'Orbitron' for the site title (cool techy font), kept Noto Sans Mono for body --%>
@@ -27,16 +27,11 @@
     <header>
         <nav>
             <div class="navStart">
-                <a href="<c:url value='/Home'/>">
-                    <img src="<c:url value='/img/home_icon_google.png'/>" alt="Home" class="nav-icon"/>
-                </a>
-                <%-- Changed: wrapped site name in a span for font styling --%>
-                <h1><span class="site-title">LearnIt-Guide</span></h1>
+                <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
             </div>
 
             <div class="navEnd">
                 <a href="software.html">Software</a>
-                <a href="#">Tools</a>
                 <c:choose>
                     <c:when test="${not empty username}">
                         <a id="button" href="<c:url value='/logout'/>">Logout (${username})</a>
@@ -56,7 +51,7 @@
 
     <%-- Changed: removed <marquee> (deprecated HTML tag). Using a plain div instead --%>
     <div class="warning">
-        <p>&#9888; Warning messages will be displayed here. This is home.jsp</p>
+        <p>&#9888; Your learning page is still upgrading to give you a better learning experience.</p>
     </div>
 
     <%-- Changed: renamed class from no class to "body-grid" — 3-column layout wrapper --%>
@@ -66,52 +61,15 @@
         <aside class="menu" id="sideMenu">
             <h5>Learning Sections</h5>
             <ul class="menu-list1">
-                <li><a href="<c:url value='/Linux/linuxbasic/intro'/>"><i class="fa-brands fa-linux"></i> Linux</a></li>
-                <li><a href="<c:url value='/sql/sqlbasic/intro'/>"><i class="fa-solid fa-database"></i> SQL</a></li>
-                <li><a href="#"><i class="fa-brands fa-github"></i> GitHub</a></li>
-                <li><a href="#"><i class="fa-solid fa-ticket"></i> Jira Tool</a></li>
-                <li><a href="#"><i class="fa-solid fa-file-code"></i> Notepad++</a></li>
-                <li><a href="#"><i class="fa-brands fa-java"></i> Java</a></li>
-                <li><a href="#"><i class="fa-solid fa-server"></i> VMware</a></li>
-                <li><a href="#"><i class="fa-solid fa-globe"></i> Website Creation</a></li>
-                <li><a href="<c:url value='/kids/kidsbasic/intro'/>"><i class="fa-solid fa-graduation-cap"></i> Kids Section</a></li>
+                <c:forEach var="item" items="${sideBarMenu}">
+                <li><a href="<c:url value='${item.page}'/>"><i class="${item.icon}"></i> ${item.title}</a></li>
+				</c:forEach>
             </ul>
         </aside>
 
         <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
         <main class="main-content">
-            <section class="welcome_note">
-                <p>Welcome to LearnIt-Guide! <strong>${username}</strong></p>
                 <jsp:include page="${contentPage}"/>
-            </section>
-
-            <%-- Static welcome content block - replace or extend with dynamic content --%>
-            <section class="intro-block">
-                <h2>Why LearnIt-Guide?</h2>
-                <p>
-                    The tech industry moves fast. Whether you're just starting out or switching careers,
-                    knowing <em>which</em> tools to learn — and in what order — is half the battle.
-                    This site distills 6+ years of real corporate experience into beginner-friendly guides
-                    so you don't have to figure it out alone.
-                </p>
-                <p>
-                    Bookmark this page. Come back as you grow. Every section is written with one goal:
-                    to give you the foundational understanding that employers actually expect on day one.
-                </p>
-
-                <div class="skill-cards">
-                    <div class="card"><i class="fa-brands fa-linux"></i><span>Linux</span></div>
-                    <div class="card"><i class="fa-solid fa-database"></i><span>SQL</span></div>
-                    <div class="card"><i class="fa-brands fa-github"></i><span>GitHub</span></div>
-                    <div class="card"><i class="fa-solid fa-ticket"></i><span>Jira</span></div>
-                    <div class="card"><i class="fa-brands fa-java"></i><span>Java</span></div>
-                    <div class="card"><i class="fa-solid fa-server"></i><span>VMware</span></div>
-                    <div class="card"><i class="fa-solid fa-globe"></i><span>Web Dev</span></div>
-                    <div class="card"><i class="fa-solid fa-file-code"></i><span>Notepad++</span></div>
-                    <div class="card"><i class="fa-solid fa-robot"></i><span>AI agent</span></div>
-                    <div class="card"><i class="fa-solid fa-graduation-cap"></i><span>Kids Education</span></div>
-                </div>
-            </section>
         </main>
 
         <%-- ===== COLUMN 3: ADS ===== --%>
@@ -133,9 +91,8 @@
         <div class="footerNav">
             <ul>
                 <li><a href="<c:url value='/Home'/>">Home</a></li>
-                <li><a href="#">Technology News</a></li>
                 <li><a href="<c:url value='/kids/kidsbasic/intro'/>">Kids Section</a></li>
-                <li><a href="#">About / whoami</a></li>
+                <li><a href="<c:url value='/Home/author/aboutme'/>">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
             </ul>
         </div>

@@ -1,0 +1,18 @@
+[
+  {
+    "title": "Linux",
+    "icon": "fa-brands fa-linux",
+    "page": "/Linux/linuxbasic/intro"
+  },
+  {
+    "title": "SQL",
+    "icon": "fa-solid fa-database",
+    "page": "/sql/sqlbasic/intro"
+  }
+  ,
+  {
+    "title": "Kids Section",
+    "icon": "fa-solid fa-graduation-cap",
+    "page": "/kids/kidsbasic/intro"
+  }
+]

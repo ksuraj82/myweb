@@ -8,7 +8,7 @@
     <title>LearnIt-Guide</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/linux.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/kids.css'/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
@@ -50,7 +50,7 @@
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
     <div class="menu">
-        <h5>SQL basic</h5><hr>
+        <h5>Kids basic</h5><hr>
 			<div class="menu-list">
 				<%-- <ul>
 					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>

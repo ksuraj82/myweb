@@ -35,7 +35,7 @@ public class Kids extends HttpServlet {
 		
 		
 		/*This is to create the json file for menuItem to show under the linux page*/
-		InputStream is = getClass().getClassLoader().getResourceAsStream("/sql/sql_menu.json");
+		InputStream is = getClass().getClassLoader().getResourceAsStream("/kids/kids_menu.json");
 		System.out.println("the inputstream contains"+ is.toString());
 		if(is != null) {
 			ObjectMapper mapper = new ObjectMapper();
@@ -67,7 +67,7 @@ public class Kids extends HttpServlet {
 				
 			
 		}catch(Exception e) {
-			String initialPagePath = "/WEB-INF/views/kids/sqlbasic_content_intro.html";
+			String initialPagePath = "/WEB-INF/views/kids/kidsbasic_content_intro.html";
 			request.setAttribute("contentPage", initialPagePath);
 	        
 		}
