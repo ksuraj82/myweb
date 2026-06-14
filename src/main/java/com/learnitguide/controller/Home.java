@@ -31,13 +31,13 @@ public class Home extends HttpServlet {
 		
 		/*This is to create the json file for menuItem to show under the linux page*/
 		InputStream is = getClass().getClassLoader().getResourceAsStream("/userhome/userhome_menu.json");
-		System.out.println("the inputstream contains"+ is.toString());
+//		System.out.println("the inputstream contains"+ is.toString());
 		if(is != null) {
 			ObjectMapper mapper = new ObjectMapper();
 			
 			List<MenuItem> sideBarMenu = mapper.readValue(is, new TypeReference<List<MenuItem>>(){});
 			
-			System.out.println("this is sidebarmenu details"+ sideBarMenu);
+//			System.out.println("this is sidebarmenu details"+ sideBarMenu);
 			
 			request.setAttribute("sideBarMenu", sideBarMenu);
 			
@@ -55,7 +55,7 @@ public class Home extends HttpServlet {
 		String section = request.getAttribute("webpage").toString().split("/")[1];
         String page = request.getAttribute("webpage").toString().split("/")[2];
 
-        System.out.println("value of linux is : " + section + " page is " + page);
+//        System.out.println("value of linux is : " + section + " page is " + page);
 
         String initialPagePath = "/WEB-INF/views/home/"+section+"_content_"+page+".html";
         request.setAttribute("contentPage", initialPagePath);

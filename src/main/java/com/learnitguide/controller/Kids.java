@@ -36,13 +36,13 @@ public class Kids extends HttpServlet {
 		
 		/*This is to create the json file for menuItem to show under the linux page*/
 		InputStream is = getClass().getClassLoader().getResourceAsStream("/kids/kids_menu.json");
-		System.out.println("the inputstream contains"+ is.toString());
+//		System.out.println("the inputstream contains"+ is.toString());
 		if(is != null) {
 			ObjectMapper mapper = new ObjectMapper();
 			
 			List<MenuItem> sideBarMenu = mapper.readValue(is, new TypeReference<List<MenuItem>>(){});
 			
-			System.out.println("this is sidebarmenu details"+ sideBarMenu);
+//			System.out.println("this is sidebarmenu details"+ sideBarMenu);
 			
 			request.setAttribute("sideBarMenu", sideBarMenu);
 			
@@ -52,14 +52,14 @@ public class Kids extends HttpServlet {
 		try {
 			
 			String webpage = (request.getAttribute("webpage") != null) ? request.getAttribute("webpage").toString(): request.getServletPath();
-			System.out.println("this is webpage value on the Kids controller: " + webpage);
+//			System.out.println("this is webpage value on the Kids controller: " + webpage);
 			String[] urlpart = webpage.split("/");
 			
 			if(urlpart.length == 3) {
 				String section = webpage.split("/")[1];
 		        String page = webpage.split("/")[2];
 			
-		        System.out.println("Page path created for SQL is : " + section + " page is " + page);
+//		        System.out.println("Page path created for SQL is : " + section + " page is " + page);
 
 		        String initialPagePath = "/WEB-INF/views/kids/"+section+"_content_"+page+".html";
 		        request.setAttribute("contentPage", initialPagePath);
