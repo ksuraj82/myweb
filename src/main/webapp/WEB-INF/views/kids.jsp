@@ -19,31 +19,42 @@
 <body>
 
 <div class= "container">
+
+
+<!-- ############################################This is Header of the page ################################# -->
     <%-- ===== HEADER ===== --%>
-    <header>
-        <nav>
-            <div class="navStart">
-            <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
-            </div>
-            
-            <div class="navEnd">
-            <a href="software.html">Software</a>
-            <c:choose>
-    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-    <c:when test="${not empty username}">
-        <a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
-    </c:when>
-    <c:otherwise>
-        <a id="login-button" href="<c:url value='/login'/>">Log in</a>
-    </c:otherwise>
-</c:choose>
-            </div>
-        </nav>
-    </header>
-    
-    <div class="warning">
+		<header>
+			<nav>
+				<div class="navStart">
+					<a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
+				</div>
+
+				<div class="navEnd">
+					<a href="software.html">Software</a>
+					<c:choose>
+						<%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
+						<c:when test="${not empty username}">
+							<a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
+						</c:when>
+						<c:otherwise>
+							<a id="login-button" href="<c:url value='/login'/>">Log in</a>
+						</c:otherwise>
+					</c:choose>
+				</div>
+			</nav>
+		</header>
+
+		<div class="warning">
     	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
     </div>
+    
+    
+    
+
+
+
+
+<!-- ############################################This is out main content of the page: with menu, body and advertisement ################################# -->
 	
 	    <%-- Changed: renamed class from no class to "body-grid" â 3-column layout wrapper --%>
     <div class="body-grid">
@@ -73,6 +84,7 @@
 		    <div class="page-nav">
     <button class="page-prev"> < Previous Page</button>
     <button class="page-next">Next page></button>
+    <audio id="ttsAudioPlayer" style="display:none;"></audio>
     </div>
 	</main>
 
@@ -84,6 +96,11 @@
 
         
        </div><%-- end body-grid --%>         
+       
+       
+       
+       
+<!-- ############################################This is out Footer for the page################################# -->
             
     <footer>
         

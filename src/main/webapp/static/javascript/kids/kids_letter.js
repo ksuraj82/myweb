@@ -15,7 +15,7 @@ function speakPhrase(phraseText,event) {
 	    }
 
     const urlParam = encodeURIComponent(phraseText);
-    const servletEndpoint = `/myweb/generateAudio?phrase=${urlParam}`;
+    const servletEndpoint = `/generateAudio?phrase=${urlParam}`;
     
     const audioNode = document.getElementById("ttsAudioPlayer");
 

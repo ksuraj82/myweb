@@ -68,7 +68,7 @@ body{
 .container {
     display: grid;
     /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
-    width: 95%;
+    width:95%;
     max-width: 75%; 
     min-height: 100vh;
 /*     margin: 0px auto; */
@@ -250,7 +250,7 @@ header nav div.navEnd a:hover{
 /*     max-width: 100%; */
     align-self: start; 
     color: white;
-    min-width: 150px;
+    max-width: 250px;
     font-size:1em;
 
   /* Modern browsers */
@@ -782,41 +782,31 @@ footer {
 
 
 
+
+/*Below media quieries are written for the mobile and tablet screen for the kids screen.*/
+
 /* This media queries goes from top to bottom.So if the max-width is changed to min-width then the last media tag will execute. */
 
 /* 2. TABLET VIEW (Apply these only when the screen is wide) */
 @media (max-width: 900px) {
-    .body-grid {
-/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
-        grid-template-columns: 1fr;
-    }
-    
-.menu, .content, .adds {
-	/*Everyone gets their own row on mobile*/
-    grid-column: 1 / -1; 
-    /*Disables 'sticky' on mobile to prevent overlapping */
-      position: static;    
-      display:grid;
-      grid-template-columns:1fr; 
-      grid-template-rows: auto;
-}
-
-
-footer {
-    grid-column: 1 / -1;
-/*     Prevents footer from floating over content */
-    position: static;     
-    padding: 20px 0;
-    bottom: 0px;
+.container {
     display: grid;
-}
+    width:100%;
+    max-width: 100%; 
+    max-height:200px;;
+/*     margin: 0px auto; */
+    justify-self:center;
+    font-size:1em;
+    
+    /* 2. Simplified Rows */
+    grid-template-rows: auto auto 1fr auto; 
+    margin:10px;
+    padding:0px;
+    gap:5px;
+    
+    
 
 }
-
-
-/* 2. MOBILE VIEW (Apply these only when the screen is wide) */
-@media (max-width: 300px) {
-	
 	
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
@@ -826,9 +816,48 @@ footer {
         position: static;
         display: grid;
         width: 100%;
-    padding: 10px;
+    margin:0px;
+    padding:0px;
+
     gap: 1.5rem;
     }
+    
+
+header nav {
+	display:grid;
+	grid-template-columns: 1fr;
+	grid-template-rows:auto;
+	min-height: 200px;
+	  position: relative;
+	  top:0px;
+	
+}
+
+header nav div{
+	grid-column:1/-1;
+	width:100%;
+}
+
+
+.site-title{
+	max-width:100%;
+	height:auto;
+}
+
+.warning{
+	background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
+    text-align: center;
+    position:relative;
+    border-radius:0px;
+    top:0px;
+    z-index: -1;
+    
+}
+ 
     
     
 /*     Fix the overlapping Advertisement and Footer */
@@ -840,9 +869,63 @@ footer {
       display:grid;
       grid-template-columns:1fr; 
       grid-template-rows: auto;
+      max-width:100%;
+      width:100%;
+      padding: 0px;
+      margin:0px;
+      min-height:100px;
 }
 
+
+/*This is related to image content one the kids page######*/
+
+.kidsbasic {
+    /* 1. Limit width: Long lines are hard to read */
+    max-width: 100%; 
+    margin: 0px;    /* Centers the content block */
+    
+    /* 2. Spacing between lines */
+    line-height: 1.7; 
+    
+    /* 3. Text color & font */
+    color: #e0e0e0; 
+    font-family: sans-serif;
+    
+    display:grid;
+    grid-template-columns: repeat(1fr, auto);
+    max-width:100%;
+    gap:10px;
+    padding:0px;
+
+}
+
+
+/*The letter_img is for image page*/
+
+.letter_img {
+	max-width:100%;
+	height:auto;
+	background-color:white;
+}
+
+.letter_img img{
+	max-width:100%;
+	height:auto;
+object-fit:cover;
+}
+
+/*This is related to image content one the kids page######*/
+
+
+
+
+/*This is related to footer of the kids page######*/
+
 footer {
+	display:grid;
+	grid-template-columns:1fr;
+	width:100%;
+	max-width:100%;
     grid-column: 1 / -1;
 /*     Prevents footer from floating over content */
     position: static;     
@@ -850,5 +933,178 @@ footer {
     bottom: 0px;
     display: grid;
 }
+
+.footerNav ul {
+	display:grid;
+	grid-template-columns:1fr;
+	grid-template-rows: auto;
+	grid-column:1/-1;
+	width:100%;
+	height:auto;
+	margin:5px;
 }
+
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/* 2. MOBILE VIEW (Apply these only when the screen is wide) */
+@media (max-width: 560px) {
+	
+	
+.container {
+    display: grid;
+    width:100%;
+    max-width: 100%; 
+    max-height:200px;;
+/*     margin: 0px auto; */
+    justify-self:center;
+    font-size:1em;
+    
+    /* 2. Simplified Rows */
+    grid-template-rows: auto auto 1fr auto; 
+    margin:10px;
+    padding:0px;
+    gap:5px;
+    
+    
+
+}
+	
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+/*          grid-template-columns: auto auto  1fr;  */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        position: static;
+        display: grid;
+        width: 100%;
+    margin:0px;
+    padding:0px;
+
+    gap: 1.5rem;
+    }
+    
+
+header nav {
+	display:grid;
+	grid-template-columns: 1fr;
+	grid-template-rows:auto;
+	min-height: 200px;
+	  position: relative;
+	  top:0px;
+	
+}
+
+header nav div{
+	grid-column:1/-1;
+	width:100%;
+}
+
+
+.site-title{
+	max-width:100%;
+	height:auto;
+}
+
+.warning{
+	background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
+    text-align: center;
+    position:relative;
+    border-radius:0px;
+    top:0px;
+    z-index: -1;
+    
+}
+ 
+    
+    
+/*     Fix the overlapping Advertisement and Footer */
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+      max-width:100%;
+      width:100%;
+      padding: 0px;
+      margin:0px;
+      min-height:100px;
+}
+
+
+/*This is related to image content one the kids page######*/
+
+.kidsbasic {
+    /* 1. Limit width: Long lines are hard to read */
+    max-width: 100%; 
+    margin: 0px;    /* Centers the content block */
+    
+    /* 2. Spacing between lines */
+    line-height: 1.7; 
+    
+    /* 3. Text color & font */
+    color: #e0e0e0; 
+    font-family: sans-serif;
+    
+    display:grid;
+    grid-template-columns: 1fr;
+    max-width:100%;
+    gap:10px;
+    padding:0px;
+
+}
+
+
+/*The letter_img is for image page*/
+
+.letter_img {
+	max-width:100%;
+	height:auto;
+	background-color:white;
+}
+
+.letter_img img{
+	max-width:100%;
+	height:auto;
+object-fit:cover;
+}
+
+/*This is related to image content one the kids page######*/
+
+
+
+
+/*This is related to footer of the kids page######*/
+
+footer {
+	display:grid;
+	grid-template-columns:1fr;
+	width:100%;
+	max-width:100%;
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
+.footerNav ul {
+	display:grid;
+	grid-template-columns:1fr;
+	grid-template-rows: auto;
+	grid-column:1/-1;
+	width:100%;
+	height:auto;
+	margin:5px;
+}
+
+} /*the end of the mediaquiries for mobile screen*/
 

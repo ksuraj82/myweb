@@ -62,4 +62,12 @@
   	<servlet-name>kids</servlet-name>
   	<url-pattern>/kids/*</url-pattern>
   </servlet-mapping>
+      <servlet>
+  	<servlet-name>generateAudio</servlet-name>
+  	<servlet-class>com.learnitguide.controller.GenerateAudioServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>generateAudio</servlet-name>
+  	<url-pattern>/generateAudio/*</url-pattern>
+  </servlet-mapping>
 </web-app>
