@@ -58,12 +58,11 @@
 				<%-- <ul>
 					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
 				</ul> --%>
+				<ul>
 				<c:forEach var="item" items="${sideBarMenu}">
-					<ul>
 					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</ul>
 				</c:forEach>
-				
+				</ul>
 			</div>
 
 

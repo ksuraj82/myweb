@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Kids Introduction",
+    "icon": "fa-solid fa-house",
+    "page": "/kids/kidsbasic/intro"
+  },
+  {
+    "title": "English Letter",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/1"
+  },
+  {
+    "title": "Word",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/2"
+  },
+  {
+    "title": "Addition",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/3"
+  },
+  {
+    "title": "Subtraction",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/4"
+  },
+  {
+    "title": "Multiplication",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/5"
+  },
+  {
+    "title": "Divide",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/6"
+  },
+  {
+    "title": "Math Magic",
+    "icon": "fa-solid fa-box",
+    "page": "/kids/kidsbasic/7"
+  }
+]
