@@ -27,9 +27,7 @@ public class DBConnection {
 	        throw new SQLException("PostgreSQL Driver not found!", e);
 	    }
      return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);
-//	 Context initCtx = new InitialContext();
-//     DataSource ds = (DataSource) initCtx.lookup("java:comp/env/jdbc/webuserDB");
-//     return ds.getConnection();
+
  }
  
 }

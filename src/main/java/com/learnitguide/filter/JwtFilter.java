@@ -9,7 +9,13 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.http.Cookie;
 import com.learnitguide.util.JwtUtil;
 import java.util.Calendar;
@@ -27,6 +33,49 @@ public class JwtFilter implements Filter {
 		 
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
+		
+		// 1. Correct way to open the InputStream
+		InputStream is = getClass().getClassLoader().getResourceAsStream("application.properties");
+
+		if (is != null) {
+		    // 2. Wrap InputStream -> InputStreamReader -> BufferedReader (Using standard UTF-8 encoding)
+		    try (BufferedReader buffline = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+		        
+		        String line;
+		        
+		        // 3. Correct loop syntax for readLine() (It does not take arguments inside the brackets)
+		        while ((line = buffline.readLine()) != null) {
+		            
+		            // 4. Clean up whitespace and skip empty lines
+		            line = line.trim();
+		            
+		            // 5. Ensure the line contains your key and an '=' symbol before splitting
+		            if (line.contains("com.learnit.guide.isundermaintenance=")) {
+		                
+		                // Split into 2 parts around the '=' sign
+		                String[] parts = line.split("=", 2);
+		                String value = parts[1].trim(); // Gets the right-hand side value
+		                
+		                // 6. Use .equals() for string comparison instead of '=' assignment
+		                if ("true".equals(value)) {
+		                    // 7. Standard Servlets use sendRedirect on the response object
+		                	if (req.getServletPath().endsWith("/maintenance.html")) {
+		                        chain.doFilter(request, response);
+		                        return;
+		                    }
+		                    
+		                    // Otherwise, redirect them away from index.jsp to the maintenance page
+		                    res.sendRedirect(req.getContextPath() + "/maintenance.html");
+		                    return; 
+		                }
+		            }
+		        }
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		} else {
+		    System.out.println("Error: application.properties file not found on the classpath!");
+		}
 		
 		
 		String year = Calendar.getInstance().get(Calendar.YEAR)+"";
