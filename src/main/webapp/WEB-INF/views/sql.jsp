@@ -8,7 +8,7 @@
     <title>LearnIt-Guide</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/linux.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/sql.css'/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.xyz ${Year}</h4>
+        <h4>&copy; learnit-guide.in ${Year}</h4>
         </div>
     </footer>
             

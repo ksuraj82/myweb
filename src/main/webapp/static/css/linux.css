@@ -69,7 +69,7 @@ body{
     display: grid;
     /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
     width: 95%;
-    max-width: 75%; 
+    max-width: 1280px; 
     min-height: 100vh;
 /*     margin: 0px auto; */
     justify-self:center;
@@ -219,7 +219,7 @@ header nav div.navEnd a:hover{
     padding: 20px;
     display:grid;
 	grid-template-rows:1fr;
-	grid-template-columns: auto 1fr auto;
+	grid-template-columns: 220px 1fr 200px;
 	gap: 20px;
 	word-wrap: break-word;
     overflow-wrap: break-word;
@@ -245,7 +245,7 @@ header nav div.navEnd a:hover{
     border-radius: var(--radius);
     padding: 1rem;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 120px;                /* sticks below the header when scrolling */
 /*     width: 100%;  */
 /*     max-width: 100%; */
     align-self: start; 
@@ -400,8 +400,9 @@ header nav div.navEnd a:hover{
     padding: 1rem;
     color: white;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 120px;                /* sticks below the header when scrolling */
     align-self: start; 
+    visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
 
 }
 
@@ -559,7 +560,7 @@ footer {
 /*         color: purple; */
         height: 30px;
         animation-name: trademark-color;
-        animation-duration: 5s;
+        animation-duration: 10s;
         animation-iteration-count: infinite;
         
         
@@ -567,11 +568,11 @@ footer {
 }
 
 @keyframes trademark-color {
-	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
-	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
-	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
-	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
-	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
 }
 
 

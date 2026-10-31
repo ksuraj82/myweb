@@ -28,6 +28,9 @@ and open the template in the editor.
     --clr-nav-menu-list: #3267e3;
     --clr-main-content: #ecffe8;
     --clr-main-content-higlight: #2fff00;
+    --clr-main-article-section : #58A6FF;
+    --clr-main-header: #00FF2A;
+        --ads-visibility : hidden;
 
     /* Typography */
     --font-title: 'Orbitron', monospace;     /* site name          */
@@ -67,9 +70,8 @@ body{
 
 .container {
     display: grid;
-    /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
-    width: 95%;
-    max-width: 75%; 
+    /* 1. Use 95% on small screens, but max-width for desktop (the "80%" look) */
+    max-width: 80%; 
     min-height: 100vh;
 /*     margin: 0px auto; */
     justify-self:center;
@@ -327,18 +329,48 @@ header nav div.navEnd a:hover{
     	border-left: 4px solid var(--clr-accent);
 }
 
-/* .welcome_note{ */
-/*     box-sizing:border-box; */
-/*     padding : 20px; */
+
+
+
+.article-section-header {
+	padding: 5px;
+	align-self: center;
+	justify-self: center;
+	font-size: 1.6em;
+	border-bottom : 2px solid var(--clr-main-header);
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+
+
+.article-section{
+	max-width: 90%;
+	min-height: 100px;
+	border-left: 2px solid var(--clr-main-article-section);
+	border-bottom: 2px solid var(--clr-main-article-section);
+	padding: 5px;
+	line-height: 1.7em;
+	
+	
+	overflow-wrap: break-word;
     
-/* } */
+    /* Properties to restrict text to a specific number of lines with an ellipsis */
+/*     display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5; Limits the text to 3 lines (adjust this number to fit your 100px height goal)
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
 
-/* .welcome_note ul { */
-/* 	    list-style-position: outside; */
-/*     padding-left: 20px; Gives room for the bullet */
-/* } */
 
-.linuxbasic {
+
+
+
+/* ===================this is the article loaded content============================ */
+
+
+.article-card {
     /* 1. Limit width: Long lines are hard to read */
     max-width: 800px; 
     margin: 0 auto;    /* Centers the content block */
@@ -351,43 +383,7 @@ header nav div.navEnd a:hover{
     font-family: sans-serif;
 }
 
-.linuxbasic ol{
-	    list-style-position: outside;
-    padding-left: 20px; /* Gives room for the bullet */
-}
 
-/* Add space between every paragraph and list item */
-.linuxbasic p, 
-.linuxbasic ol li {
-    margin-bottom: 20px; 
-}
-
-/* Make headers stand out */
-.linuxbasic h1 {
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-/* Space out the list items specifically */
-.linuxbasic ol li {
-    padding-left: 10px;
-}
-
-.linuxbasic a {
-    color: #66b3ff; /* Lighter blue */
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.linuxbasic a:hover {
-    color: #99ccff;
-}
-
-
-
-.highlight  {
-	color : var(--clr-main-content-higlight);
-}
 
 
 
@@ -402,6 +398,7 @@ header nav div.navEnd a:hover{
     position: sticky;
     top: 140px;                /* sticks below the header when scrolling */
     align-self: start; 
+        visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
 
 }
 
@@ -559,7 +556,7 @@ footer {
 /*         color: purple; */
         height: 30px;
         animation-name: trademark-color;
-        animation-duration: 5s;
+        animation-duration: 10s;
         animation-iteration-count: infinite;
         
         
@@ -567,11 +564,11 @@ footer {
 }
 
 @keyframes trademark-color {
-	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
-	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
-	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
-	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
-	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
 }
 
 

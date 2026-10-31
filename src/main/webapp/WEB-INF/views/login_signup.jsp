@@ -31,27 +31,35 @@
 	<div class="container">
 		
 		<header>
-			<span class="material-symbols-outlined">local_library</span>
-			<div class="website-title">
-			<h1>LearnIt-Guide</h1>
-			<h4>Learning is fun!</h4>
-			</div>
-			<div class="bulb-container">
-    <div class="bulb"><i class="fa-solid fa-lightbulb" style="color: #FFD43B; font-size: 40px;"></i></div>
-</div>
+
+				<h2>Learnit <b style="color:blue">Guide</b></h2><br>
+				<div class="nav-button">
+				<button class="nav-login">Login</button>
+				<button class="nav-signup">Signup</button>
+				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
+				</div>
 		</header>
 		
+		<main class="main-content">
+		
+		<section class="main-left-content">
+		<div class="main-left-content-info">
+		<h1>Learnit <br><b>Guide</b></h1>
+		<p>A learning platform built <br>for every age - from curious <br>young minds to lifelong learners. <br>Pick up skills, earn badges, <br>and grow a little smarter every day.</p>
+		</div>
+		</section>
 		
 <!-- This is form for both login and signup -->
+		<section class="main-right-content">
 		<div class="login_signup">
+		
 		
 <!-- this is for login method start-->
 			<form action="Login" method="post" id="login">
 				<h1>Login</h1>
-				<input type="text" name="username" placeholder="Enter your username"
-					required /> <input type="password" name="password"
-					placeholder="Enter your password" required />
-				<button class="submitButton" form="login" type="submit">Login</button>
+				<input type="text" name="username" placeholder="Enter your username" required /> 
+				<input type="password" name="password" placeholder="Enter your password" required />
+				<button class="login-submitButton" form="login" type="submit">Login</button>
 				<h4>
 					Don't have an account?
 					<button type="button" class="swap-login" onclick="login()">Signup</button>
@@ -63,13 +71,12 @@
 <!-- This is for signup method -->
 			<form action="Signup" method="post" id="signup">
 				<h1>New User!</h1>
-
 				<input type="text" id="username" name="username" placeholder="Create a username" required /> 
-				<input type="text" id="webname" name="webname" placeholder="Create a nickname" required />
+<!-- 				<input type="text" id="webname" name="webname" placeholder="Create a nickname" required /> -->
 				<input type="email"	id="email" name="email" placeholder="Enter your email" required />
 				<input type="password" id="password" name="password" placeholder="Create your password" required /> 
 				<input type="text" id="pass2" name="pass2" placeholder="Confirm Password" required />
-				<button class="submitButton" type="submit">Sign Up</button>
+				<button class="signup-submitButton" type="submit">Sign Up</button>
 
 				<h4>
 					Already have an account?
@@ -78,9 +85,10 @@
 				<h3 class="errormessage">${message}</h3>
 
 			</form>
-		</div>             
+		</div>
+		</section>             
 <!-- This is login_signup end -->
-		
+		</main>
 
 		
 <!-- This is footer start -->
@@ -94,7 +102,7 @@
 					<li><a href="">Contact Us</a></li>
 				</ul>
 			</div>
-				<h4>&copy; Learnit-Guide.edu ${Year}</h4>
+				<h4>&copy; Learnit-guide.in ${Year}</h4>
 		</footer> 
 <!-- This is footer end -->
 

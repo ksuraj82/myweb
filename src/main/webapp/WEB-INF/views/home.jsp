@@ -108,7 +108,7 @@
         <div class="footerBottom">
             <jsp:useBean id="now" class="java.util.Date" />
             <%-- Changed: updated domain to learnit-guide.xyz as per spec --%>
-            <h4>&copy; learnit-guide.xyz <fmt:formatDate value="${now}" pattern="yyyy"/></h4>
+            <h4>&copy; learnit-guide.in <fmt:formatDate value="${now}" pattern="yyyy"/></h4>
         </div>
     </footer>
 

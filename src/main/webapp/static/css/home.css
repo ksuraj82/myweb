@@ -34,6 +34,7 @@
 
     --font-title: 'Orbitron', monospace;
     --font-body:  'Noto Sans Mono', monospace;
+        --ads-visibility : hidden;
 
     --gap:    1.5rem;
     --radius: 8px;
@@ -67,6 +68,7 @@ a {
     color: var(--clr-accent);
     text-decoration: none;
 }
+
 a:hover {
     text-decoration: underline;
     color: #79c0ff;
@@ -462,6 +464,7 @@ nav {
     grid-template-rows: auto auto auto;
     gap: 1rem;
     align-content: start;
+        visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
 }
 
 .ads h5 {
@@ -574,6 +577,17 @@ footer {
     color: var(--clr-text-muted);
     font-size: 0.8rem;
     font-weight: normal;
+    animation-name: trademark-color;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+}
+
+@keyframes trademark-color {
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
 }
 
 

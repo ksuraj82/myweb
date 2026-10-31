@@ -124,7 +124,7 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.xyz ${Year}</h4>
+        <h4>&copy; learnit-guide.in ${Year}</h4>
         </div>
     </footer>
             

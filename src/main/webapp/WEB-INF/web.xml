@@ -70,4 +70,23 @@
   	<servlet-name>generateAudio</servlet-name>
   	<url-pattern>/generateAudio/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReviewArticleServlet</servlet-name>
+    <servlet-class>com.learnitguide.controller.ReviewArticleServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ReviewArticleServlet</servlet-name>
+    <url-pattern>/admin/review</url-pattern>
+</servlet-mapping>
+ 
+<servlet>
+    <servlet-name>ApproveArticleServlet</servlet-name>
+    <servlet-class>com.learnitguide.controller.ApproveArticleServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>ApproveArticleServlet</servlet-name>
+    <url-pattern>/admin/approve</url-pattern>
+</servlet-mapping>
+
 </web-app>

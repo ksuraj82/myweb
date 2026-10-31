@@ -80,6 +80,8 @@ public class JwtFilter implements Filter {
 		
 		String year = Calendar.getInstance().get(Calendar.YEAR)+"";
 		request.setAttribute("Year", year);
+
+		
 		
 		String path = req.getServletPath();
 //		System.out.println("jwtfilter file: getServletPath" + path);
@@ -97,7 +99,7 @@ public class JwtFilter implements Filter {
 		// 1. ALLOW PUBLIC ACCESS: Don't check for token for these paths
         boolean isStaticAsset = path.startsWith("/static") || path.startsWith("/img");
         boolean isLoginPage = path.equals("/Login") || path.equals("/Signup");
-        boolean isRoot = path.equals("/") || path.equals("/index.jsp");
+        boolean isRoot = path.equals("/") || path.equals("/index.jsp") || path.endsWith("html");
 
         if (isStaticAsset || isLoginPage || isRoot) {
             chain.doFilter(request, response); // Green Light!

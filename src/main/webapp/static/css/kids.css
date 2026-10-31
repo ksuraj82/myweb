@@ -28,10 +28,18 @@ and open the template in the editor.
     --clr-nav-menu-list: #3267e3;
     --clr-main-content: #ecffe8;
     --clr-main-content-higlight: #2fff00;
+    --ads-visibility : hidden;
 
     /* Typography */
     --font-title: 'Orbitron', monospace;     /* site name          */
     --font-body:  'Noto Sans Mono', monospace; /* everything else  */
+/*  --header-font: ; 
+	--menu-header-font:
+	--menu-list-font:
+	--main-content-font:
+	--footer-nav-font:
+	--footer-copyright-font:
+*/
 
     /* Spacing */
     --gap:    1.5rem;
@@ -52,7 +60,7 @@ and open the template in the editor.
 }
 
 html {
-    font-size: 16px;          /* 1rem = 16px; zoom in/out scales everything */
+    font-size: 1rem;          /* 1rem = 16px; zoom in/out scales everything */
     scroll-behavior: smooth;
 }
 
@@ -69,21 +77,12 @@ body{
     display: grid;
     /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
     width:95%;
-    max-width: 75%; 
+    max-width: 1280px; 
     min-height: 100vh;
-/*     margin: 0px auto; */
     justify-self:center;
     
     /* 2. Simplified Rows */
-    grid-template-rows: 100px 30px 1fr auto; 
-    grid-template-columns: 1fr;
-    
-/*     grid-gap: 20px; */
-
-    /* 3. The "Responsive Magic" line */
-    /* This creates as many columns as fit (min 280px). 
-       On a phone, it will automatically be 1 column. */
-/*     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    grid-template-rows: auto auto 1fr auto; 
 
 }
 
@@ -189,16 +188,10 @@ header nav div.navEnd a:hover{
 
 
 
-/* .warning{ */
-/*     grid-column: 1/-1; */
-/*     border: 2px solid black; */
-/*     text-align: center; */
-/*     color:red; */
-/*     font-size:20px; */
-/* } */
 
 .warning{
-	    background-color: var(--clr-warning-bg);
+	
+	background-color: var(--clr-warning-bg);
     color: var(--clr-warning-txt);
     padding: 0.5rem var(--gap);
     font-size: 1rem;
@@ -206,7 +199,7 @@ header nav div.navEnd a:hover{
     text-align: center;
     position:sticky;
     border-radius:0px;
-    top:100px;
+    top:81px;
     
 }
 
@@ -216,7 +209,8 @@ header nav div.navEnd a:hover{
 
 .body-grid {
     grid-column: 1/-1;
-    padding: 20px;
+/*     padding: 20px; */
+/* margin : 0px 10px; */
     display:grid;
 	grid-template-rows:1fr;
 	grid-template-columns: auto 1fr auto;
@@ -229,7 +223,7 @@ header nav div.navEnd a:hover{
   font-optical-sizing: auto;
   font-weight: 100;
   font-style: normal;
-  line-height: 1.5em;
+  line-height: 1em;
 }
 
 /* ===================this is the left side menu item */
@@ -245,7 +239,7 @@ header nav div.navEnd a:hover{
     border-radius: var(--radius);
     padding: 1rem;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
+    top: 120px;                /* sticks below the header when scrolling */
 /*     width: 100%;  */
 /*     max-width: 100%; */
     align-self: start; 
@@ -280,8 +274,8 @@ header nav div.navEnd a:hover{
 .menu h5{
     text-align: center;
     font-size: 1.2em;
-    margin-top: 2px;
-    margin-bottom: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color : var (--clr-text-muted);
 }
 
@@ -319,42 +313,30 @@ header nav div.navEnd a:hover{
 
 .body-grid main {
 /* 	  	background-color: black; */
-	  	padding: 10px;
+	  	padding: 5px;
 	  	color: var(--clr-main-content);	
 	  	list-style-position: inside;	        
 	    background-color: var(--clr-surface);
     	border: 1px solid var(--clr-border);
-    	border-left: 4px solid var(--clr-accent);
+    	border-left: 2px solid var(--clr-accent);
 
 
     	
 }
 
-/* .welcome_note{ */
-/*     box-sizing:border-box; */
-/*     padding : 20px; */
-    
-/* } */
-
-/* .welcome_note ul { */
-/* 	    list-style-position: outside; */
-/*     padding-left: 20px; Gives room for the bullet */
-/* } */
-
 
 
 .content {
-	    	    line-height: 1.7em;
+	    	    line-height: 0.5em;
 }
 
 
 .kidsbasic {
     /* 1. Limit width: Long lines are hard to read */
-    max-width: 800px; 
     margin: 0 auto;    /* Centers the content block */
     
     /* 2. Spacing between lines */
-    line-height: 1.7; 
+    line-height: 1em; 
     
     /* 3. Text color & font */
     color: #e0e0e0; 
@@ -372,9 +354,8 @@ header nav div.navEnd a:hover{
 /*This is for addition page*/
 
 
-kidsbasic-addition {
+.kidsbasic-addition {
     /* 1. Limit width: Long lines are hard to read */
-    max-width: 800px; 
     margin: 0 auto;    /* Centers the content block */
     
     /* 2. Spacing between lines */
@@ -551,8 +532,9 @@ object-fit:cover;
     padding: 1rem;
     color: white;
     position: sticky;
-    top: 140px;                /* sticks below the header when scrolling */
-    align-self: start; 
+    top: 120px;                /* sticks below the header when scrolling */
+    align-self: start;
+    visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/ 
 
 }
 
@@ -710,7 +692,7 @@ footer {
 /*         color: purple; */
         height: 30px;
         animation-name: trademark-color;
-        animation-duration: 5s;
+        animation-duration: 10s;
         animation-iteration-count: infinite;
         
         
@@ -718,11 +700,11 @@ footer {
 }
 
 @keyframes trademark-color {
-	0% {color:white;font-size:1rem;text-shadow:2px 0 10px;align-item: center;}
-	25% {color:navy;font-size:1.2rem;text-shadow:2px 0 10px navy;align-item: center;}
-	50% {color:red;font-size:1rem;text-shadow:2px 0 10px red;align-item: center;}
-	75% {color:purple;font-size:1.2rem;text-shadow:2px 0 10px purple;align-item: center;}
-	100% {color:green;font-size:1rem;text-shadow:2px 0 10px var(--clr-main-content-higlight);align-item: center;}
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
 }
 
 

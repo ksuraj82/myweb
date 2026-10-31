@@ -15,4 +15,10 @@
     "icon": "fa-solid fa-graduation-cap",
     "page": "/kids/kidsbasic/intro"
   }
+  ,
+  {
+    "title": "AI Chating",
+    "icon": "fa-solid fa-robot",
+    "page": "/ai/home"
+  }
 ]
