@@ -1,0 +1,557 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 21 Dec, 2020, 9:26:01 PM
+    Author     : KSURA
+*/
+
+
+:root {
+    /* Colours */
+    /*common color*/
+    --clr-blue: #3267e3;
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+    --clr-red:#f50000;
+    
+    /*specific color*/
+    --clr-bg:         #0d1117;   /* dark page background       */
+    --clr-surface:    #161b22;   /* cards, sidebar background  */
+    --clr-border:     #30363d;   /* subtle borders             */
+    --clr-accent:     #58a6ff;   /* links, highlights          */
+    --clr-accent2:    #3fb950;   /* secondary accent (green)   */
+    --clr-text:       #c9d1d9;   /* body text                  */
+    --clr-text-muted: #8b949e;   /* secondary text             */
+    --clr-heading:    #f0f6fc;   /* headings                   */
+    --clr-warning-bg: #2d1b00;
+    --clr-warning-txt:#f0883e;
+    --clr-btn-bg:     #238636;
+    --clr-btn-hover:  #2ea043;
+    --clr-nav-bg:     #010409;
+    --clr-nav-menu: #c9d6ca;
+    --clr-nav-menu-list: #3267e3;
+    --clr-main-content: #ecffe8;
+    --clr-main-content-higlight: #2fff00;
+    --clr-main-article-section : #58A6FF;
+    --clr-main-header: #00FF2A;
+        --ads-visibility : hidden;
+
+    /* Typography */
+    --font-title: 'Orbitron', monospace;     /* site name          */
+    --font-body:  'Noto Sans Mono', monospace; /* everything else  */
+
+    /* Spacing */
+    --gap:    1.5rem;
+    --radius: 8px;
+
+    /* Column widths — used in the grid */
+    --sidebar-w: 220px;
+    --ads-w:     200px;
+}
+
+
+
+*,*::before, *::after{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family:cursive;
+/*     border:1px solid black; */
+}
+
+html {
+    font-size: 16px;          /* 1rem = 16px; zoom in/out scales everything */
+    scroll-behavior: smooth;
+}
+
+
+body{
+	    background-color: var(--clr-white);
+    /*border: 2px solid black;*/
+/*         background-color: white; */
+    border:none;
+}
+
+a{
+		text-decoration:none;
+}
+
+
+.container {
+    display: grid;
+    /* 1. Use 95% on small screens, but max-width for desktop (the "80%" look) */
+    min-width: 100%; 
+    min-height: 100vh;
+
+    justify-self:center;
+    grid-template-rows: 100px 30px 1fr 200px; 
+    grid-template-columns: 1fr;
+
+}
+
+
+/*this is header section*/
+
+header {
+	display: grid;
+	grid-column: 1/-1;
+	gap:10px;
+	grid-template-columns: repeat(3, auto);
+	padding:0 10px;
+	/*border: 2px solid black;*/
+	/*background: linear-gradient(to right, skyblue, purple); */
+	background-color: var(--clr-white);
+	border-bottom: 1px solid var(--clr-border);
+	align-content: center;
+	font-family: "Space Grotesk", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	top: 0px;
+	border-radius: 0px;
+}
+
+
+.website-title{
+	grid-column:1/2;
+	color:var(--clr-blue);
+	font-size:2.5em;
+	font-family:sans-serif;
+	font-weight: 900;
+	justify-items:left;
+}
+
+.webpage-nav{
+	display:grid;
+    grid-column:3/4;
+    gap:10px;
+    /* Two columns: Branding group on left (1fr), Links on right (auto) */
+    grid-template-columns:repeat(3,auto);
+    align-self: center;
+    font-size:1em;
+    font-family:sans-serif;
+    justify-self:right;
+
+}
+
+.webpage-nav-button{
+	border-radius:20px;
+}
+
+.webpage-nav-button a{
+	font-size:1.5em;
+	padding: 5px;
+	color: var(--clr-black);
+	
+}
+
+.nav-ai-buddy{
+	grid-column:4/-1;
+	text-decoration:none;
+	font-size:2em;
+
+}
+
+.warning{
+	    background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
+    text-align: center;
+    position:sticky;
+    border-radius:0px;
+    
+}
+
+
+
+/*================this is the start of body-grid section ======================================*/
+
+.body-grid {
+    grid-column: 1/-1;
+    padding: 20px;
+    display:grid;
+    gap:10px;
+	grid-template-rows:1fr;
+	grid-template-columns: auto 1fr auto;
+	word-wrap: break-word;
+    overflow-wrap: break-word;
+    align-self: start;
+    min-width: 90%; 
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 100;
+  font-style: normal;
+  line-height: 1.5em;
+}
+
+/* ===================this is the left side menu item */
+
+.menu{
+    grid-template-rows: auto;
+    grid-column:1/2;
+    grid-row:1/-1;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    align-self: start; 
+    color: white;
+    font-size:1em;
+  /* Required for table cells and some layouts */
+  word-break: break-word;
+}
+
+
+.menu-list-title{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color : var(--clr-black);
+}
+
+.menu-list ul li{
+	color: var(--clr-blue);
+	grid-template-rows: auto;
+    padding-right: 5px;	    
+    list-style-type: none;    
+}
+
+
+.menu-list ul li a:visited{
+    color: var(--clr-red);
+}
+
+.menu ul li a:hover{
+	
+    color: var(--clr-nav-menu-list);
+    transition: 0.7s;
+
+}
+
+
+
+
+
+
+
+
+/* ===================this is the Main content============================ */
+
+
+
+.content {
+/* 	  	background-color: black; */
+	  	padding: 10px;
+	  	color: var(--clr-black);	
+	  	list-style-position: inside;	        
+    	border-left: 4px solid var(--clr-accent);
+    	gap: var(--gap);
+    	display: grid;
+    	grid-template-rows: auto 1fr;
+    	align-content: start;
+}
+
+
+
+
+.article-section-header {
+	padding: 5px;
+	align-self: center;
+	justify-self: center;
+	font-size: 1.6em;
+	border-bottom : 2px solid var(--clr-main-header);
+	font-weight: bold;
+	margin-bottom: 10px;
+	border-radius: 0px 0px 15px 15px;
+}
+
+
+
+.article-section{
+	min-height: 100px;
+/* 	border-left: 2px solid var(--clr-main-article-section);
+	border-bottom: 2px solid var(--clr-main-article-section); */
+	padding: 5px;
+	line-height: 5px;
+	overflow-wrap: break-word;
+    color: var(--clr-black);	
+}
+
+
+
+
+
+/* ===================this is the article loaded content============================ */
+
+
+.article-card {
+    margin: 0 auto;
+    /* 2. Spacing between lines */
+    line-height: 1.7; 
+    color: var(--clr-black);
+    font-family: sans-serif;
+}
+
+
+
+
+
+/* ===================this is the ads content============================ */
+
+.adds {    
+    background-color: var(--clr-surface);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    color: var(--clr-white);
+    position: sticky;
+    top: 140px;                /* sticks below the header when scrolling */
+    align-self: start; 
+        visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
+
+}
+
+
+
+
+
+
+/* ===================This is for next and previous page button===================*/
+
+.page-nav {
+	display: grid;
+	grid-template-columns: auto auto;
+  gap: 5px;
+  
+}
+
+.page-prev,.page-next{
+	background-color: grey;
+	color: white;
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  padding : 20px;
+  border-radius: 30px;
+  margin: 10px;
+/*   height: 100%; */
+min-width: 50px;
+transition:1s;
+
+}
+
+.page-prev{
+	justify-self: start;
+}
+
+.page-next{
+	justify-self: end;
+}
+
+.page-prev:hover{
+	background-color: red;
+	box-shadow: 15px 0px 20px red;
+	transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+.page-next:hover{
+	background-color: navy;
+		box-shadow: -15px 0px 20px navy;
+		transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
+}
+
+
+
+
+
+
+
+
+/*================this is the start of footer section ======================================*/
+
+footer {
+    grid-column: 1/-1;
+    background-color: var(--clr-nav-bg);
+/*     color: white; */
+    justify-content: center;
+    font-family: sans-serif;
+/*     position: sticky; */
+    display: grid;
+    grid-template-rows: repeat(3,auto);
+    width: 100%;
+    gap:40px;
+    place-items: center;
+    padding : 20px;
+    
+    
+    
+/*     bottom: 0px; */
+}
+
+
+.footerNav ul{
+    display: grid;
+    justify-content: center;
+    list-style: none;
+    grid-template-columns: repeat(4,auto);
+    gap: 20px;
+    grid-template-rows: 1fr;
+    
+}
+
+.footerNav ul li a{
+    color: white;
+    margin: 30px;
+    text-decoration: none;
+    opacity: 0.7;
+    font-size: 1.3em;
+    transition: 0.5;
+}
+
+
+.footerNav ul li a:hover{
+    opacity:1;
+    color: var(--clr-nav-menu-list);
+}
+
+
+
+/*Social media icon*/
+
+.social-icon {
+/*     display: flex; */
+    justify-content: center;
+/*     margin-bottom: 20px; */
+/*     margin-top: 20px; */
+    margin: auto;
+}
+
+.social-icon a{
+    text-decoration: none;
+    background-color: white;
+     padding: 10px; 
+     margin: 10px; 
+    border-radius: 50%;
+}
+
+.social-icon a i{
+    font-size: 1em;
+    color: black;
+    opacity: 0.9;
+}
+
+/* hover effect on media icon */
+
+.social-icon a:hover{
+    background-color: purple;
+    transition: 0.6s;
+}
+
+.social-icon a:hover i{
+    color: white;
+    transition: 0.6s;
+}
+
+
+/*this is for trademark symbol*/
+
+.footerBottom {
+/*         color: purple; */
+        height: 30px;
+        animation-name: trademark-color;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        
+        
+	
+}
+
+@keyframes trademark-color {
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
+}
+
+
+
+/* This media queries goes from top to bottom.So if the max-width is changed to min-width then the last media tag will execute. */
+
+/* 2. TABLET VIEW (Apply these only when the screen is wide) */
+@media (max-width: 900px) {
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+        grid-template-columns: 1fr;
+    }
+    
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
+}
+
+
+/* 2. MOBILE VIEW (Apply these only when the screen is wide) */
+@media (max-width: 300px) {
+	
+	
+    .body-grid {
+/*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
+/*          grid-template-columns: auto auto  1fr;  */
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        position: static;
+        display: grid;
+        width: 100%;
+    padding: 10px;
+    gap: 1.5rem;
+    }
+    
+    
+/*     Fix the overlapping Advertisement and Footer */
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+}
+

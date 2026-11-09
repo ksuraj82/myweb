@@ -24,28 +24,29 @@
 <!-- ############################################This is Header of the page ################################# -->
     <%-- ===== HEADER ===== --%>
 		<header>
-			<nav>
-				<div class="navStart">
-					<a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
-				</div>
+			<h2 class="website-title">Learnit Guide</h2>
 
-				<div class="navEnd">
-					<a href="software.html">Software</a>
-					<c:choose>
-						<%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-						<c:when test="${not empty username}">
-							<a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
-						</c:when>
-						<c:otherwise>
-							<a id="login-button" href="<c:url value='/login'/>">Log in</a>
-						</c:otherwise>
-					</c:choose>
-				</div>
+			<nav class="webpage-nav">
+				<button class="webpage-nav-button">
+					<a href="<c:url value='/'/>">Home</a>
+				</button>
+				<button class="webpage-nav-button">
+					<a href="<c:url value='login_signup.jsp'/>"><c:choose>
+							<c:when test="${not empty username}">
+								<a id="button" href="<c:url value='/logout'/>">Logout
+									(${username})</a>
+							</c:when>
+							<c:otherwise>
+								<a id="button" href="<c:url value='/login'/>">Login</a>
+							</c:otherwise>
+						</c:choose></a>
+				</button>
+				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
 			</nav>
 		</header>
 
 		<div class="warning">
-    	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
+    	<h5>Notice: ${maintenance_message}</h5>
     </div>
     
     
@@ -82,8 +83,8 @@
 
 		<jsp:include page="${contentPage}"/>	
 		    <div class="page-nav">
-    <button class="page-prev"> < Previous Page</button>
-    <button class="page-next">Next page></button>
+    <button class="page-prev"> &lt; Previous Page</button>
+    <button class="page-next">Next page &gt;</button>
     <audio id="ttsAudioPlayer" style="display:none;"></audio>
     </div>
 	</main>
@@ -102,31 +103,8 @@
        
 <!-- ############################################This is out Footer for the page################################# -->
             
-    <footer>
-        
-        
-        <div class="footerNav">
-            <ul>
-                <li><a href="<c:url value='/Home'/>">Home</a></li>
-                <li><a href="">News</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact Us</a></li>                
-            </ul>
-        </div>
-        
-        <div class="social-icon">
-            <a href="https://www.facebook.com"> <i class="fa-brands fa-facebook"></i></a>
-            <a href=""> <i class="fa-brands fa-instagram"></i></a>
-            <a href=""> <i class="fa-brands fa-twitter"></i></a>
-            <a href=""> <i class="fa-brands fa-reddit"></i></a>
-            <a href="https://www.google.com"> <i class="fa-brands fa-google"></i></a>
-            
-        </div>
-        
-        <div class="footerBottom">
-        <h4>&copy; learnit-guide.in ${Year}</h4>
-        </div>
-    </footer>
+            <c:url value="template/footer.html" var="footerContent" />
+			<jsp:include page="${footerContent}" />
             
             
             

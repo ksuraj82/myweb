@@ -31,13 +31,13 @@
 	<div class="container">
 		
 		<header>
-
-				<h2>Learnit <b style="color:blue">Guide</b></h2><br>
-				<div class="nav-button">
-				<button class="nav-login">Login</button>
-				<button class="nav-signup">Signup</button>
+			<h2 class="website-title">Learnit Guide</h2>
+			
+			<nav class="webpage-nav">
+				<button class="webpage-nav-button"><a href="<c:url value='/'/>">Home</a></button>
+				<button class="webpage-nav-button"><a href="<c:url value='login_signup.jsp'/>">Login</a></button>
 				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
-				</div>
+			</nav>
 		</header>
 		
 		<main class="main-content">
@@ -90,20 +90,13 @@
 <!-- This is login_signup end -->
 		</main>
 
-		
+
+
+
 <!-- This is footer start -->
 		
-		<footer> <!--  this grid will work for child element div and h4 -->
-			<div class="footerNav">
-				<ul>
-					<li><a href="<c:url value='/'/>">Home</a></li>        <!--This is child of ul tag -->
-					<li><a href="">News</a></li>
-					<li><a href="">About</a></li>
-					<li><a href="">Contact Us</a></li>
-				</ul>
-			</div>
-				<h4>&copy; Learnit-guide.in ${Year}</h4>
-		</footer> 
+            <c:url value="template/footer.html" var="footerContent" />
+			<jsp:include page="${footerContent}" />
 <!-- This is footer end -->
 
 

@@ -1,3 +1,4 @@
+@import url("master.css");
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -47,8 +48,7 @@ and open the template in the editor.
     display: grid;
     grid-template-columns: 1fr; /* Simplify to one main column */
     grid-template-rows: auto 1fr auto;
-    min-width: 90%;
-    margin: 0px; 
+    min-width: 100%;
     min-height: 100vh;
 	
 }
@@ -60,105 +60,66 @@ and open the template in the editor.
 /* This is header section */
 /* the display is grid with three column to keep the heading in the center. */
 
-header {
+/*this is header section*/
+
+/* header {
 	display: grid;
-	grid-template-columns:1fr auto auto 1fr;
-	grid-template-rows: 1fr;
-    background: var(--clr-bg-header-white);
-    border-radius:0px;
-    min-height: 50px;
-    border-bottom: 1px solid grey;
-    min-width: 25%;
-
-	
-}
-
-header h2{
-    color:var(--clr-font-black);
-	grid-column: 1/2;
-	grid-row: 1/2;
-	font-size:2.6em;
-	align-items: center;
-	margin-left: 50px;
-}
-
-header h2 b{
-    color:var(--clr-font-blue);
+	grid-column: 1/-1;
+	gap:10px;
+	grid-template-columns: repeat(3, auto);
+	padding:0 10px;
+	border: 2px solid black;
+	background: linear-gradient(to right, skyblue, purple);
+	background-color: var(--clr-white);
+	border-bottom: 1px solid var(--clr-border);
+	align-content: center;
+	font-family: "Space Grotesk", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	top: 0px;
+	border-radius: 0px;
 }
 
 
-.nav-button {
+.website-title{
+	grid-column:1/2;
+	color:var(--clr-blue);
+	font-size:2.5em;
+	font-family:sans-serif;
+	font-weight: 900;
+	justify-items:left;
+}
+
+.webpage-nav{
 	display:grid;
-	grid-template-columns:repeat(3,auto);
-	margin-left:300px;
-	align-items: center;
-	gap:30px;
-	grid-column:4/5;
-	grid-row: 1/2;
-	font-size:1.6em;
+    grid-column:3/4;
+    gap:10px;
+    Two columns: Branding group on left (1fr), Links on right (auto)
+    grid-template-columns:repeat(3,auto);
+    align-self: center;
+    font-size:1em;
+    font-family:sans-serif;
+    justify-self:right;
+
 }
 
-.nav-login{
-	font-size:1em;
-	padding: 5px;
-	color: black;
-	border-radius: 20px;
-	width: 100px;
+.webpage-nav-button{
+	border-radius:20px;
 }
 
-.nav-login:hover{
-	font-size:1em;
+.webpage-nav-button a{
+	font-size:1.5em;
 	padding: 5px;
-	color: white;
-	background-color: blue;
-	transition: 1s;
-		border-radius: 20px;
-	width: 100px;
-	
-}
-
-.nav-signup{
-	font-size:1em;
-	padding: 5px;
-	color: black;
-	font-weight: 5px;
-			border-radius: 20px;
-	width: 120px;
-	
-}
-
-.nav-signup:hover{
-	font-size:1em;
-	padding: 5px;
-	color: white;
-	background-color: blue;
-	transition: 1s;
-		border-radius: 20px;
-	width: 120px;
+	color: var(--clr-black);
 	
 }
 
 .nav-ai-buddy{
-	font-size:1em;
-	padding: 5px;
-	color: black;
-	font-weight: 5px;
-	text-decoration: none;
-	font-weight: 700;
-	
-	
-}
+	grid-column:4/-1;
+	text-decoration:none;
+	font-size:2em;
 
-
-.nav-ai-buddy:hover{
-	font-size:1em;
-	padding: 5px;
-	color: blue;
-	font-weight: 5px;
-	text-decoration: none;
-		font-weight: 700;
-	
-}
+} */
 
 
 /* Main content of the login page*/
@@ -168,15 +129,14 @@ header h2 b{
 	display:grid;
 	grid-template-columns:repeat(2,auto);
 	align-items: center;
-	min-height: 720px;
+	min-height: 100vh;
 
 }
 
 
 .main-left-content{
-	justify-items:left;
 	grid-column:1/2;
-	color: white;
+	color: var(--clr-white);
 	min-width: 100%;
 	min-height:100%;
 	background-color: var(--clr-bg-blue);
@@ -184,6 +144,7 @@ header h2 b{
 
 
 .main-left-content-info{
+	
 	justify-self:center;
 	margin-top: 100px;
 	font-weight: 900;
@@ -409,6 +370,7 @@ footer {
     /* 2. Center the grid tracks themselves */
     justify-content: center; 
     border-radius: 0px;
+    border-top:1px solid var(--clr-black);
     /* 3. Center the content inside those tracks */
     justify-items: center; 
     background: var(--clr-bg-white);

@@ -21,60 +21,53 @@
 
 <div class= "container">
     <%-- ===== HEADER ===== --%>
-    <header>
-        <nav>
-            <div class="navStart">
-            <%-- Changed: wrapped site name in a span for font styling --%>
-                <!-- <h1><span class="site-title"></span></h1> -->
-                <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
-            </div>
-            
-            <div class="navEnd">
-            <a href="software.html">Software</a>
-            <c:choose>
-    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-    <c:when test="${not empty username}">
-        <a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
-    </c:when>
-    <c:otherwise>
-        <a id="login-button" href="<c:url value='/login'/>">Log in</a>
-    </c:otherwise>
-</c:choose>
-            </div>
-        </nav>
-    </header>
+		<header>
+			<h2 class="website-title">Learnit Guide</h2>
+
+			<nav class="webpage-nav">
+				<button class="webpage-nav-button">
+					<a href="<c:url value='/'/>">Home</a>
+				</button>
+				<button class="webpage-nav-button">
+					<a href="<c:url value='login_signup.jsp'/>"><c:choose>
+							<c:when test="${not empty username}">
+								<a id="button" href="<c:url value='/logout'/>">Logout
+									(${username})</a>
+							</c:when>
+							<c:otherwise>
+								<a id="button" href="<c:url value='/login'/>">Login</a>
+							</c:otherwise>
+						</c:choose></a>
+				</button>
+				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
+			</nav>
+		</header>
     
     <div class="warning">
-    	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
+    	<h5>Notice: ${maintenance_message}</h5>
     </div>
 	
 	    <%-- Changed: renamed class from no class to "body-grid" â 3-column layout wrapper --%>
     <div class="body-grid">
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
-    <div class="menu">
-        <h5>Linux basic</h5><hr>
-			<div class="menu-list">
-				<%-- <ul>
-					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
-				</ul> --%>
-				<ul>
-				<c:forEach var="item" items="${sideBarMenu}">
-					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</c:forEach>
+			<aside class="menu" id="sideMenu">
+				<h5 class="menu-list-title">Linux Basics</h5>
+				<ul class="menu-list">
+					<c:forEach var="item" items="${sideBarMenu}">
+						<li><a href="<c:url value='${item.page}'/>"><i
+								class="${item.icon}"></i> ${item.title}</a></li>
+					</c:forEach>
 				</ul>
-			</div>
-
-
-		</div>
+			</aside>
 
     <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
     <main>
 
 		<jsp:include page="${contentPage}"/>	
 		    <div class="page-nav">
-    <button id="pageprev" class="page-prev"> < Previous Page</button>
-    <button class="page-next">Next page ></button>
+    <button id="pageprev" class="page-prev"> &lt; Previous Page</button>
+    <button class="page-next">Next page &gt;</button>
     </div>
 	</main>
 
@@ -87,31 +80,8 @@
         
        </div><%-- end body-grid --%>         
             
-    <footer>
-        
-        
-        <div class="footerNav">
-            <ul>
-                <li><a href="<c:url value='/Home'/>">Home</a></li>
-                <li><a href="">News</a></li>
-                <li><a href="">About</a></li>
-                <li><a href="">Contact Us</a></li>                
-            </ul>
-        </div>
-        
-        <div class="social-icon">
-            <a href="https://www.facebook.com"> <i class="fa-brands fa-facebook"></i></a>
-            <a href=""> <i class="fa-brands fa-instagram"></i></a>
-            <a href=""> <i class="fa-brands fa-twitter"></i></a>
-            <a href=""> <i class="fa-brands fa-reddit"></i></a>
-            <a href="https://www.google.com"> <i class="fa-brands fa-google"></i></a>
-            
-        </div>
-        
-        <div class="footerBottom">
-        <h4>&copy; learnit-guide.in ${Year}</h4>
-        </div>
-    </footer>
+            <c:url value="template/footer.html" var="footerContent" />
+			<jsp:include page="${footerContent}" />
             
 </div>
        

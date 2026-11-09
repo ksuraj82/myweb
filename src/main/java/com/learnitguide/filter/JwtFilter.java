@@ -17,8 +17,13 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 import javax.servlet.http.Cookie;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learnitguide.model.MenuItem;
 import com.learnitguide.util.JwtUtil;
 import java.util.Calendar;
+import java.util.List;
 
 @WebFilter("/*")
 public class JwtFilter implements Filter {
@@ -34,6 +39,19 @@ public class JwtFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		HttpServletResponse res = (HttpServletResponse) response;
 		
+		
+		
+		InputStream mainpage_menu = getClass().getClassLoader().getResourceAsStream("public_menu.json");
+//		System.out.println("the inputstream contains"+ is.toString());
+		if(mainpage_menu != null) {
+			ObjectMapper mapper = new ObjectMapper();
+			
+			List<MenuItem> sideBarMenu = mapper.readValue(mainpage_menu, new TypeReference<List<MenuItem>>(){});
+			
+			req.setAttribute("sideBarMenu", sideBarMenu);
+			
+		}
+		
 		// 1. Correct way to open the InputStream
 		InputStream is = getClass().getClassLoader().getResourceAsStream("application.properties");
 
@@ -42,12 +60,21 @@ public class JwtFilter implements Filter {
 		    try (BufferedReader buffline = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
 		        
 		        String line;
+		        String warning_message;
+		        
+		        
 		        
 		        // 3. Correct loop syntax for readLine() (It does not take arguments inside the brackets)
 		        while ((line = buffline.readLine()) != null) {
 		            
 		            // 4. Clean up whitespace and skip empty lines
 		            line = line.trim();
+		            
+		            if(line.contains("com.learnit.guide.maintenance_message=")) {
+		            	warning_message = line.split("=", 2)[1].trim();
+		            	req.setAttribute("maintenance_message", warning_message);
+		            	
+		            }
 		            
 		            // 5. Ensure the line contains your key and an '=' symbol before splitting
 		            if (line.contains("com.learnit.guide.isundermaintenance=")) {

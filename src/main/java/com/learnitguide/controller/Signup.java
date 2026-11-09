@@ -37,18 +37,11 @@ public class Signup extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		System.out.println("this is the signup servlet");
-		
-		
 		// extracting the parameter from the login form
 		String uname = request.getParameter("username");
 		String password = request.getParameter("password");
 		String nickname = request.getParameter("webname");
-		String email = request.getParameter("email");
-		
-		System.out.println("uname" + uname + " password" + password + " nickname" + nickname + " email" + email );
-		
-		
+		String email = request.getParameter("email");		
 
 		
 		UserAuthentication authentication = new UserAuthentication();
@@ -61,13 +54,9 @@ public class Signup extends HttpServlet {
 			
 			boolean userCreation = authentication.createUser(uname,password,nickname,email);
 			if(userCreation) {
-//				request.setAttribute("message", "Account created. Please proceed to login");
 				
 				HttpSession session = request.getSession(true);
 			    session.setAttribute("message", "Account created. Please proceed to login");
-				
-//				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login_signup.jsp");
-//				rd.forward(request, response);
 				
 				response.sendRedirect(request.getContextPath() + "/Login");
 				
@@ -82,41 +71,6 @@ public class Signup extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/login_signup.jsp");
 		rd.forward(request, response);
 		
-		
-		
-
-		//creating the session object for the logged in user. removed as JWT token is implemented.
-//		HttpSession session = request.getSession();
-		
-		//generating a unique token for the user. so the controller no need to verify the user from the database multiple time after logged in.
-//		String token = JwtUtil.generateToken(uname);
-		
-		//Added the username to show it on each logged in page in JSP
-//		session.setAttribute("username", uname);
-		
-//		This token will be used to validate the user for each page for 1 hour.
-//		session.setAttribute("jwtToken", token);
-		
-//		Cookie jwtCookie = new Cookie("authToken",token);
-		
-//		jwtCookie.setHttpOnly(true); 
-//		jwtCookie.setPath("/");      
-//		jwtCookie.setMaxAge(3600);   
-
-		// 3. Hand the cookie to the Browser
-//		response.addCookie(jwtCookie);
-
-		
-//		String targetPage = (String) session.getAttribute("targetPage");
-////		System.out.println(targetPage);
-//		if (targetPage != null) {
-//			session.removeAttribute("targetPage"); // clear after use
-//			response.sendRedirect(request.getContextPath() + targetPage);
-//		} else {
-//			response.sendRedirect(request.getContextPath()+ "/Home");
-//		}
-		
-//		response.sendRedirect(request.getContextPath() + "/");
 
 	
 	
