@@ -1,58 +1,35 @@
 package com.learnitguide.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+
 public class MenuItem {
 	
-	private String title;
-	private String icon;
-	private String page;
-	
-	public MenuItem() {
-		
-	}
+	@JsonAlias({"title", "name"})
+    private String title;
+    
+    private String icon;
+    private String page;
+    
+    // Default to true so categories without an explicit "enabled" field show up
+    private boolean enabled = true; 
+    
+    private List<MenuItem> topic;
 
-	/**
-	 * @return the title
-	 */
-	public String getTitle() {
-		return title;
-	}
+    // Getters and Setters
+    public String getTitle() { return title; }
+    public void setTitle(String title) { this.title = title; }
 
-	/**
-	 * @param title the title to set
-	 */
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getIcon() { return icon; }
+    public void setIcon(String icon) { this.icon = icon; }
 
-	/**
-	 * @return the icon
-	 */
-	public String getIcon() {
-		return icon;
-	}
+    public String getPage() { return page; }
+    public void setPage(String page) { this.page = page; }
 
-	/**
-	 * @param icon the icon to set
-	 */
-	public void setIcon(String icon) {
-		this.icon = icon;
-	}
+    public boolean isEnabled() { return enabled; }
+    public void setEnabled(boolean enabled) { this.enabled = enabled; }
 
-	/**
-	 * @return the page
-	 */
-	public String getPage() {
-		return page;
-	}
-
-	/**
-	 * @param page the page to set
-	 */
-	public void setPage(String page) {
-		this.page = page;
-	}
-	
-	
-	
-
+    public List<MenuItem> getTopic() { return topic; }
+    public void setTopic(List<MenuItem> topic) { this.topic = topic; }
 }

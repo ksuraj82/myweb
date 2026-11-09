@@ -28,10 +28,10 @@
 
 			<nav class="webpage-nav">
 				<button class="webpage-nav-button">
-					<a href="<c:url value='/'/>">Home</a>
+					<a href="<c:url value='/Home'/>">Home</a>
 				</button>
 				<button class="webpage-nav-button">
-					<a href="<c:url value='login_signup.jsp'/>"><c:choose>
+					<a href="<c:url value='/Login'/>"><c:choose>
 							<c:when test="${not empty username}">
 								<a id="button" href="<c:url value='/logout'/>">Logout
 									(${username})</a>
@@ -61,22 +61,35 @@
     <div class="body-grid">
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
-    <div class="menu">
-        <h5>Kids basic</h5><hr>
-			<div class="menu-list">
-				<%-- <ul>
-					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
-				</ul> --%>
-				<c:forEach var="item" items="${sideBarMenu}">
-					<ul>
-					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</ul>
-				</c:forEach>
-				
-			</div>
-
-
-		</div>
+<aside class="sidebar">
+    <ul style="list-style: none; padding-left: 0;">
+        <c:forEach var="menu" items="${menuData}">
+            <c:if test="${menu.enabled}">
+                <li>
+                    <%-- Top-level category title --%>
+                    <a href="${menu.page}">
+                        <i class="${menu.icon}"></i> ${menu.title}
+                    </a>
+                    
+                    <%-- Render sub-topics if they exist --%>
+                    <c:if test="${not empty menu.topic}">
+                        <ul style="list-style: none; padding-left: 20px;">
+                            <c:forEach var="topic" items="${menu.topic}">
+                                <c:if test="${topic.enabled}">
+                                    <li>
+                                        <a href="${topic.page}">
+                                            <i class="${topic.icon}"></i> ${topic.title}
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </ul>
+                    </c:if>
+                </li>
+            </c:if>
+        </c:forEach>
+    </ul>
+</aside>
 
     <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
     <main>

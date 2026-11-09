@@ -57,8 +57,6 @@ li {
 
 .main-content {
     /* 1. Limit width: Long lines are hard to read */
-
-    margin: 0 auto;    /* Centers the content block */
     
     /* 2. Spacing between lines */
     line-height: 1.7; 

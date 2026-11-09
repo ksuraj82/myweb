@@ -165,7 +165,8 @@ public class JwtFilter implements Filter {
         	//To get the username from token and pass it to JSP page request.
             String username = JwtUtil.getUsernameFromToken(token);
             
-//            System.out.println("inside the is valid jwtfilter, servletPath" + req.getServletPath() + " path info " + req.getPathInfo());
+            System.out.println("inside the is valid jwtfilter, servletPath" + req.getServletPath() + " path info " + req.getPathInfo());
+            
             
             request.setAttribute("webpage", req.getPathInfo());
             

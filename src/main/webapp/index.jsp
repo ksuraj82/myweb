@@ -100,8 +100,31 @@
 		
 <!-- This is footer section -->
 
-            <c:url value="/WEB-INF/views/template/footer.html" var="footerContent" />
-				<jsp:include page="${footerContent}" />
+    <footer>
+        <div class="footerNav">
+            <ul>
+                <li><a href="<c:url value='/Home'/>">Home</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="">About</a></li>
+                <li><a href="">Contact Us</a></li>                
+            </ul>
+        </div>
+        
+        <div class="social-icon">
+            <a href="https://www.facebook.com"> <i class="fa-brands fa-facebook"></i></a>
+            <a href=""> <i class="fa-brands fa-instagram"></i></a>
+            <a href=""> <i class="fa-brands fa-twitter"></i></a>
+            <a href=""> <i class="fa-brands fa-reddit"></i></a>
+            <a href="https://www.google.com"> <i class="fa-brands fa-google"></i></a>
+            
+        </div>
+        
+        <div class="footerBottom">
+        <h4>&copy; Learnit-guide.in 2026</h4>
+        </div>
+        
+        
+</footer>
 
 
 

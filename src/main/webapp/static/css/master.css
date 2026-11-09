@@ -234,6 +234,26 @@ header {
 }
 
 
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul ul {
+    padding-left: 20px; /* Indent sub-topics nicely */
+}
+
+.sidebar li {
+    margin: 6px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
 
 
 
@@ -308,11 +328,13 @@ header {
     border: 1px solid var(--clr-border);
     border-radius: var(--radius);
     padding: 1rem;
+    min-width:300px;
+    min-height:500px;
     color: var(--clr-white);
     position: sticky;
     top: 140px;                /* sticks below the header when scrolling */
     align-self: start; 
-        visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
+    visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
 
 }
 

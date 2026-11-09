@@ -1,24 +1,225 @@
 [
-  {
-    "title": "Linux",
-    "icon": "fa-brands fa-linux",
-    "page": "/Linux/linuxbasic/intro"
-  },
-  {
-    "title": "SQL",
-    "icon": "fa-solid fa-database",
-    "page": "/sql/sqlbasic/intro"
-  }
-  ,
-  {
-    "title": "Kids Section",
-    "icon": "fa-solid fa-graduation-cap",
-    "page": "/kids/kidsbasic/intro"
-  }
-  ,
-  {
-    "title": "AI Chating",
-    "icon": "fa-solid fa-robot",
-    "page": "/ai/home"
-  }
+	{
+		"title": "Linux",
+		"icon": "fa-brands fa-linux",
+		"topic": [
+			{
+				"name": "Linux Introduction",
+				"icon": "fa-solid fa-house",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/intro"
+			},
+			{
+				"name": "VMware setup",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/1"
+			},
+			{
+				"name": "Ubuntu setup",
+				"icon": "fa-brands fa-ubuntu",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/2"
+			},
+			{
+				"name": "Linux Navigation",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/3"
+			},
+			{
+				"name": "File management",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/4"
+			},
+			{
+				"name": "Content inspection",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/5"
+			},
+			{
+				"name": "Security and Permission",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/6"
+			},
+			{
+				"name": "Search and Filter",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/Linux/linuxbasic/7"
+			}
+		]
+	},
+	{
+		"title": "SQL",
+		"icon": "fa-solid fa-database",
+		"topic": [
+			{
+				"name": "SQL Introduction",
+				"icon": "fa-solid fa-house",
+				"enabled": true,
+				"page": "/sql/sqlbasic/intro"
+			},
+			{
+				"name": "DDL statement",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/sql/sqlbasic/1"
+			},
+			{
+				"name": "DML statement",
+				"icon": "fa-brands fa-ubuntu",
+				"enabled": true,
+				"page": "/sql/sqlbasic/2"
+			},
+			{
+				"name": "DCL statement",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/3"
+			},
+			{
+				"name": "TCL statement",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/4"
+			},
+			{
+				"name": "DB User creation",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/5"
+			},
+			{
+				"name": "DB User and Role",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/6"
+			},
+			{
+				"name": "DB indexing",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/7"
+			},
+			{
+				"name": "DB trigger",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/8"
+			},
+			{
+				"name": "DB partitioning",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/9"
+			},
+			{
+				"name": "DB autoincrement column",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/10"
+			},
+			{
+				"name": "DB PLpgSQL basic",
+				"icon": "fa-solid fa-terminal",
+				"enabled": true,
+				"page": "/sql/sqlbasic/11"
+			}
+		]
+	},
+	{
+		"title": "Kids Section",
+		"icon": "fa-solid fa-graduation-cap",
+		"topic": [
+			{
+				"title": "Kids Introduction",
+				"icon": "fa-solid fa-house",
+				"enabled": true,
+				"page": "/kids/kidsbasic/intro"
+			},
+			{
+				"title": "English Letter",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/1"
+			},
+			{
+				"title": "Word",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/2"
+			},
+			{
+				"title": "Addition",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/3"
+			},
+			{
+				"title": "Subtraction",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/4"
+			},
+			{
+				"title": "Multiplication",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/5"
+			},
+			{
+				"title": "Divide",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/6"
+			},
+			{
+				"title": "Math Magic",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/7"
+			}
+		]
+	},
+	{
+		"title": "AI,ML and Agent",
+		"icon": "fa-solid fa-robot",
+		"page": "/ai/home",
+		"topic": [
+			{
+				"title": "Machine Learning",
+				"icon": "fa-solid fa-house",
+				"enabled": true,
+				"page": "/kids/kidsbasic/intro"
+			},
+			{
+				"title": "Artificial Intelligence",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/1"
+			},
+			{
+				"title": "Deep Learning",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/2"
+			},
+			{
+				"title": "Reinforcement Learning",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/3"
+			},
+			{
+				"title": "Agentic AI",
+				"icon": "fa-solid fa-box",
+				"enabled": true,
+				"page": "/kids/kidsbasic/4"
+			}
+		]
+	}
 ]
