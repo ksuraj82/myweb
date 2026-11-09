@@ -8,7 +8,7 @@
     <title>LearnIt-Guide</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/linux.css'/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value='/static/css/sql.css'/>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
@@ -20,51 +20,65 @@
 
 <div class= "container">
     <%-- ===== HEADER ===== --%>
-    <header>
-        <nav>
-            <div class="navStart">
-            <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
-            </div>
-            
-            <div class="navEnd">
-            <a href="software.html">Software</a>
-            <c:choose>
-    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-    <c:when test="${not empty username}">
-        <a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
-    </c:when>
-    <c:otherwise>
-        <a id="login-button" href="<c:url value='/login'/>">Log in</a>
-    </c:otherwise>
-</c:choose>
-            </div>
-        </nav>
-    </header>
+		<header>
+			<h2 class="website-title">Learnit Guide</h2>
+
+			<nav class="webpage-nav">
+				<button class="webpage-nav-button">
+					<a href="<c:url value='/'/>">Home</a>
+				</button>
+				<button class="webpage-nav-button">
+					<a href="<c:url value='login_signup.jsp'/>"><c:choose>
+							<c:when test="${not empty username}">
+								<a id="button" href="<c:url value='/logout'/>">Logout
+									(${username})</a>
+							</c:when>
+							<c:otherwise>
+								<a id="button" href="<c:url value='/login'/>">Login</a>
+							</c:otherwise>
+						</c:choose></a>
+				</button>
+				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
+			</nav>
+		</header>
     
     <div class="warning">
-    	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
+    	<h5>Notice: ${maintenance_message}</h5>
     </div>
 	
 	    <%-- Changed: renamed class from no class to "body-grid" â 3-column layout wrapper --%>
     <div class="body-grid">
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
-    <div class="menu">
-        <h5>SQL basic</h5><hr>
-			<div class="menu-list">
-				<%-- <ul>
-					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
-				</ul> --%>
-				<c:forEach var="item" items="${sideBarMenu}">
-					<ul>
-					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</ul>
-				</c:forEach>
-				
-			</div>
-
-
-		</div>
+<aside class="sidebar">
+    <ul style="list-style: none; padding-left: 0;">
+        <c:forEach var="menu" items="${menuData}">
+            <c:if test="${menu.enabled}">
+                <li>
+                    <%-- Top-level category title --%>
+                    <a href="${menu.page}">
+                        <i class="${menu.icon}"></i> ${menu.title}
+                    </a>
+                    
+                    <%-- Render sub-topics if they exist --%>
+                    <c:if test="${not empty menu.topic}">
+                        <ul style="list-style: none; padding-left: 20px;">
+                            <c:forEach var="topic" items="${menu.topic}">
+                                <c:if test="${topic.enabled}">
+                                    <li>
+                                        <a href="${topic.page}">
+                                            <i class="${topic.icon}"></i> ${topic.title}
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </ul>
+                    </c:if>
+                </li>
+            </c:if>
+        </c:forEach>
+    </ul>
+</aside>
 
     <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
     <main>
@@ -85,9 +99,10 @@
         
        </div><%-- end body-grid --%>         
             
+
+<!-- This is the footer section -->
+            
     <footer>
-        
-        
         <div class="footerNav">
             <ul>
                 <li><a href="<c:url value='/Home'/>">Home</a></li>
@@ -107,11 +122,11 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.xyz ${Year}</h4>
+        <h4>&copy; Learnit-guide.in 2026</h4>
         </div>
-    </footer>
-            
-            
+        
+        
+</footer>
             
             
         

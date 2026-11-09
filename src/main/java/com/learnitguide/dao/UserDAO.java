@@ -9,7 +9,7 @@ public class UserDAO {
 
     private static final String SELECT_USER_BY_USERNAME = "SELECT username, password,isactive FROM user_details WHERE username = ? and isactive = true";
     
-    private static final String INSERT_NEW_USER = "insert into user_details (username,last_changed, email, password, isactive ) values (? , ? , ? , ?, ?)";
+    private static final String INSERT_NEW_USER = "insert into user_details (username,createddate, email, password, isactive,updateddate ) values (? , ? , ? , ?, ?, ?)";
     
     
     // Fetch user by username
@@ -47,14 +47,12 @@ public class UserDAO {
     		ps.setString(3, email);
     		ps.setString(4, password);
     		ps.setBoolean(5, true);
-    		System.out.println("ps query prepared in UserDAO" + ps.toString());
+    		ps.setTimestamp(6, currentTimestamp); 
     		int rowsAffected = ps.executeUpdate();
     		
     		if(rowsAffected == 1) {
     			return true;
     		}
-    		
-    		System.out.println("ps.executeQuery output is : " + ps.executeQuery() + "execute upate " + ps.executeUpdate());
     		
     	}
     	catch (SQLException e) {

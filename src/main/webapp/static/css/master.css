@@ -11,6 +11,13 @@ and open the template in the editor.
 
 :root {
     /* Colours */
+    /*common color*/
+    --clr-blue: #3267e3;
+    --clr-white: #ffffff;
+    --clr-black: #000000;
+    --clr-red:#f50000;
+    
+    /*specific color*/
     --clr-bg:         #0d1117;   /* dark page background       */
     --clr-surface:    #161b22;   /* cards, sidebar background  */
     --clr-border:     #30363d;   /* subtle borders             */
@@ -28,6 +35,9 @@ and open the template in the editor.
     --clr-nav-menu-list: #3267e3;
     --clr-main-content: #ecffe8;
     --clr-main-content-higlight: #2fff00;
+    --clr-main-article-section : #58A6FF;
+    --clr-main-header: #00FF2A;
+        --ads-visibility : hidden;
 
     /* Typography */
     --font-title: 'Orbitron', monospace;     /* site name          */
@@ -48,7 +58,8 @@ and open the template in the editor.
     margin:0;
     padding: 0;
     box-sizing: border-box;
-    border-radius: 10px;
+    font-family:cursive;
+/*     border:1px solid black; */
 }
 
 html {
@@ -58,141 +69,101 @@ html {
 
 
 body{
-	    background-color: var(--clr-bg);
+	    background-color: var(--clr-white);
     /*border: 2px solid black;*/
 /*         background-color: white; */
     border:none;
 }
 
+a{
+		text-decoration:none;
+}
+
 
 .container {
     display: grid;
-    /* 1. Use 95% on small screens, but max-width for desktop (the "75%" look) */
-    width: 95%;
-    max-width: 1200px; 
+    /* 1. Use 95% on small screens, but max-width for desktop (the "80%" look) */
+    min-width: 100%; 
     min-height: 100vh;
-    margin: 10px auto;
-    
-    /* 2. Simplified Rows */
-    grid-template-rows: 100px 20px 1fr auto; 
-    grid-template-columns: 1fr;
-    
-    grid-gap: 20px;
 
-    /* 3. The "Responsive Magic" line */
-    /* This creates as many columns as fit (min 280px). 
-       On a phone, it will automatically be 1 column. */
-/*     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    justify-self:center;
+    grid-template-rows: 100px 30px 1fr 200px; 
+    grid-template-columns: 1fr;
 
 }
 
 
 /*this is header section*/
 
-header{
-    grid-column:1/-1;
-    width: 100%;
-    grid-template-columns: 1fr;
-    /*border: 2px solid black;*/
+header {
+	display: grid;
+	grid-column: 1/-1;
+	gap:10px;
+	grid-template-columns: repeat(3, auto);
+	padding:0 10px;
+	/*border: 2px solid black;*/
 	/*background: linear-gradient(to right, skyblue, purple); */
-	background-color: var(--clr-nav-bg);
+	background-color: var(--clr-white);
 	border-bottom: 1px solid var(--clr-border);
-align-content: center;
-  font-family: "Space Grotesk", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-  position: sticky;
-  top: 0px;
-  
-
+	align-content: center;
+	font-family: "Space Grotesk", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	top: 0px;
+	border-radius: 0px;
 }
 
-header nav{
-    display: grid;
+
+.website-title{
+	grid-column:1/2;
+	color:var(--clr-blue);
+	font-size:2.5em;
+	font-family:sans-serif;
+	font-weight: 900;
+	justify-items:left;
+}
+
+.webpage-nav{
+	display:grid;
+    grid-column:3/4;
+    gap:10px;
     /* Two columns: Branding group on left (1fr), Links on right (auto) */
-    grid-template-columns: 1fr auto; 
-    align-items: center;
-    padding: 0 20px;
+    grid-template-columns:repeat(3,auto);
+    align-self: center;
+    font-size:1em;
+    font-family:sans-serif;
+    justify-self:right;
+
 }
 
-
-
-/*Learnit-guide title*/
-header nav div.navStart{
-    display: grid;
-    /* Create two columns: one for text, one for the bulb */
-    grid-template-columns: auto auto; 
-    align-items: center; /* Aligns them vertically */
-    gap: 15px;           /* Precise spacing between text and bulb */
-    justify-content: start; /* Ensures the group stays on the far left */
-    color: white;
+.webpage-nav-button{
+	border-radius:20px;
 }
 
-
-/*THis is for software, tools and login button*/
-
-header nav div.navEnd{
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 20px;
-    justify-content: end;
-    align-items: center;
+.webpage-nav-button a{
+	font-size:1.5em;
+	padding: 5px;
+	color: var(--clr-black);
+	
 }
 
+.nav-ai-buddy{
+	grid-column:4/-1;
+	text-decoration:none;
+	font-size:2em;
 
-
-header nav div.navEnd a{
-    color: white;
-    opacity:0.6;
-    font:bold;
-    font-size: 20px;
-        margin-left: 5px;
-    margin-right: 5px;
-    text-decoration: none;
 }
-
-header nav div.navEnd a:hover{
-    opacity: 1;
-    transition: 0.5;
-}
-
-
-.site-title {
-    font-family: var(--font-title);
-    font-size: clamp(1rem, 2.5vw, 1.5rem); /* scales with viewport, never breaks */
-    color: var(--clr-accent);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-}
-
-
-#login-button{
-    background-color: green;
-        padding: 5px;
-    border-radius: 5px;
-        transition: 1s;
-        cursor:pointer;
-        align-self:center;
-}
-
-#login-button:hover{
-    color:white;
-    background-color: #42f700;
-    transition: 1s;
-}
-
-
-
-
-
 
 .warning{
-    grid-column: 1/-1;
-    border: 2px solid black;
+	    background-color: var(--clr-warning-bg);
+    color: var(--clr-warning-txt);
+    padding: 0.5rem var(--gap);
+    font-size: 1rem;
+    border-bottom: 1px solid #5c3300;
     text-align: center;
-    color:red;
-    font-size:20px;
+    position:sticky;
+    border-radius:0px;
+    
 }
 
 
@@ -203,9 +174,9 @@ header nav div.navEnd a:hover{
     grid-column: 1/-1;
     padding: 20px;
     display:grid;
+    gap:10px;
 	grid-template-rows:1fr;
 	grid-template-columns: auto 1fr auto;
-	gap: 20px;
 	word-wrap: break-word;
     overflow-wrap: break-word;
     align-self: start;
@@ -219,69 +190,116 @@ header nav div.navEnd a:hover{
 
 /* ===================this is the left side menu item */
 
-.menu{
-/*     grid-column: 1/2; */
-    /*border: 2px solid black;*/
-    display: grid;
+
+/* .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul ul {
+    padding-left: 20px; Indent sub-topics nicely
+}
+
+.sidebar li {
+    margin: 6px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+} */
+
+
+.sidebar{
     grid-template-rows: auto;
-    gap: 10px;
-        background-color: var(--clr-surface);
+    grid-column:1/2;
+    grid-row:1/-1;
+    background-color: var(--clr-white);
     border: 1px solid var(--clr-border);
     border-radius: var(--radius);
     padding: 1rem;
-    position: sticky;
-    top: 100px;                /* sticks below the header when scrolling */
-/*     width: 100%;  */
-/*     max-width: 100%; */
     align-self: start; 
     color: white;
-    min-width: 150px;
-    font-size:0.8em;
-
-  /* Modern browsers */
-/*   overflow-wrap: break-word; */
-  /* Legacy support for older browsers */
-/*   word-wrap: break-word; */
+    font-size:1em;
   /* Required for table cells and some layouts */
-  word-break: break-word; 
-/*     min-height: min-content; */
-/*     min-width: 0; */
-    
+  word-break: break-word;
 }
 
 
-.menu-list *{
-	    color: var(--clr-nav-menu);
-}
-
-
-.menu h5{
+/* .menu-list-title{
     text-align: center;
-    font-size: 15px;
+    font-size: 1.2em;
     margin-top: 2px;
     margin-bottom: 2px;
-    color : var (--clr-text-muted);
+    color : var(--clr-black);
+} */
+
+.sidebar ul li{
+	color: var(--clr-blue);
+	grid-template-rows: auto;   
+    list-style-type: none;    
 }
 
 
-.menu ul li{
-    list-style: none;
-    margin-left: 5px;
-    padding: 5px;
-    border-radius: 10px;
+.sidebar ul li a:visited{
+    color: var(--clr-red);
+}
+
+.sidebar ul li a:hover{
+	
+    color: var(--clr-nav-menu-list);
+    transition: 0.7s;
 
 }
 
-.menu ul li a{
-    text-decoration: none;
+/*the below is for menu items in the sidebar menu*/
+
+.menu{
+    grid-template-rows: auto;
+    grid-column:1/2;
+    grid-row:1/-1;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    align-self: start; 
+    color: white;
+    font-size:1em;
+  Required for table cells and some layouts
+  word-break: break-word;
+}
+
+
+.menu-list-title{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color : var(--clr-black);
+}
+
+.menu-list ul li{
+	color: var(--clr-blue);
+	grid-template-rows: auto;
+    padding-right: 5px;	    
+    list-style-type: none;    
+}
+
+
+.menu-list ul li a:visited{
+    color: var(--clr-red);
 }
 
 .menu ul li a:hover{
-/*     background-color: purple; */
-/*     color: white; */
+	
     color: var(--clr-nav-menu-list);
     transition: 0.7s;
+
 }
+
+
+
 
 
 
@@ -294,64 +312,60 @@ header nav div.navEnd a:hover{
 
 
 
-.body-grid {
+.content {
 /* 	  	background-color: black; */
 	  	padding: 10px;
-	  		color: var(--clr-main-content);	
-	  		    list-style-position: inside;
+	  	color: var(--clr-black);	
+	  	list-style-position: inside;	        
+    	border-left: 4px solid var(--clr-accent);
+    	gap: var(--gap);
+    	display: grid;
+    	grid-template-rows: auto 1fr;
+    	align-content: start;
 }
 
-.welcome_note{
-    box-sizing:border-box;
-    padding : 20px;
-    
+
+
+
+.article-section-header {
+	padding: 5px;
+	align-self: center;
+	justify-self: center;
+	font-size: 1.6em;
+	border-bottom : 2px solid var(--clr-main-header);
+	font-weight: bold;
+	margin-bottom: 10px;
+	border-radius: 0px 0px 15px 15px;
 }
 
-.linuxbasic {
-    /* 1. Limit width: Long lines are hard to read */
-    max-width: 800px; 
-    margin: 0 auto;    /* Centers the content block */
-    
+
+
+.article-section{
+	min-height: 100px;
+/* 	border-left: 2px solid var(--clr-main-article-section);
+	border-bottom: 2px solid var(--clr-main-article-section); */
+	padding: 5px;
+	line-height: 5px;
+	overflow-wrap: break-word;
+    color: var(--clr-black);	
+}
+
+
+
+
+
+/* ===================this is the article loaded content============================ */
+
+
+.article-card {
+    margin: 0 auto;
     /* 2. Spacing between lines */
     line-height: 1.7; 
-    
-    /* 3. Text color & font */
-    color: #e0e0e0; 
+    color: var(--clr-black);
     font-family: sans-serif;
 }
 
-/* Add space between every paragraph and list item */
-.linuxbasic p, 
-.linuxbasic ol li {
-    margin-bottom: 20px; 
-}
 
-/* Make headers stand out */
-.linuxbasic h1 {
-    margin-bottom: 30px;
-    color: #ffffff;
-}
-
-/* Space out the list items specifically */
-.linuxbasic ol li {
-    padding-left: 10px;
-}
-
-.linuxbasic a {
-    color: #66b3ff; /* Lighter blue */
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-.linuxbasic a:hover {
-    color: #99ccff;
-}
-
-
-
-.highlight  {
-	color : var(--clr-main-content-higlight);
-}
 
 
 
@@ -362,10 +376,13 @@ header nav div.navEnd a:hover{
     border: 1px solid var(--clr-border);
     border-radius: var(--radius);
     padding: 1rem;
-    color: white;
+    min-width:300px;
+    min-height:500px;
+    color: var(--clr-white);
     position: sticky;
-    top: 100px;                /* sticks below the header when scrolling */
+    top: 140px;                /* sticks below the header when scrolling */
     align-self: start; 
+    visibility: var(--ads-visibility); /*will be removed once the site reach 1K users*/
 
 }
 
@@ -373,7 +390,6 @@ header nav div.navEnd a:hover{
 
 
 
-/*==========this is for next and previous button ========================*/
 
 /* ===================This is for next and previous page button===================*/
 
@@ -382,8 +398,6 @@ header nav div.navEnd a:hover{
 	grid-template-columns: auto auto;
   gap: 5px;
   
-  
-	
 }
 
 .page-prev,.page-next{
@@ -413,17 +427,23 @@ transition:1s;
 .page-prev:hover{
 	background-color: red;
 	box-shadow: 15px 0px 20px red;
-	transform: translateX(10px) rotate(360deg) scale(1.1);
-transition: 2s ease;
+	transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
 }
 
 
 .page-next:hover{
 	background-color: navy;
-		box-shadow: 15px 0px 20px navy;
-		transform: translateX(10px) rotate(360deg) scale(1.1);
-transition: 2s ease;
+		box-shadow: -15px 0px 20px navy;
+		transform: translateX(10px) scale(1.1);
+transition: 0.5s ease;
 }
+
+
+
+
+
+
 
 
 /*================this is the start of footer section ======================================*/
@@ -515,64 +535,22 @@ footer {
 /*this is for trademark symbol*/
 
 .footerBottom {
-        color: purple;
+/*         color: purple; */
         height: 30px;
+        animation-name: trademark-color;
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        
+        
 	
 }
 
-
-
-/*bulb animation*/
-
-.bulb-container {
-/* 	grid-column: 1 / -1; Ensures it spans the full width */
-	height: 50px;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
-.bulb {
-    width: 40px;
-    height: 40px;
-    background: #FFD43B; /* Yellow bulb color */
-    border-radius: 50%;   /* Makes it a circle */
-    position: relative;
-    box-shadow: 0 0 20px #FFD43B; /* Gives it a "glow" effect */
-}
-
-/* The metal base of the bulb */
-.bulb::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
-    width: 20px;
-    height: 12px;
-    background: #888; /* Grey metal base */
-    border-radius: 2px;
-}
-
-/* The small black tip at the very bottom */
-.bulb::before {
-    content: '';
-    position: absolute;
-    bottom: -14px;
-    left: 14px;
-    width: 12px;
-    height: 4px;
-    background: #333;
-}
-
-
-@keyframes glow {
-    0% { box-shadow: 0 0 5px #FFD43B; }
-    50% { box-shadow: 0 0 25px #FFD43B; }
-    100% { box-shadow: 0 0 5px #FFD43B; }
-}
-
-.bulb {
-    animation: glow 2s infinite;
+@keyframes trademark-color {
+	0% {color:white;align-item: center;}
+	25% {color:navy;align-item: center;}
+	50% {color:red;align-item: center;}
+	75% {color:purple;align-item: center;}
+	100% {color:green;align-item: center;}
 }
 
 
@@ -583,17 +561,36 @@ footer {
 @media (max-width: 900px) {
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
-        grid-template-columns: 220px 1fr;
+        grid-template-columns: 1fr;
     }
     
-    .ads {
-        display: none;
-    }
+.menu, .content, .adds {
+	/*Everyone gets their own row on mobile*/
+    grid-column: 1 / -1; 
+    /*Disables 'sticky' on mobile to prevent overlapping */
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
+}
+
+
+footer {
+    grid-column: 1 / -1;
+/*     Prevents footer from floating over content */
+    position: static;     
+    padding: 20px 0;
+    bottom: 0px;
+    display: grid;
+}
+
 }
 
 
 /* 2. MOBILE VIEW (Apply these only when the screen is wide) */
 @media (max-width: 300px) {
+	
+	
     .body-grid {
 /*         Sidebar (220px) | Content (Flexible) | Ads (200px) */
 /*          grid-template-columns: auto auto  1fr;  */
@@ -606,12 +603,16 @@ footer {
     gap: 1.5rem;
     }
     
-    Fix the overlapping Advertisement and Footer
+    
+/*     Fix the overlapping Advertisement and Footer */
 .menu, .content, .adds {
 	/*Everyone gets their own row on mobile*/
     grid-column: 1 / -1; 
     /*Disables 'sticky' on mobile to prevent overlapping */
-      position: static;     
+      position: static;    
+      display:grid;
+      grid-template-columns:1fr; 
+      grid-template-rows: auto;
 }
 
 footer {

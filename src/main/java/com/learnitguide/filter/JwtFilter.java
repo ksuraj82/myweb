@@ -9,10 +9,21 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 import javax.servlet.http.Cookie;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learnitguide.model.MenuItem;
 import com.learnitguide.util.JwtUtil;
 import java.util.Calendar;
+import java.util.List;
 
 @WebFilter("/*")
 public class JwtFilter implements Filter {
@@ -29,8 +40,75 @@ public class JwtFilter implements Filter {
 		HttpServletResponse res = (HttpServletResponse) response;
 		
 		
+		
+		InputStream mainpage_menu = getClass().getClassLoader().getResourceAsStream("public_menu.json");
+//		System.out.println("the inputstream contains"+ is.toString());
+		if(mainpage_menu != null) {
+			ObjectMapper mapper = new ObjectMapper();
+			
+			List<MenuItem> sideBarMenu = mapper.readValue(mainpage_menu, new TypeReference<List<MenuItem>>(){});
+			
+			req.setAttribute("sideBarMenu", sideBarMenu);
+			
+		}
+		
+		// 1. Correct way to open the InputStream
+		InputStream is = getClass().getClassLoader().getResourceAsStream("application.properties");
+
+		if (is != null) {
+		    // 2. Wrap InputStream -> InputStreamReader -> BufferedReader (Using standard UTF-8 encoding)
+		    try (BufferedReader buffline = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+		        
+		        String line;
+		        String warning_message;
+		        
+		        
+		        
+		        // 3. Correct loop syntax for readLine() (It does not take arguments inside the brackets)
+		        while ((line = buffline.readLine()) != null) {
+		            
+		            // 4. Clean up whitespace and skip empty lines
+		            line = line.trim();
+		            
+		            if(line.contains("com.learnit.guide.maintenance_message=")) {
+		            	warning_message = line.split("=", 2)[1].trim();
+		            	req.setAttribute("maintenance_message", warning_message);
+		            	
+		            }
+		            
+		            // 5. Ensure the line contains your key and an '=' symbol before splitting
+		            if (line.contains("com.learnit.guide.isundermaintenance=")) {
+		                
+		                // Split into 2 parts around the '=' sign
+		                String[] parts = line.split("=", 2);
+		                String value = parts[1].trim(); // Gets the right-hand side value
+		                
+		                // 6. Use .equals() for string comparison instead of '=' assignment
+		                if ("true".equals(value)) {
+		                    // 7. Standard Servlets use sendRedirect on the response object
+		                	if (req.getServletPath().endsWith("/maintenance.html")) {
+		                        chain.doFilter(request, response);
+		                        return;
+		                    }
+		                    
+		                    // Otherwise, redirect them away from index.jsp to the maintenance page
+		                    res.sendRedirect(req.getContextPath() + "/maintenance.html");
+		                    return; 
+		                }
+		            }
+		        }
+		    } catch (IOException e) {
+		        e.printStackTrace();
+		    }
+		} else {
+		    System.out.println("Error: application.properties file not found on the classpath!");
+		}
+		
+		
 		String year = Calendar.getInstance().get(Calendar.YEAR)+"";
 		request.setAttribute("Year", year);
+
+		
 		
 		String path = req.getServletPath();
 //		System.out.println("jwtfilter file: getServletPath" + path);
@@ -48,7 +126,7 @@ public class JwtFilter implements Filter {
 		// 1. ALLOW PUBLIC ACCESS: Don't check for token for these paths
         boolean isStaticAsset = path.startsWith("/static") || path.startsWith("/img");
         boolean isLoginPage = path.equals("/Login") || path.equals("/Signup");
-        boolean isRoot = path.equals("/") || path.equals("/index.jsp");
+        boolean isRoot = path.equals("/") || path.equals("/index.jsp") || path.endsWith("html");
 
         if (isStaticAsset || isLoginPage || isRoot) {
             chain.doFilter(request, response); // Green Light!
@@ -87,7 +165,8 @@ public class JwtFilter implements Filter {
         	//To get the username from token and pass it to JSP page request.
             String username = JwtUtil.getUsernameFromToken(token);
             
-//            System.out.println("inside the is valid jwtfilter, servletPath" + req.getServletPath() + " path info " + req.getPathInfo());
+            System.out.println("inside the is valid jwtfilter, servletPath" + req.getServletPath() + " path info " + req.getPathInfo());
+            
             
             request.setAttribute("webpage", req.getPathInfo());
             

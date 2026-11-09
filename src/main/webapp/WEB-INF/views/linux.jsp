@@ -15,66 +15,79 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Zen+Dots&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Handjet&family=Noto+Sans+Mono:wght@500&family=Roboto:wght@900&display=swap" rel="stylesheet">
     <!--  The below stylesheet gives the icon to the footer social media icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
 <div class= "container">
     <%-- ===== HEADER ===== --%>
-    <header>
-        <nav>
-            <div class="navStart">
-            <%-- Changed: wrapped site name in a span for font styling --%>
-                <!-- <h1><span class="site-title"></span></h1> -->
-                <a href="<c:url value='/Home'/>"><img class='site-title' src="<c:url value='/img/header.gif'/>"></a>
-            </div>
-            
-            <div class="navEnd">
-            <a href="software.html">Software</a>
-            <c:choose>
-    <%-- Removed sessionScope. so it looks in the Request attribute set by the Filter --%>
-    <c:when test="${not empty username}">
-        <a id="login-button" href="<c:url value='/logout'/>">Logout (${username})</a>
-    </c:when>
-    <c:otherwise>
-        <a id="login-button" href="<c:url value='/login'/>">Log in</a>
-    </c:otherwise>
-</c:choose>
-            </div>
-        </nav>
-    </header>
+		<header>
+			<h2 class="website-title">Learnit Guide</h2>
+
+			<nav class="webpage-nav">
+				<button class="webpage-nav-button">
+					<a href="<c:url value='/Home'/>">Home</a>
+				</button>
+				<button class="webpage-nav-button">
+					<a href="<c:url value='login_signup.jsp'/>"><c:choose>
+							<c:when test="${not empty username}">
+								<a id="button" href="<c:url value='/logout'/>">Logout
+									(${username})</a>
+							</c:when>
+							<c:otherwise>
+								<a id="button" href="<c:url value='/login'/>">Login</a>
+							</c:otherwise>
+						</c:choose></a>
+				</button>
+				<a class="nav-ai-buddy" href="about.html">AI Study Buddy</a>
+			</nav>
+		</header>
     
     <div class="warning">
-    	<marquee><h5>warning messages will be displayed here. this is linux.jsp page.</h5> </marquee>
+    	<h5>Notice: ${maintenance_message}</h5>
     </div>
 	
 	    <%-- Changed: renamed class from no class to "body-grid" â 3-column layout wrapper --%>
     <div class="body-grid">
     
     <%-- ===== COLUMN 1: SIDEBAR MENU ===== --%>
-    <div class="menu">
-        <h5>Linux basic</h5><hr>
-			<div class="menu-list">
-				<%-- <ul>
-					<li><a href="<c:url value='/Linux/linuxbasic/1'/>"><i class="fa-solid fa-box"></i> VirtualBox setup</a></li>
-				</ul> --%>
-				<ul>
-				<c:forEach var="item" items="${sideBarMenu}">
-					<li><i class='${item.icon}'></i><a class="menu-list-title" href="<c:url value='${item.page}'/>">${item.title}</a></li>
-				</c:forEach>
-				</ul>
-			</div>
-
-
-		</div>
+<aside class="sidebar">
+    <ul style="list-style: none; padding-left: 0;">
+        <c:forEach var="menu" items="${menuData}">
+            <c:if test="${menu.enabled}">
+                <li>
+                    <%-- Top-level category title --%>
+                    <a href="${menu.page}">
+                        <i class="${menu.icon}"></i> ${menu.title}
+                    </a>
+                    
+                    <%-- Render sub-topics if they exist --%>
+                    <c:if test="${not empty menu.topic}">
+                        <ul style="list-style: none; padding-left: 20px;">
+                            <c:forEach var="topic" items="${menu.topic}">
+                                <c:if test="${topic.enabled}">
+                                    <li>
+                                        <a href="${topic.page}">
+                                            <i class="${topic.icon}"></i> ${topic.title}
+                                        </a>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </ul>
+                    </c:if>
+                </li>
+            </c:if>
+        </c:forEach>
+    </ul>
+</aside>
 
     <%-- ===== COLUMN 2: MAIN CONTENT ===== --%>
     <main>
 
 		<jsp:include page="${contentPage}"/>	
 		    <div class="page-nav">
-    <button id="pageprev" class="page-prev"> < Previous Page</button>
-    <button class="page-next">Next page ></button>
+    <button id="pageprev" class="page-prev"> &lt; Previous Page</button>
+    <button class="page-next">Next page &gt;</button>
     </div>
 	</main>
 
@@ -88,8 +101,6 @@
        </div><%-- end body-grid --%>         
             
     <footer>
-        
-        
         <div class="footerNav">
             <ul>
                 <li><a href="<c:url value='/Home'/>">Home</a></li>
@@ -109,9 +120,11 @@
         </div>
         
         <div class="footerBottom">
-        <h4>&copy; Learnit-Guide.xyz ${Year}</h4>
+        <h4>&copy; Learnit-guide.in 2026</h4>
         </div>
-    </footer>
+        
+        
+</footer>
             
 </div>
        

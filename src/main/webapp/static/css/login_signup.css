@@ -1,3 +1,4 @@
+@import url("master.css");
 /*
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
@@ -11,10 +12,19 @@ and open the template in the editor.
 
 :root {
 	
-	--clr-nav-bg : rgba(0,0,0,1);
+	--clr-nav-bg : rgb(255, 255, 255);
 	--clr-nav-footer : rgba(200,200,200,0.2);
 	--clr-login-bg   : rgba(40, 118, 235,0.6);
 	--clr-login-bg2   : rgba(0,255,200,0.2);
+	--clr-bg-silver : #00ff91;
+	--clr-bg-dark : #000000;
+	--clr-bg-header-white : #ffffff;
+	--clr-bg-white : #ffffff;
+	--clr-bg-blue : #1e1b4b;
+	--clr-font-black: #000000;
+	--clr-font-blue: #0e08bf;
+	
+	
 	
 }
 
@@ -23,23 +33,11 @@ and open the template in the editor.
 	margin:0px;
     padding: 0px;
     box-sizing: border-box;   
-    border-radius: 15px;
+/*     border-radius: 15px; */
+/*     border: 1px solid black; */
     
 }
 
-body{
-/*    background :url(https://cdn.wallpapersafari.com/93/18/z6QKit.jpg);*/
-    /* background :url(https://cdn5.vectorstock.com/i/1000x1000/54/64/blackboard-with-wooden-frame-vector-22605464.jpg); */
-/*     background-size: cover; */
-/*     background-repeat: no-repeat; */
-/*     box-sizing: border-box; */
-    background-color: var(--clr-nav-bg);
-   
-
-    
-    
-    
-}
 
 
 /* This is container, */
@@ -50,68 +48,123 @@ body{
     display: grid;
     grid-template-columns: 1fr; /* Simplify to one main column */
     grid-template-rows: auto 1fr auto;
-    width: 95%;
-    max-width: 1200px; /* Limits the width so it's not "whole page" */
-    margin: 10px auto; 
-    gap: 1.5rem;
+    min-width: 100%;
     min-height: 100vh;
 	
 }
 
 
 
+
+
 /* This is header section */
 /* the display is grid with three column to keep the heading in the center. */
 
-header {
+/*this is header section*/
+
+/* header {
 	display: grid;
-	grid-template-columns:1fr auto 1fr;
-	grid-template-rows: auto;
-	border-bottom : 2px solid navy;
-    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
-	  box-shadow: 10px 10px 15px navy;
-align-items: center;
-	        
-
-
-}
-
-
-.material-symbols-outlined {
-    grid-column: 1;
-    top: 20px;
-    left: 20px;
-    color: white;
-    align-self:center;
-    justify-self: center;
-    font-size: 2.5rem;
-    
-    
+	grid-column: 1/-1;
+	gap:10px;
+	grid-template-columns: repeat(3, auto);
+	padding:0 10px;
+	border: 2px solid black;
+	background: linear-gradient(to right, skyblue, purple);
+	background-color: var(--clr-white);
+	border-bottom: 1px solid var(--clr-border);
+	align-content: center;
+	font-family: "Space Grotesk", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 700;
+	top: 0px;
+	border-radius: 0px;
 }
 
 
 .website-title{
-	    text-align: center;
-	    grid-column: 2;
-	    align-items: center;
+	grid-column:1/2;
+	color:var(--clr-blue);
+	font-size:2.5em;
+	font-family:sans-serif;
+	font-weight: 900;
+	justify-items:left;
 }
 
-header h1{
-    color:white;
-    font-size: 3.5rem;
-    font-family: 'Borel', cursive;
-    
+.webpage-nav{
+	display:grid;
+    grid-column:3/4;
+    gap:10px;
+    Two columns: Branding group on left (1fr), Links on right (auto)
+    grid-template-columns:repeat(3,auto);
+    align-self: center;
+    font-size:1em;
+    font-family:sans-serif;
+    justify-self:right;
+
 }
 
-header h4{
-    color:white;
-    font-size: 1.5rem;
-    font-family: 'Borel', cursive;
-    
+.webpage-nav-button{
+	border-radius:20px;
+}
+
+.webpage-nav-button a{
+	font-size:1.5em;
+	padding: 5px;
+	color: var(--clr-black);
+	
+}
+
+.nav-ai-buddy{
+	grid-column:4/-1;
+	text-decoration:none;
+	font-size:2em;
+
+} */
+
+
+/* Main content of the login page*/
+
+
+.main-content{
+	display:grid;
+	grid-template-columns:repeat(2,auto);
+	align-items: center;
+	min-height: 100vh;
+
 }
 
 
+.main-left-content{
+	grid-column:1/2;
+	color: var(--clr-white);
+	min-width: 100%;
+	min-height:100%;
+	background-color: var(--clr-bg-blue);
+}
 
+
+.main-left-content-info{
+	
+	justify-self:center;
+	margin-top: 100px;
+	font-weight: 900;
+	font-size:3.5em;
+	
+}
+
+
+.main-left-content-info p{
+	justify-self:center;
+	font-weight: 400;
+	font-size:0.5em;
+	
+}
+
+.main-right-content{
+	grid-column:2/3;
+	min-width: 100%;
+	min-height:100%;
+}
 
 
 
@@ -130,12 +183,9 @@ header h4{
     border-radius: 20px;
 /*     border: 2px solid black; */
     transition: 0.7s;
-    width: 90%;
-    max-width: 420px;
-    align-self: start;
-    justify-self:center;
-    	border-bottom : 2px solid navy;
-    	    box-shadow: 10px 10px 15px navy;
+    height:100%;
+    width:100%;
+/*     	    box-shadow: 1px 10px 15px navy; */
 /*     box-shadow : 20px; */
 /*     align-content:left; */
    
@@ -153,10 +203,9 @@ this will help to apply the grid to the immediate child element of the login_sig
     justify-items: center;   /* This centers the inputs and buttons! */
     gap: 10px;               /* Adds equal space between every input/button */
     padding: 30px;
-    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
-    transition: all 0.8s ease-in-out;
-    height:100%;
-    width:100%;
+/*     background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2)); */
+/*      background: linear-gradient(to left, var(--clr-login-bg),var(--clr-login-bg2)); */
+    transition: all 1s ease-in-out;
 
     }
 
@@ -166,7 +215,7 @@ this will help to apply the grid to the immediate child element of the login_sig
     text-align: center;
     margin-bottom: 5px;
     font-size: 50px;
-    color: white;
+    color: var(--clr-font-black);
     font-family: 'Bricolage Grotesque', sans-serif;
     
 }
@@ -176,31 +225,49 @@ this will help to apply the grid to the immediate child element of the login_sig
 #login input{
     padding: 5px;
     margin: 5px auto;
-    border-radius: 5px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    gap:1.5em;
+/*     border: 2px solid black; */
+box-shadow: 0 5px 10px 1px blue;
 }
 
 
 /*Login submit button*/
-#login button.submitButton,#signup button.submitButton{
+.login-submitButton,.signup-submitButton{
     
     justify-content: center;
-    font-size: 20px;
-    border-radius: 5px;
+    font-size: 1.6em;
+    border-radius: 20px;
     padding: 5px;
-    width: 100px;
-        cursor: pointer;
+    margin:0px;
+    cursor: pointer;
+    width: 150px;
+    height: 50px;
+    margin-top: 20px;
     
 }
 
 
+.login-submitButton:hover{
+	background: blue;
+	transition: 1s;
+	color: white;
+}
+
+.signup-submitButton:hover{
+	background: blue;
+		transition: 1s;
+		color: white;
+}
 
 /*This is immediate child of #login and for swaping the login and signup form*/
 
 #login h4, #signup h4{
     text-align: center;
-    color: white;
-    margin: 20px auto;
-    font-family: 'Bricolage Grotesque', sans-serif;    
+    color: var(--clr-font-black);
+    font-family: 'Bricolage Grotesque', sans-serif; 
 } 
 
 
@@ -212,6 +279,8 @@ this will help to apply the grid to the immediate child element of the login_sig
         margin-left: 3px;
     font-family: 'Bricolage Grotesque', sans-serif;    
     cursor: pointer;
+        font-size:1.6em;
+    font-weight: 700;   
 } 
 
 
@@ -221,7 +290,7 @@ this will help to apply the grid to the immediate child element of the login_sig
 /*     top: 20px; */
 /*     margin-bottom: 50px; */
     font-size: 50px;
-    color: white;
+    color: var(--clr-font-black);
     font-family: 'Bricolage Grotesque', sans-serif;
     
 }
@@ -232,7 +301,11 @@ this will help to apply the grid to the immediate child element of the login_sig
 #signup input{
     padding: 5px;
     margin: 5px auto;
-    border-radius: 5px;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    gap:1.5em;
+box-shadow: 0 5px 10px 1px blue;
 /*     display: block; */
 /*     align-content: center; */
 /*     flex-direction: column; */
@@ -296,27 +369,20 @@ footer {
     padding: 20px;
     /* 2. Center the grid tracks themselves */
     justify-content: center; 
-    
+    border-radius: 0px;
+    border-top:1px solid var(--clr-black);
     /* 3. Center the content inside those tracks */
     justify-items: center; 
-    color: white;
-    background: linear-gradient(to right, var(--clr-login-bg),var(--clr-login-bg2));
+    background: var(--clr-bg-white);
     font-family: sans-serif;
     bottom:0px;
     width: 100%;
+
 /*     border: 2px solid black; */
     gap: 1.5rem;
-    box-shadow: 10px 10px 15px navy;
 }
 
 
-/* .footerNav{ */
-/* 	display: grid; */
-/*     margin-bottom: 10px; */
-/*     margin-top: 20px; */
-/*     grid-template-rows: 1fr; */
-/*     gap :10px; */
-/* } */
 
 .footerNav ul{
     list-style: none;
@@ -328,7 +394,7 @@ footer {
 }
 
 .footerNav ul li a{
-    color: white;
+    color: var(--clr-font-black);
     text-decoration: none;
     opacity: 0.7;
     font-size: 1.5em;
@@ -342,75 +408,6 @@ footer {
     transition: 1s;
     color: blue;
 
-}
-
-
-/* .footerBottom { */
-/* 	/*border: 2px solid black;*/ 
-/*         flex-direction: column; */
-/* 		justify-content: center; */
-/*         color:white; */
-/*         text-align: center; */
-/*         background-color: black; */
-/*         flex-grow: 1; */
-/*         height: 30px; */
-/*         align-items: center;	 */
-/* } */
-
-
-
-
-/* additional animation */
-
-.bulb-container {
- 	grid-column: 1 / -1; /* Ensures it spans the full width */ 
-	height: 50px;
-    display: flex;
-    justify-content: center;
-    margin: 20px;
-}
-
-.bulb {
-    width: 40px;
-    height: 40px;
-    background: #FFD43B; /* Yellow bulb color */
-    border-radius: 50%;   /* Makes it a circle */
-    position: relative;
-    box-shadow: 0 0 20px #FFD43B; /* Gives it a "glow" effect */
-}
-
-/* The metal base of the bulb */
-.bulb::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 10px;
-    width: 20px;
-    height: 12px;
-    background: #888; /* Grey metal base */
-    border-radius: 2px;
-}
-
-/* The small black tip at the very bottom */
-.bulb::before {
-    content: '';
-    position: absolute;
-    bottom: -14px;
-    left: 14px;
-    width: 12px;
-    height: 4px;
-    background: #333;
-}
-
-
-@keyframes glow {
-    0% { box-shadow: 0 0 5px #FFD43B; }
-    50% { box-shadow: 0 0 25px #FFD43B; }
-    100% { box-shadow: 0 0 5px #FFD43B; }
-}
-
-.bulb {
-    animation: glow 2s infinite;
 }
 
 

@@ -1,0 +1,104 @@
+<!--
+    article.html
+    ------------
+    This is a STATIC sample article included into home.jsp via:
+        <jsp:include page="article.html"/>
+
+    Later (Step 1), this file will be REPLACED by a dynamic JSP
+    that loads the published article from the database.
+
+    File location in your project:
+        src/main/webapp/article.html
+-->
+
+<article class="article-card">
+
+    <!-- ── Article meta bar ───────────────────────── -->
+    <div class="article-meta">
+        <span class="article-section-badge">Linux</span>
+        <span class="article-date">June 2026</span>
+    </div>
+
+    <!--── Article title ────────────────────────────--->
+    <h2 class="article-title">
+        Getting Started with Linux: What Every Beginner Should Know
+    </h2>
+
+    <!-- ── Article intro ──────────────────────────── -->
+    <p class="article-intro">
+        Linux powers most of the internet, every Android phone, and almost every
+        corporate server you will ever touch as a developer. Yet most beginners
+        skip it entirely. This article explains why that is a mistake — and how
+        to get started in under an hour.
+    </p>
+
+    <!-- ── Article body ───────────────────────────── -->
+    <div class="article-body">
+
+        <h3>Why Linux Matters in a Corporate Job</h3>
+        <p>
+            When you deploy a Java application at work, it almost never runs on
+            Windows. It runs on a Linux server — usually accessed only through a
+            terminal. Knowing how to navigate, read logs, and manage files in
+            Linux is not optional. It is day-one knowledge that employers assume
+            you already have.
+        </p>
+
+        <h3>The 5 Commands You Will Use Every Single Day</h3>
+
+        <!-- Code block example -->
+        <div class="article-code">
+            <div class="article-code-header">
+                <span>bash</span>
+                <span class="article-code-label">terminal</span>
+		            </div>
+		            <pre><code>ls -la          # list all files including hidden ones
+		cd /var/log     # navigate to the logs directory
+		cat app.log     # print file contents to the screen
+		grep "ERROR" app.log   # search for the word ERROR in the log
+		tail -f app.log # watch a log file update in real time</code></pre>
+		        </div>
+
+        <p>
+            <code>tail -f</code> is particularly important. In a corporate
+            environment, when something breaks you open the log file with
+            <code>tail -f</code> and watch errors appear in real time while the
+            application is running. This alone will save you hours of debugging.
+        </p>
+
+        <h3>How to Practice Without Installing Anything</h3>
+        <p>
+            You do not need a Linux machine to start learning. Use one of these
+            free options:
+        </p>
+
+        <ul class="article-list">
+            <li>
+                <span class="bull">&#9658;</span>
+                <span><strong>WSL2 on Windows</strong> — Windows Subsystem for Linux.
+                One command installs a full Ubuntu terminal inside Windows.</span>
+            </li>
+            <li>
+                <span class="bull">&#9658;</span>
+                <span><strong>Play with Docker</strong> — a free browser-based Linux
+                terminal at <em>labs.play-with-docker.com</em>. No install needed.</span>
+            </li>
+            <li>
+                <span class="bull">&#9658;</span>
+                <span><strong>VMware Workstation Player</strong> — run a full Linux
+                virtual machine. We cover this in the VMware section.</span>
+            </li>
+        </ul>
+
+        <h3>What to Learn Next</h3>
+        <p>
+            Once you are comfortable with basic navigation, move on to file
+            permissions (<code>chmod</code>, <code>chown</code>), process
+            management (<code>ps</code>, <code>kill</code>), and then package
+            management (<code>apt install</code>). The Linux section of this
+            site covers each of these step by step with real corporate examples.
+        </p>
+
+    </div><!-- end article-body -->
+
+</article>
