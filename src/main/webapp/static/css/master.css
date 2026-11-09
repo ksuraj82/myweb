@@ -190,7 +190,28 @@ header {
 
 /* ===================this is the left side menu item */
 
-.menu{
+
+/* .sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar ul ul {
+    padding-left: 20px; Indent sub-topics nicely
+}
+
+.sidebar li {
+    margin: 6px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: inherit;
+} */
+
+
+.sidebar{
     grid-template-rows: auto;
     grid-column:1/2;
     grid-row:1/-1;
@@ -202,6 +223,50 @@ header {
     color: white;
     font-size:1em;
   /* Required for table cells and some layouts */
+  word-break: break-word;
+}
+
+
+/* .menu-list-title{
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color : var(--clr-black);
+} */
+
+.sidebar ul li{
+	color: var(--clr-blue);
+	grid-template-rows: auto;   
+    list-style-type: none;    
+}
+
+
+.sidebar ul li a:visited{
+    color: var(--clr-red);
+}
+
+.sidebar ul li a:hover{
+	
+    color: var(--clr-nav-menu-list);
+    transition: 0.7s;
+
+}
+
+/*the below is for menu items in the sidebar menu*/
+
+.menu{
+    grid-template-rows: auto;
+    grid-column:1/2;
+    grid-row:1/-1;
+    background-color: var(--clr-white);
+    border: 1px solid var(--clr-border);
+    border-radius: var(--radius);
+    padding: 1rem;
+    align-self: start; 
+    color: white;
+    font-size:1em;
+  Required for table cells and some layouts
   word-break: break-word;
 }
 
@@ -234,24 +299,7 @@ header {
 }
 
 
-.sidebar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
 
-.sidebar ul ul {
-    padding-left: 20px; /* Indent sub-topics nicely */
-}
-
-.sidebar li {
-    margin: 6px 0;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: inherit;
-}
 
 
 

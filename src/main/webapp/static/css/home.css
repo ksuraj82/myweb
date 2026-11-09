@@ -47,21 +47,12 @@
 
 
 /* ── 2. RESET / BASE ─────────────────────────────────────── */
-*, *::before, *::after {
+/* *, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+} */
 
-html {
-    font-size: 16px;
-    scroll-behavior: smooth;
-}
-
-body {
-    line-height: 1.7em;
-    min-height: 100vh;
-}
 
 a {
     color: var(--clr-accent);

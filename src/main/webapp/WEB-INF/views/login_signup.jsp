@@ -98,7 +98,7 @@
     <footer>
         <div class="footerNav">
             <ul>
-                <li><a href="<c:url value='/Home'/>">Home</a></li>
+                <li><a href="<c:url value='/'/>">Home</a></li>
                 <li><a href="">News</a></li>
                 <li><a href="">About</a></li>
                 <li><a href="">Contact Us</a></li>                
